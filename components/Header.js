@@ -6,15 +6,14 @@ export default function Header() {
     <View style={{ flex: 0.2, backgroundColor: "#F4CE14" }}>
       <Text
         style={{
-          numberOfLines: 1,
           padding: 40,
-          //   textAlign: "center",
           fontSize: 30,
           color: "black",
         }}
+        numberOfLines={1}
       >
-        this is header
-        <Text>this is nested text</Text>
+        Welcome to
+        <Text style={{ fontWeight: "bold" }}> Little lemon</Text>
       </Text>
     </View>
   );
