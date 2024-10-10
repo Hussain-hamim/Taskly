@@ -23,8 +23,8 @@ export default function WelcomeScreen() {
         }}
       >
         Little Lemon is a charming neibhorhood bistro that serves simple food
-        and classic cocktails in a lively but casual environment. we would love
-        to hear more about your experience with us!
+        and classic food in a lively but casual environment. we would love to
+        hear more about your experience with us!
       </Text>
     </View>
   );
