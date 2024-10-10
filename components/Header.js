@@ -12,8 +12,7 @@ export default function Header() {
         }}
         // numberOfLines={1}
       >
-        Welcome to
-        <Text style={{ fontWeight: "bold" }}> Little lemon</Text>
+        Welcome to<Text style={{ fontWeight: "bold" }}> Little lemon</Text>
       </Text>
     </View>
   );
