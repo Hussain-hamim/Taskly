@@ -3,7 +3,12 @@ import { Text, View } from "react-native";
 
 export default function Footer() {
   return (
-    <View style={{ marginBottom: 2, backgroundColor: "#F4CE14" }}>
+    <View
+      style={{
+        marginBottom: 5,
+        backgroundColor: "#F4CE14",
+      }}
+    >
       <Text
         style={{
           fontSize: 18,
