@@ -10,7 +10,7 @@ export default function Header() {
           fontSize: 30,
           color: "black",
         }}
-        numberOfLines={1}
+        // numberOfLines={1}
       >
         Welcome to
         <Text style={{ fontWeight: "bold" }}> Little lemon</Text>
