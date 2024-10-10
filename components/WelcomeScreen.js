@@ -1,3 +1,5 @@
+import react from "react";
+
 const { Text, View } = require("react-native");
 
 export default function WelcomeScreen() {

@@ -5,13 +5,15 @@ import Header from "./components/Header";
 import react from "react";
 import Footer from "./components/Footer";
 import WelcomeScreen from "./components/WelcomeScreen";
+import MenuItems from "./components/MenuItems";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      <WelcomeScreen />
-      <Footer />
+      <MenuItems />
+      {/* <WelcomeScreen /> */}
+      {/* <Footer /> */}
       <StatusBar style="auto" />
     </View>
   );
