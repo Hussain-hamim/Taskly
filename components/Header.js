@@ -5,22 +5,20 @@ export default function Header() {
   return (
     <View
       style={{
-        flex: 0.2,
+        flex: 0.15,
         backgroundColor: "#F4CE14",
       }}
     >
       <Text
         style={{
-          padding: 40,
+          paddingTop: 40,
           fontSize: 30,
           color: "black",
-          fontWeight: "bold",
           textAlign: "center",
         }}
         // numberOfLines={1}
       >
         Little Lemon
-        {/* <Text style={{ fontWeight: "bold" }}> Little lemon</Text> */}
       </Text>
     </View>
   );

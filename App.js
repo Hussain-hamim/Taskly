@@ -21,6 +21,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#495E57",
-    // justifyContent: "space-between",
   },
 });
