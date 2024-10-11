@@ -43,10 +43,10 @@ const menuItemsToDisplay = [
   { name: "menu item", id: one++ },
 ];
 
-function Item({ name }) {
+function Item({ name, index }) {
   return (
     <View style={menuStyles.container}>
-      <Text style={menuStyles.itemText}>{name}</Text>
+      <Text style={menuStyles.itemText}>{name + " " + (1 + index)}</Text>
     </View>
   );
 }
@@ -54,7 +54,7 @@ function Item({ name }) {
 const MenuItems = () => {
   function renderItem({ item, index, separator }) {
     console.log(item);
-    return <Item name={item.name} />;
+    return <Item name={item.name} index={index} />;
   }
 
   return (
@@ -64,11 +64,7 @@ const MenuItems = () => {
       <FlatList
         style={menuStyles.innerContainer}
         data={menuItemsToDisplay}
-        renderItem={({ item, index, sep }) => (
-          <Text style={menuStyles.itemText}>
-            {item.name + " " + (1 + index)}
-          </Text>
-        )}
+        renderItem={renderItem}
       />
     </View>
   );
