@@ -1,5 +1,5 @@
 const react = require("react");
-const { View, ScrollView, Text } = require("react-native");
+const { View, ScrollView, Text, StyleSheet } = require("react-native");
 
 const green = "#495E57";
 const yellow = "#F4CE14";
@@ -10,25 +10,31 @@ const menuItemsToDisplay = [
 
 const MenuItems = () => {
   return (
-    <View style={{ flex: 0.75 }}>
+    <View style={menuStyles.container}>
       <ScrollView
         horizontal={false}
         indicatorStyle={"white"}
-        style={{
-          paddingHorizontal: 40,
-          paddingVertical: 40,
-          backgroundColor: "black",
-        }}
+        style={menuStyles.innerContainer}
       >
-        <Text style={{ fontSize: 40, flexWrap: "wrap", color: "white" }}>
-          View Menu
-        </Text>
-        <Text style={{ color: yellow, fontSize: 36 }}>
-          {menuItemsToDisplay[0]}
-        </Text>
+        <Text style={menuStyles.headerText}>View Menu</Text>
+        <Text style={menuStyles.itemText}>{menuItemsToDisplay[0]}</Text>
       </ScrollView>
     </View>
   );
 };
 
 export default MenuItems;
+
+const menuStyles = StyleSheet.create({
+  container: {
+    flex: 0.75,
+  },
+  innerContainer: {
+    paddingHorizontal: 40,
+    paddingVertical: 40,
+    paddding: 40,
+    backgroundColor: green,
+  },
+  headerText: { fontSize: 40, flexWrap: "wrap", color: "white" },
+  itemText: { color: yellow, fontSize: 30 },
+});
