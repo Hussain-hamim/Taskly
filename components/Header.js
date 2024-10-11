@@ -16,8 +16,9 @@ export default function Header() {
 
 const headerStyles = StyleSheet.create({
   container: {
-    flex: 0.1,
-    backgroundColor: "#F4CE14",
+    flex: 0.15,
+    // backgroundColor: "#F4CE14",
+    backgroundColor: "pink",
   },
   headerText: {
     paddingTop: 40,

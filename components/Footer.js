@@ -14,7 +14,8 @@ export default function Footer() {
 const footerStyles = StyleSheet.create({
   container: {
     marginBottom: 5,
-    backgroundColor: "#F4CE14",
+    // backgroundColor: "#F4CE14",
+    backgroundColor: "pink",
   },
   footerText: {
     fontSize: 18,
