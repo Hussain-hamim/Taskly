@@ -1,21 +1,11 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import react from "react";
 
 export default function Header() {
   return (
-    <View
-      style={{
-        flex: 0.15,
-        backgroundColor: "#F4CE14",
-      }}
-    >
+    <View style={headerStyles.container}>
       <Text
-        style={{
-          paddingTop: 40,
-          fontSize: 30,
-          color: "black",
-          textAlign: "center",
-        }}
+        style={headerStyles.headerText}
         // numberOfLines={1}
       >
         Little Lemon
@@ -23,3 +13,16 @@ export default function Header() {
     </View>
   );
 }
+
+const headerStyles = StyleSheet.create({
+  container: {
+    flex: 0.1,
+    backgroundColor: "#F4CE14",
+  },
+  headerText: {
+    paddingTop: 40,
+    fontSize: 30,
+    color: "black",
+    textAlign: "center",
+  },
+});
