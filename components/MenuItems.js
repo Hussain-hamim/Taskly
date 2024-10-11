@@ -159,7 +159,7 @@ export default MenuItems;
 
 const menuStyles = StyleSheet.create({
   container: {
-    flex: 0.75,
+    flex: 0.95,
   },
   innerContainer: {
     paddingHorizontal: 40,
@@ -185,8 +185,10 @@ const menuStyles = StyleSheet.create({
     borderColor: "#EDEFEE",
   },
   sectionHeader: {
-    backgroundColor: "pink",
+    backgroundColor: "#fbdabb",
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 25,
+    flexWrap: "wrap",
+    color: "#333333",
   },
 });
