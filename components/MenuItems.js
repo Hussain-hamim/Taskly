@@ -5,6 +5,7 @@ const {
   Text,
   StyleSheet,
   FlatList,
+  SectionList,
 } = require("react-native");
 
 const green = "#495E57";
@@ -43,6 +44,53 @@ const menuItemsToDisplay = [
   { name: "menu item", price: "Af3.15", id: one++ },
 ];
 
+const menuItemsToDisplay2 = [
+  {
+    title: "Appetizer",
+    data: [
+      "Hummus",
+      "Moutabal",
+      "Falafel",
+      "Kofta",
+      "eggplant salad",
+      "baryani",
+    ],
+  },
+  {
+    title: "Main dishes",
+    data: [
+      "Hummus",
+      "Moutabal",
+      "Falafel",
+      "Kofta",
+      "eggplant salad",
+      "baryani",
+    ],
+  },
+  {
+    title: "Desserts",
+    data: [
+      "Hummus",
+      "Moutabal",
+      "Falafel",
+      "Kofta",
+      "eggplant salad",
+      "baryani",
+    ],
+  },
+  {
+    title: "Watani",
+    data: [
+      "Hummus",
+      "Moutabal",
+      "Falafel",
+      "Kofta",
+      "eggplant salad",
+      "baryani",
+    ],
+  },
+];
+
 function Item({ name, index, price }) {
   return (
     <View
@@ -51,8 +99,8 @@ function Item({ name, index, price }) {
         flexDirection: "row",
       }}
     >
-      <Text style={menuStyles.itemText}>{name + " " + (1 + index)}</Text>
-      <Text style={menuStyles.itemText}>{price}</Text>
+      <Text style={menuStyles.itemText}>{name}</Text>
+      {/* <Text style={menuStyles.itemText}>{price}</Text> */}
     </View>
   );
 }
@@ -75,16 +123,30 @@ function Footer() {
 
 const MenuItems = () => {
   function renderItem({ item, index, separator }) {
-    return <Item name={item.name} index={index} price={item.price} />;
+    return <Item name={item} />;
+  }
+
+  function renderSectionHeader({ section: { title } }) {
+    return <Text style={menuStyles.sectionHeader}>{title}</Text>;
   }
 
   return (
     <View style={menuStyles.container}>
-      <FlatList
+      {/* <FlatList
         data={menuItemsToDisplay}
         renderItem={renderItem}
         style={menuStyles.innerContainer}
         keyExtractor={(item) => item.id}
+
+        ItemSeparatorComponent={Separator}
+        ListHeaderComponent={Header}
+        ListFooterComponent={Footer}
+      /> */}
+
+      <SectionList
+        sections={menuItemsToDisplay2}
+        renderItem={renderItem}
+        renderSectionHeader={renderSectionHeader}
         ItemSeparatorComponent={Separator}
         ListHeaderComponent={Header}
         ListFooterComponent={Footer}
@@ -121,5 +183,10 @@ const menuStyles = StyleSheet.create({
   separator: {
     borderBottomWidth: 1,
     borderColor: "#EDEFEE",
+  },
+  sectionHeader: {
+    backgroundColor: "pink",
+    textAlign: "center",
+    fontSize: 20,
   },
 });
