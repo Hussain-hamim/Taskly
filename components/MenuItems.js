@@ -53,6 +53,7 @@ function Item({ name }) {
 
 const MenuItems = () => {
   function renderItem({ item, index, separator }) {
+    console.log(item);
     return <Item name={item.name} />;
   }
 
@@ -63,7 +64,9 @@ const MenuItems = () => {
       <FlatList
         style={menuStyles.innerContainer}
         data={menuItemsToDisplay}
-        renderItem={renderItem}
+        renderItem={({ item, index, sep }) => (
+          <Text style={menuStyles.itemText}>{item.name}</Text>
+        )}
       />
     </View>
   );
