@@ -66,9 +66,20 @@ const menuItemsToDisplay2 = [
   {
     title: "Desserts",
     data: [
+      { name: "baklava", price: "Af3.15", id: one++ },
+      { name: "tartufa", price: "Af3.15", id: one++ },
+      { name: "Kofta", price: "Af3.15", id: one++ },
+      { name: "baryani", price: "Af3.15", id: one++ },
+    ],
+  },
+  {
+    title: "Watani",
+    data: [
       { name: "Hummus", price: "Af3.15", id: one++ },
       { name: "Moutabal", price: "Af3.15", id: one++ },
       { name: "Kofta", price: "Af3.15", id: one++ },
+      { name: "baryani", price: "Af3.15", id: one++ },
+      { name: "baryani", price: "Af3.15", id: one++ },
       { name: "baryani", price: "Af3.15", id: one++ },
     ],
   },
@@ -78,6 +89,8 @@ const menuItemsToDisplay2 = [
       { name: "Hummus", price: "Af3.15", id: one++ },
       { name: "Moutabal", price: "Af3.15", id: one++ },
       { name: "Kofta", price: "Af3.15", id: one++ },
+      { name: "baryani", price: "Af3.15", id: one++ },
+      { name: "baryani", price: "Af3.15", id: one++ },
       { name: "baryani", price: "Af3.15", id: one++ },
     ],
   },
@@ -141,7 +154,7 @@ const MenuItems = () => {
         renderSectionHeader={renderSectionHeader}
         ItemSeparatorComponent={Separator}
         ListHeaderComponent={Header}
-        ListFooterComponent={Footer}
+        // ListFooterComponent={Footer}
       />
     </View>
   );

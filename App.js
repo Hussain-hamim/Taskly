@@ -13,7 +13,7 @@ export default function App() {
       <Header />
       <MenuItems />
       {/* <WelcomeScreen /> */}
-      {/* <Footer /> */}
+      <Footer />
       <StatusBar style="auto" />
     </View>
   );
