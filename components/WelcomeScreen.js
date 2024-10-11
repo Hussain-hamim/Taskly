@@ -5,7 +5,7 @@ const { Text, View, ScrollView } = require("react-native");
 export default function WelcomeScreen() {
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView indicatorStyle={"white"}>
+      <ScrollView style={{ flex: 1 }} indicatorStyle={"white"}>
         <Text
           style={{
             padding: 40,
