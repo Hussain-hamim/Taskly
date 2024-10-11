@@ -5,7 +5,7 @@ const green = "#495E57";
 const yellow = "#F4CE14";
 
 const menuItemsToDisplay = [
-  "human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human human \n human \n human \n human",
+  "menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item",
 ];
 
 const MenuItems = () => {
