@@ -18,7 +18,7 @@ const headerStyles = StyleSheet.create({
   container: {
     flex: 0.15,
     backgroundColor: "#F4CE14",
-    // backgroundColor: "pink",
+    // backgroundColor: "pink", // "#333333" "#EDEFEE"
   },
   headerText: {
     paddingTop: 40,
