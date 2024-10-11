@@ -14,12 +14,16 @@ const MenuItems = () => {
       <ScrollView
         horizontal={false}
         indicatorStyle={"white"}
-        style={{ padding: 40, backgroundColor: "black" }}
+        style={{
+          paddingHorizontal: 40,
+          paddingVertical: 40,
+          backgroundColor: "black",
+        }}
       >
         <Text style={{ fontSize: 40, flexWrap: "wrap", color: "white" }}>
           View Menu
         </Text>
-        <Text style={{ color: yellow, fontSize: 30 }}>
+        <Text style={{ color: yellow, fontSize: 36 }}>
           {menuItemsToDisplay[0]}
         </Text>
       </ScrollView>
