@@ -48,50 +48,42 @@ const menuItemsToDisplay2 = [
   {
     title: "Appetizer",
     data: [
-      "Hummus",
-      "Moutabal",
-      "Falafel",
-      "Kofta",
-      "eggplant salad",
-      "baryani",
+      { name: "Hummus", price: "Af3.15", id: one++ },
+      { name: "Moutabal", price: "Af3.15", id: one++ },
+      { name: "Kofta", price: "Af3.15", id: one++ },
+      { name: "baryani", price: "Af3.15", id: one++ },
     ],
   },
   {
     title: "Main dishes",
     data: [
-      "Hummus",
-      "Moutabal",
-      "Falafel",
-      "Kofta",
-      "eggplant salad",
-      "baryani",
+      { name: "meat rice", price: "Af3.15", id: one++ },
+      { name: "soup", price: "Af3.15", id: one++ },
+      { name: "Kofta", price: "Af3.15", id: one++ },
+      { name: "cheeps", price: "Af3.15", id: one++ },
     ],
   },
   {
     title: "Desserts",
     data: [
-      "Hummus",
-      "Moutabal",
-      "Falafel",
-      "Kofta",
-      "eggplant salad",
-      "baryani",
+      { name: "Hummus", price: "Af3.15", id: one++ },
+      { name: "Moutabal", price: "Af3.15", id: one++ },
+      { name: "Kofta", price: "Af3.15", id: one++ },
+      { name: "baryani", price: "Af3.15", id: one++ },
     ],
   },
   {
-    title: "Watani",
+    title: "Extras",
     data: [
-      "Hummus",
-      "Moutabal",
-      "Falafel",
-      "Kofta",
-      "eggplant salad",
-      "baryani",
+      { name: "Hummus", price: "Af3.15", id: one++ },
+      { name: "Moutabal", price: "Af3.15", id: one++ },
+      { name: "Kofta", price: "Af3.15", id: one++ },
+      { name: "baryani", price: "Af3.15", id: one++ },
     ],
   },
 ];
 
-function Item({ name, index, price }) {
+function Item({ name, price }) {
   return (
     <View
       style={{
@@ -100,7 +92,7 @@ function Item({ name, index, price }) {
       }}
     >
       <Text style={menuStyles.itemText}>{name}</Text>
-      {/* <Text style={menuStyles.itemText}>{price}</Text> */}
+      <Text style={menuStyles.itemText}>{price}</Text>
     </View>
   );
 }
@@ -123,7 +115,7 @@ function Footer() {
 
 const MenuItems = () => {
   function renderItem({ item, index, separator }) {
-    return <Item name={item} />;
+    return <Item name={item.name} price={item.price} />;
   }
 
   function renderSectionHeader({ section: { title } }) {
