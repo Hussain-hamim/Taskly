@@ -65,7 +65,9 @@ const MenuItems = () => {
         style={menuStyles.innerContainer}
         data={menuItemsToDisplay}
         renderItem={({ item, index, sep }) => (
-          <Text style={menuStyles.itemText}>{item.name}</Text>
+          <Text style={menuStyles.itemText}>
+            {item.name + " " + (1 + index)}
+          </Text>
         )}
       />
     </View>
