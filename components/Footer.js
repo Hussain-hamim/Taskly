@@ -21,5 +21,6 @@ const footerStyles = StyleSheet.create({
     fontSize: 18,
     color: "black",
     textAlign: "center",
+    fontStyle: "italic",
   },
 });

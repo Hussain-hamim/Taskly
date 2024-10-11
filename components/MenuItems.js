@@ -1,24 +1,70 @@
 const react = require("react");
-const { View, ScrollView, Text, StyleSheet } = require("react-native");
+const {
+  View,
+  ScrollView,
+  Text,
+  StyleSheet,
+  FlatList,
+} = require("react-native");
 
 const green = "#495E57";
 const yellow = "#F4CE14";
 
+let one = 1;
+
 const menuItemsToDisplay = [
-  " menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item \n menu item",
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
+  { name: "menu item", id: one++ },
 ];
 
-const MenuItems = () => {
+function Item({ name }) {
   return (
     <View style={menuStyles.container}>
-      <ScrollView
-        horizontal={false}
-        indicatorStyle={"white"}
+      <Text style={menuStyles.itemText}>{name}</Text>
+    </View>
+  );
+}
+
+const MenuItems = () => {
+  function renderItem({ item }) {
+    return <Item name={item.name} />;
+  }
+
+  return (
+    <View style={menuStyles.container}>
+      <Text style={menuStyles.headerText}>View Menu</Text>
+      {/* <Text style={menuStyles.itemText}>{menuItemsToDisplay[0]}</Text> */}
+      <FlatList
         style={menuStyles.innerContainer}
-      >
-        <Text style={menuStyles.headerText}>View Menu</Text>
-        <Text style={menuStyles.itemText}>{menuItemsToDisplay[0]}</Text>
-      </ScrollView>
+        data={menuItemsToDisplay}
+        renderItem={renderItem}
+      />
     </View>
   );
 };

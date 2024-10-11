@@ -11,9 +11,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      {/* <MenuItems /> */}
-      <WelcomeScreen />
-      <Footer />
+      <MenuItems />
+      {/* <WelcomeScreen /> */}
+      {/* <Footer /> */}
       <StatusBar style="auto" />
     </View>
   );
