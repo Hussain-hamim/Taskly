@@ -52,7 +52,7 @@ function Item({ name }) {
 }
 
 const MenuItems = () => {
-  function renderItem({ item }) {
+  function renderItem({ item, index, separator }) {
     return <Item name={item.name} />;
   }
 
