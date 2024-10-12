@@ -1,8 +1,10 @@
-import react from "react";
+import react, { useState } from "react";
 
-const { Text, View, ScrollView, StyleSheet } = require("react-native");
+import { Text, View, ScrollView, StyleSheet, TextInput } from "react-native";
 
 export default function WelcomeScreen() {
+  const [user, setUser] = useState("");
+
   return (
     <View style={welcomeStyles.container}>
       <ScrollView style={{ flex: 1 }} indicatorStyle={"white"}>
@@ -10,19 +12,15 @@ export default function WelcomeScreen() {
         <Text style={welcomeStyles.text}>
           Little Lemon is a charming neibhorhood bistro that serves simple food
           and classic food in a lively but casual environment. we would love to
-          hear more about your experience with us! Little Lemon is a charming
-          neibhorhood bistro that serves simple food and classic food in a
-          lively but casual environment. we would love to hear more about your
-          experience with us! Little Lemon is a charming neibhorhood bistro that
-          serves simple food and classic food in a lively but casual
-          environment. we would love to hear more about your experience with us!
-          Little Lemon is a charming neibhorhood bistro that serves simple food
-          and classic food in a lively but casual environment. we would love to
-          hear more about your experience with us! Little Lemon is a charming
-          neibhorhood bistro that serves simple food and classic food in a
-          lively but casual environment. we would love to hear more about your
-          experience with us!
+          hear more about your experience with us!
         </Text>
+
+        <TextInput
+          style={welcomeStyles.userInput}
+          value={user}
+          onChangeText={setUser}
+          placeholder="user"
+        />
       </ScrollView>
     </View>
   );
@@ -44,5 +42,14 @@ const welcomeStyles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
     textAlign: "center",
+  },
+  userInput: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 16,
+    borderColor: "#EDEFEE",
+    backgroundColor: "white",
   },
 });
