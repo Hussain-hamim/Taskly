@@ -13,6 +13,7 @@ export default function FeedbackForm() {
   const [firstName, onChangeFirstName] = useState("");
   const [lastName, onChangeLastName] = useState("");
   const [message, onChangeMessage] = useState("");
+  const [phoneNumber, onChangePhoneNumber] = useState("");
   console.log(firstName);
 
   return (
@@ -42,12 +43,24 @@ export default function FeedbackForm() {
           onChangeText={onChangeLastName}
           placeholder="lastName"
           style={formStyles.input}
+          multiline={false}
+          maxLength={5}
+        />
+        <TextInput
+          value={phoneNumber}
+          onChangeText={onChangePhoneNumber}
+          placeholder="Phone number"
+          style={formStyles.input}
+          maxLength={10}
+          keyboardType={"phone-pad"} // "decimal-pad", "numeric" "email-address" "phone-pad" "url"
         />
         <TextInput
           value={message}
           onChangeText={onChangeMessage}
           placeholder="message"
           style={formStyles.messageInput}
+          multiline={true}
+          maxLength={250}
         />
       </ScrollView>
     </KeyboardAvoidingView>

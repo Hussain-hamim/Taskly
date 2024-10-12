@@ -15,7 +15,7 @@ export default function App() {
       <FeedbackForm />
       {/* <MenuItems /> */}
       {/* <WelcomeScreen /> */}
-      <Footer />
+      {/* <Footer /> */}
       <StatusBar style="auto" />
     </View>
   );
