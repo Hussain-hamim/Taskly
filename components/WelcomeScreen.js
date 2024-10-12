@@ -15,16 +15,12 @@ export default function WelcomeScreen() {
 
   return (
     <View style={welcomeStyles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "android" ? "padding" : "position"}
-        style={welcomeStyles.container}
-      >
-        {/* <ScrollView
+      <ScrollView
         style={{ flex: 1 }}
         indicatorStyle={"white"}
         keyboardDismissMode="on-drag"
         // keyboardDismissMode="none"
-      > */}
+      >
         <Text style={welcomeStyles.headerText}>Welcome to Little Lemon</Text>
         <Text style={welcomeStyles.text}>
           Little Lemon is a charming neibhorhood bistro that serves simple food
@@ -38,8 +34,7 @@ export default function WelcomeScreen() {
           onChangeText={setUser}
           placeholder="user"
         />
-        {/* </ScrollView> */}
-      </KeyboardAvoidingView>
+      </ScrollView>
     </View>
   );
 }

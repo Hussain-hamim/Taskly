@@ -11,10 +11,10 @@ import FeedbackForm from "./components/FeedbackForm";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Header />
-      {/* <FeedbackForm /> */}
+      {/* <Header /> */}
+      <FeedbackForm />
       {/* <MenuItems /> */}
-      <WelcomeScreen />
+      {/* <WelcomeScreen /> */}
       <Footer />
       <StatusBar style="auto" />
     </View>

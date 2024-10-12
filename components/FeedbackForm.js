@@ -1,5 +1,13 @@
 import react, { useState } from "react";
-import { View, StyleSheet, Text, ScrollView, TextInput } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 
 export default function FeedbackForm() {
   const [firstName, onChangeFirstName] = useState("");
@@ -8,36 +16,41 @@ export default function FeedbackForm() {
   console.log(firstName);
 
   return (
-    <ScrollView StyleSheet={formStyles.container}>
-      <Text style={formStyles.headingSection}>
-        How was your visit to little lemon?
-      </Text>
-      <Text style={formStyles.infoSection}>
-        this is info about our business this is info about our business this is
-        info about our business this is info about our business this is info
-        about our business this is info about our business this is info about
-        our business
-      </Text>
+    <KeyboardAvoidingView
+      style={formStyles.container}
+      behavior={Platform.OS === "android" ? "padding" : "height"}
+    >
+      <ScrollView keyboardDismissMode="on-drag">
+        <Text style={formStyles.headingSection}>
+          How was your visit to little lemon?
+        </Text>
+        <Text style={formStyles.infoSection}>
+          this is info about our business this is info about our business this
+          is info about our business this is info about our business this is
+          info about our business this is info about our business this is info
+          about our business
+        </Text>
 
-      <TextInput
-        value={firstName}
-        onChangeText={onChangeFirstName}
-        placeholder="firstName"
-        style={formStyles.input}
-      />
-      <TextInput
-        value={lastName}
-        onChangeText={onChangeLastName}
-        placeholder="lastName"
-        style={formStyles.input}
-      />
-      <TextInput
-        value={message}
-        onChangeText={onChangeMessage}
-        placeholder="message"
-        style={formStyles.messageInput}
-      />
-    </ScrollView>
+        <TextInput
+          value={firstName}
+          onChangeText={onChangeFirstName}
+          placeholder="firstName"
+          style={formStyles.input}
+        />
+        <TextInput
+          value={lastName}
+          onChangeText={onChangeLastName}
+          placeholder="lastName"
+          style={formStyles.input}
+        />
+        <TextInput
+          value={message}
+          onChangeText={onChangeMessage}
+          placeholder="message"
+          style={formStyles.messageInput}
+        />
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
