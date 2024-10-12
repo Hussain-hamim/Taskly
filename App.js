@@ -13,8 +13,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      <LoginScreen />
-      {/* <FeedbackForm /> */}
+      {/* <LoginScreen /> */}
+      <FeedbackForm />
       {/* <MenuItems /> */}
       {/* <WelcomeScreen /> */}
       <Footer />

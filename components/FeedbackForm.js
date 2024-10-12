@@ -6,6 +6,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from "react-native";
 
 export default function FeedbackForm() {
@@ -36,6 +37,7 @@ export default function FeedbackForm() {
           placeholder="firstName"
           style={formStyles.input}
           //   secureTextEntry={true} // password like entry
+          onFocus={() => Alert.alert("firstname is focused")}
         />
         <TextInput
           value={lastName}
