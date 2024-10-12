@@ -1,13 +1,30 @@
 import react, { useState } from "react";
 
-import { Text, View, ScrollView, StyleSheet, TextInput } from "react-native";
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 
 export default function WelcomeScreen() {
   const [user, setUser] = useState("");
 
   return (
     <View style={welcomeStyles.container}>
-      <ScrollView style={{ flex: 1 }} indicatorStyle={"white"}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "android" ? "padding" : "position"}
+        style={welcomeStyles.container}
+      >
+        {/* <ScrollView
+        style={{ flex: 1 }}
+        indicatorStyle={"white"}
+        keyboardDismissMode="on-drag"
+        // keyboardDismissMode="none"
+      > */}
         <Text style={welcomeStyles.headerText}>Welcome to Little Lemon</Text>
         <Text style={welcomeStyles.text}>
           Little Lemon is a charming neibhorhood bistro that serves simple food
@@ -21,7 +38,8 @@ export default function WelcomeScreen() {
           onChangeText={setUser}
           placeholder="user"
         />
-      </ScrollView>
+        {/* </ScrollView> */}
+      </KeyboardAvoidingView>
     </View>
   );
 }
@@ -50,6 +68,6 @@ const welcomeStyles = StyleSheet.create({
     padding: 10,
     fontSize: 16,
     borderColor: "#EDEFEE",
-    backgroundColor: "white",
+    backgroundColor: "#F4CE14",
   },
 });
