@@ -20,7 +20,7 @@ export default function FeedbackForm() {
       style={formStyles.container}
       behavior={Platform.OS === "android" ? "padding" : "height"}
     >
-      <ScrollView keyboardDismissMode="on-drag">
+      <ScrollView keyboardDismissMode="interactive">
         <Text style={formStyles.headingSection}>
           How was your visit to little lemon?
         </Text>
@@ -37,7 +37,9 @@ export default function FeedbackForm() {
           placeholder="firstName"
           style={formStyles.input}
           //   secureTextEntry={true} // password like entry
+          // onBlur={() => Alert.alert("firstname is now blurred")}
           onFocus={() => Alert.alert("firstname is focused")}
+          clearButtonMode="always" // don't work for android
         />
         <TextInput
           value={lastName}
@@ -46,6 +48,7 @@ export default function FeedbackForm() {
           style={formStyles.input}
           multiline={false}
           maxLength={5}
+          clearButtonMode="always" // don't work for android
         />
         <TextInput
           value={phoneNumber}
@@ -60,8 +63,9 @@ export default function FeedbackForm() {
           onChangeText={onChangeMessage}
           placeholder="please leave feedback"
           style={formStyles.messageInput}
-          multiline={true}
+          multiline={true} // the clearButtonMode wouldn't work on multiline true
           maxLength={250}
+          clearButtonMode="always" // don't work for android
         />
       </ScrollView>
     </KeyboardAvoidingView>

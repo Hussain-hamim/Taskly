@@ -8,13 +8,15 @@ import WelcomeScreen from "./components/WelcomeScreen";
 import MenuItems from "./components/MenuItems";
 import FeedbackForm from "./components/FeedbackForm";
 import LoginScreen from "./components/LoginScreen";
+import ClearableTextInput from "./components/ClearableTextInput";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Header />
       {/* <LoginScreen /> */}
-      <FeedbackForm />
+      {/* <FeedbackForm /> */}
+      <ClearableTextInput />
       {/* <MenuItems /> */}
       {/* <WelcomeScreen /> */}
       <Footer />
