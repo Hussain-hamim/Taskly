@@ -152,7 +152,7 @@ const MenuItems = () => {
         sections={menuItemsToDisplay2}
         renderItem={renderItem}
         renderSectionHeader={renderSectionHeader}
-        ItemSeparatorComponent={Separator}
+        // ItemSeparatorComponent={Separator}
         ListHeaderComponent={Header}
         // ListFooterComponent={Footer}
       />
