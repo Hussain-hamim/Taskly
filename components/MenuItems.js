@@ -1,12 +1,12 @@
-const react = require("react");
-const {
+import React from "react";
+import {
   View,
   ScrollView,
   Text,
   StyleSheet,
   FlatList,
   SectionList,
-} = require("react-native");
+} from "react-native";
 
 const green = "#495E57";
 const yellow = "#F4CE14";

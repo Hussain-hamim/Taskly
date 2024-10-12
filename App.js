@@ -1,8 +1,9 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
 import Header from "./components/Header";
-import react from "react";
+import React from "react";
 import Footer from "./components/Footer";
 import WelcomeScreen from "./components/WelcomeScreen";
 import MenuItems from "./components/MenuItems";

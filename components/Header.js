@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
-import react from "react";
+import React from "react";
 
 export default function Header() {
   return (

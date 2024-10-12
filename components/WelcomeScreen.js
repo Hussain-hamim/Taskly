@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 
 import {
   Text,
@@ -17,9 +17,10 @@ export default function WelcomeScreen() {
     <View style={welcomeStyles.container}>
       <ScrollView
         style={{ flex: 1 }}
-        indicatorStyle={"white"}
+        // indicatorStyle={"white"}
         keyboardDismissMode="on-drag"
         // keyboardDismissMode="none"
+        indicatorStyle={"black"}
       >
         <Text style={welcomeStyles.headerText}>Welcome to Little Lemon</Text>
         <Text style={welcomeStyles.text}>
