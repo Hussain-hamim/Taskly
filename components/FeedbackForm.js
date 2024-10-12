@@ -14,7 +14,6 @@ export default function FeedbackForm() {
   const [lastName, onChangeLastName] = useState("");
   const [message, onChangeMessage] = useState("");
   const [phoneNumber, onChangePhoneNumber] = useState("");
-  console.log(firstName);
 
   return (
     <KeyboardAvoidingView
@@ -37,6 +36,7 @@ export default function FeedbackForm() {
           onChangeText={onChangeFirstName}
           placeholder="firstName"
           style={formStyles.input}
+          //   secureTextEntry={true} // password like entry
         />
         <TextInput
           value={lastName}
@@ -57,7 +57,7 @@ export default function FeedbackForm() {
         <TextInput
           value={message}
           onChangeText={onChangeMessage}
-          placeholder="message"
+          placeholder="please leave feedback"
           style={formStyles.messageInput}
           multiline={true}
           maxLength={250}
