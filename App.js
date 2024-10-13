@@ -14,10 +14,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      {/* <LoginScreen /> */}
+      <LoginScreen />
       {/* <FeedbackForm /> */}
       {/* <ClearableTextInput /> */}
-      <MenuItems />
+      {/* <MenuItems /> */}
       {/* <WelcomeScreen /> */}
       <Footer />
       <StatusBar style="auto" />
