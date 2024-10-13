@@ -11,24 +11,27 @@ import {
 export default function LoginScreen() {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
-  const [login, setLogin] = useState(true);
+  const [loggedIn, onLogin] = useState(false);
 
   return (
     <ScrollView style={loginStyles.container}>
       <Text style={loginStyles.headerText}>Welcome to Little Lemon</Text>
 
-      {!login && (
+      {loggedIn && (
         <Text style={loginStyles.headerText}>
           You are logged in{" "}
           <Pressable style={loginStyles.button}>
-            <Text style={login.buttonText} onPress={() => setLogin(!login)}>
+            <Text
+              style={loginStyles.buttonText}
+              onPress={() => onLogin(!loggedIn)}
+            >
               Go back
             </Text>
           </Pressable>
         </Text>
       )}
 
-      {login && (
+      {!loggedIn && (
         <View>
           <Text style={loginStyles.regularText}>login to continoue</Text>
           <TextInput
@@ -48,7 +51,7 @@ export default function LoginScreen() {
           <Pressable style={loginStyles.button}>
             <Text
               // disabled={email.length >= 3}
-              onPress={() => (email.length >= 3 ? setLogin(!login) : null)}
+              onPress={() => (email.length >= 3 ? onLogin(!loggedIn) : null)}
               style={loginStyles.buttonText}
             >
               Log in
@@ -90,11 +93,11 @@ const loginStyles = StyleSheet.create({
     fontSize: 20,
     padding: 10,
     marginVertical: 8,
-    margin: 80,
+    margin: 100,
     backgroundColor: "#EE9972",
     borderColor: "#EE9972",
     borderWidth: 2,
-    borderRadius: 30,
+    borderRadius: 50,
   },
   buttonText: {
     color: "black",
