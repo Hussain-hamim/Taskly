@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { Pressable, SafeAreaView, Text } from "react-native";
 
 const One = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
-    <>
-      <div>one</div>
-      <div>one</div>
-      <div>one</div>
-      <div>one</div>
-    </>
+    <SafeAreaView>
+      <Text>Little Lemon menu</Text>
+
+      <Pressable onPress={() => setShowMenu(true)}>
+        <Text>view menu</Text>
+      </Pressable>
+    </SafeAreaView>
   );
 };
 

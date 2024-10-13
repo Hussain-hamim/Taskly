@@ -16,8 +16,8 @@ export default function App() {
       <Header />
       {/* <LoginScreen /> */}
       {/* <FeedbackForm /> */}
-      <ClearableTextInput />
-      {/* <MenuItems /> */}
+      {/* <ClearableTextInput /> */}
+      <MenuItems />
       {/* <WelcomeScreen /> */}
       <Footer />
       <StatusBar style="auto" />

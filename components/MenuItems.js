@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   ScrollView,
@@ -6,6 +6,7 @@ import {
   StyleSheet,
   FlatList,
   SectionList,
+  Pressable,
 } from "react-native";
 
 const green = "#495E57";
@@ -127,6 +128,8 @@ function Footer() {
 }
 
 const MenuItems = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
   function renderItem({ item, index, separator }) {
     return <Item name={item.name} price={item.price} />;
   }
@@ -137,6 +140,23 @@ const MenuItems = () => {
 
   return (
     <View style={menuStyles.container}>
+      {!showMenu && (
+        <Text style={menuStyles.infoSection}>
+          Little Lemon is a charming neibhorhood bistro that serves simple food
+          and classic food in a lively but casual environment. we would love to
+          hear more about your experience with us!
+        </Text>
+      )}
+
+      <Pressable
+        style={menuStyles.button}
+        onPress={() => setShowMenu(!showMenu)}
+      >
+        <Text style={menuStyles.buttonText}>
+          {showMenu ? "Home" : "View Menu"}
+        </Text>
+      </Pressable>
+
       {/* <FlatList
         data={menuItemsToDisplay}
         renderItem={renderItem}
@@ -148,14 +168,16 @@ const MenuItems = () => {
         ListFooterComponent={Footer}
       /> */}
 
-      <SectionList
-        sections={menuItemsToDisplay2}
-        renderItem={renderItem}
-        renderSectionHeader={renderSectionHeader}
-        // ItemSeparatorComponent={Separator}
-        ListHeaderComponent={Header}
-        // ListFooterComponent={Footer}
-      />
+      {showMenu && (
+        <SectionList
+          sections={menuItemsToDisplay2}
+          renderItem={renderItem}
+          renderSectionHeader={renderSectionHeader}
+          // ItemSeparatorComponent={Separator}
+          // ListHeaderComponent={Header}
+          // ListFooterComponent={Footer}
+        />
+      )}
     </View>
   );
 };
@@ -195,5 +217,27 @@ const menuStyles = StyleSheet.create({
     fontSize: 25,
     flexWrap: "wrap",
     color: "#333333",
+  },
+  infoSection: {
+    textAlign: "center",
+    color: "#EDEFEE",
+    marginVertical: 8,
+    padding: 20,
+    fontSize: 20,
+  },
+  button: {
+    fontSize: 20,
+    padding: 10,
+    marginVertical: 8,
+    margin: 40,
+    backgroundColor: "#EDEFEE",
+    borderColor: "#EDEFEE",
+    borderWidth: 2,
+    borderRadius: 12,
+  },
+  buttonText: {
+    color: "#333333",
+    textAlign: "center",
+    fontSize: 30,
   },
 });
