@@ -5,28 +5,31 @@ import {
   TouchableOpacity,
   Text,
   StyleSheet,
+  SafeAreaView,
 } from "react-native";
 
 const ClearableTextInput = () => {
   const [value, setValue] = useState("");
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        value={value}
-        onChangeText={(text) => setValue(text)}
-        placeholder="Enter text"
-      />
-      {value.length > 0 && (
-        <TouchableOpacity
-          onPress={() => setValue("")}
-          style={styles.clearButton}
-        >
-          <Text style={styles.clearButtonText}>X</Text>
-        </TouchableOpacity>
-      )}
-    </View>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <TextInput
+          style={styles.input}
+          value={value}
+          onChangeText={(text) => setValue(text)}
+          placeholder="Enter some text"
+        />
+        {value.length > 0 && (
+          <TouchableOpacity
+            onPress={() => setValue("")}
+            style={styles.clearButton}
+          >
+            <Text style={styles.clearButtonText}>X</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+    </SafeAreaView>
   );
 };
 
