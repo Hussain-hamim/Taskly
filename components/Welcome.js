@@ -1,14 +1,27 @@
+/* eslint-disable no-undef */
 import React from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 const Welcome = () => {
   return (
     <ScrollView style={styles.container}>
       <Image style={styles.logo} source={require("../assets/hamim.png")} />
-      <Text style={styles.title}>Little Lemon, your local Watani bistro</Text>
-      <Image style={styles.image} source={require("../assets/hamim.png")} />
-      <Image style={styles.image} source={require("../assets/hamim.png")} />
-      <Image style={styles.image} source={require("../assets/hamim.png")} />
+      <ImageBackground
+        style={styles.bgImage}
+        source={require("../assets/hamim2.jpg")}
+      >
+        <Text style={styles.title}>Little Lemon, your local Watani bistro</Text>
+        <Image style={styles.image} source={require("../assets/hamim.png")} />
+        <Image style={styles.image} source={require("../assets/hamim.png")} />
+        <Image style={styles.image} source={require("../assets/hamim.png")} />
+      </ImageBackground>
     </ScrollView>
   );
 };
@@ -25,9 +38,9 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 16,
     paddingVertical: 10,
-    color: "#333333",
+    color: "black",
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: "bold",
   },
   logo: {
@@ -43,7 +56,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 3,
     borderColor: "lightgray",
-    resizeMode: "center", // stretch, repeat, cover, center
+    resizeMode: "cover", // stretch, repeat, cover, center
     margin: 5,
+  },
+  bgImage: {
+    flex: 1,
+    justifyContent: "center",
+    resizeMode: "contain",
+    width: "100%",
+    height: "100%",
   },
 });
