@@ -18,6 +18,9 @@ import {
   View,
 } from "react-native";
 
+// npm install @react-navigation/native
+// npx expo install react-native-screen react-native-safe-area-context
+
 /** react native hooks:
  * React Native APIs turned into React Hooks allowing you to access 
  * asynchronous APIs directly in your functional components.
