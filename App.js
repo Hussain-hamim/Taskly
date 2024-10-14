@@ -9,17 +9,19 @@ import MenuItems from "./components/MenuItems";
 import FeedbackForm from "./components/FeedbackForm";
 import LoginScreen from "./components/LoginScreen";
 import ClearableTextInput from "./components/ClearableTextInput";
+import Welcome from "./components/Welcome";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Header />
+      {/* <Header /> */}
       {/* <LoginScreen /> */}
       {/* <FeedbackForm /> */}
-      <ClearableTextInput />
+      {/* <ClearableTextInput /> */}
       {/* <MenuItems /> */}
       {/* <WelcomeScreen /> */}
-      <Footer />
+      <Welcome />
+      {/* <Footer /> */}
       <StatusBar style="auto" />
     </View>
   );

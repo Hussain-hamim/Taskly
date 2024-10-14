@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   Button,
   Alert,
+  Image,
 } from "react-native";
 
 const ClearableTextInput = () => {
@@ -38,6 +39,28 @@ const ClearableTextInput = () => {
         onPress={() => Alert.alert("button clicked")}
         //   color="secondary"
         style={styles.button}
+      />
+      <Image
+        // source={{
+        //   uri: "url",
+        // }} // for images coming from internet
+        // loadingIndicatorSource={() => (
+        //   <Text>
+        //     {" "}
+        //     similarly to source, this property represents the resource used to
+        //     render the loading indicator for the image, displayed until image is
+        //     ready to be displayed, typically after when it got downloaded from
+        //     network.
+        //   </Text>
+        // )}
+
+        // eslint-disable-next-line no-undef
+        source={require("../assets/hamim.png")}
+        style={{
+          width: 300,
+          height: 100,
+          resizeMode: "contain", // stretch, repeat, cover, center
+        }}
       />
     </>
   );
