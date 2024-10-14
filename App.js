@@ -11,6 +11,7 @@ import LoginScreen from "./components/LoginScreen";
 import ClearableTextInput from "./components/ClearableTextInput";
 import Welcome from "./components/Welcome";
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // instatiate stack
 const Stack = createNativeStackNavigator();
@@ -18,8 +19,15 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Navigator
+      // initialRouteName="Menu"
+      // screenOptions={{ headerStyle: { backgroundColor: "#FBDABB" } }} // for all screens in the this navigator
+      >
+        <Stack.Screen
+          name="Welcome"
+          component={WelcomeScreen}
+          // options={{ title: "Home" }} // for specific options for a screen
+        />
         <Stack.Screen name="Menu" component={MenuItems} />
       </Stack.Navigator>
     </NavigationContainer>
