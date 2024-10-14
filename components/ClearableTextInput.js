@@ -9,15 +9,32 @@ import {
   Button,
   Alert,
   Image,
+  useColorScheme,
+  ScrollView,
 } from "react-native";
 
 const ClearableTextInput = () => {
   const [value, setValue] = useState("");
+  const colorScheme = useColorScheme();
 
   return (
-    <>
-      <SafeAreaView>
-        <View style={styles.container}>
+    <ScrollView
+    //   style={[
+    //     { backgroundColor: "black" },
+    //     colorScheme === "light"
+    //       ? { backgroundColor: "#fff" }
+    //       : { backgroundColor: "#333333" },
+    //   ]}
+    >
+      <SafeAreaView
+        style={[
+          styles.container,
+          colorScheme === "light"
+            ? { backgroundColor: "#fff" }
+            : { backgroundColor: "#333333" },
+        ]}
+      >
+        <View>
           <TextInput
             style={styles.input}
             value={value}
@@ -62,12 +79,15 @@ const ClearableTextInput = () => {
           resizeMode: "contain", // stretch, repeat, cover, center
         }}
       />
-    </>
+
+      <Text style={styles.regular}>Color Scheme: {colorScheme}</Text>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
@@ -96,6 +116,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   button: {},
+
+  regular: {
+    margin: 50,
+    fontSize: 40,
+  },
 });
 
 export default ClearableTextInput;

@@ -17,10 +17,10 @@ export default function App() {
       {/* <Header /> */}
       {/* <LoginScreen /> */}
       {/* <FeedbackForm /> */}
-      {/* <ClearableTextInput /> */}
+      <ClearableTextInput />
       {/* <MenuItems /> */}
       {/* <WelcomeScreen /> */}
-      <Welcome />
+      {/* <Welcome /> */}
       {/* <Footer /> */}
       <StatusBar style="auto" />
     </View>
@@ -30,6 +30,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#333333",
+    // backgroundColor: "#333333",
   },
 });
