@@ -14,9 +14,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      <LoginScreen />
+      {/* <LoginScreen /> */}
       {/* <FeedbackForm /> */}
-      {/* <ClearableTextInput /> */}
+      <ClearableTextInput />
       {/* <MenuItems /> */}
       {/* <WelcomeScreen /> */}
       <Footer />
