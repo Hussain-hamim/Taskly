@@ -10,26 +10,25 @@ import FeedbackForm from "./components/FeedbackForm";
 import LoginScreen from "./components/LoginScreen";
 import ClearableTextInput from "./components/ClearableTextInput";
 import Welcome from "./components/Welcome";
+import { NavigationContainer } from "@react-navigation/native";
+
+// instatiate stack
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <Header /> */}
-      {/* <LoginScreen /> */}
-      {/* <FeedbackForm /> */}
-      {/* <ClearableTextInput /> */}
-      {/* <MenuItems /> */}
-      {/* <WelcomeScreen /> */}
-      <Welcome />
-      {/* <Footer /> */}
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Menu" component={MenuItems} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#333333",
+    backgroundColor: "#333333",
   },
 });
