@@ -18,39 +18,29 @@ const ClearableTextInput = () => {
   const colorScheme = useColorScheme();
 
   return (
-    <ScrollView
-    //   style={[
-    //     { backgroundColor: "black" },
-    //     colorScheme === "light"
-    //       ? { backgroundColor: "#fff" }
-    //       : { backgroundColor: "#333333" },
-    //   ]}
+    <SafeAreaView
+      style={[
+        styles.container,
+        colorScheme === "light"
+          ? { backgroundColor: "#fff" }
+          : { backgroundColor: "#333333" },
+      ]}
     >
-      <SafeAreaView
-        style={[
-          styles.container,
-          colorScheme === "light"
-            ? { backgroundColor: "#fff" }
-            : { backgroundColor: "#333333" },
-        ]}
-      >
-        <View>
-          <TextInput
-            style={styles.input}
-            value={value}
-            onChangeText={(text) => setValue(text)}
-            placeholder="Enter some text"
-          />
-          {value.length > 0 && (
-            <TouchableOpacity
-              onPress={() => setValue("")}
-              style={styles.clearButton}
-            >
-              <Text style={styles.clearButtonText}>X</Text>
-            </TouchableOpacity>
-          )}
-        </View>
-      </SafeAreaView>
+      <TextInput
+        style={styles.input}
+        value={value}
+        onChangeText={(text) => setValue(text)}
+        placeholder="Enter some text"
+      />
+      {value.length > 0 && (
+        <TouchableOpacity
+          onPress={() => setValue("")}
+          style={styles.clearButton}
+        >
+          <Text style={styles.clearButtonText}>X</Text>
+        </TouchableOpacity>
+      )}
+
       <Button
         title="real button"
         onPress={() => Alert.alert("button clicked")}
@@ -81,7 +71,7 @@ const ClearableTextInput = () => {
       />
 
       <Text style={styles.regular}>Color Scheme: {colorScheme}</Text>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -120,6 +110,7 @@ const styles = StyleSheet.create({
   regular: {
     margin: 50,
     fontSize: 40,
+    color: "black",
   },
 });
 

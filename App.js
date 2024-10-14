@@ -17,10 +17,10 @@ export default function App() {
       {/* <Header /> */}
       {/* <LoginScreen /> */}
       {/* <FeedbackForm /> */}
-      <ClearableTextInput />
+      {/* <ClearableTextInput /> */}
       {/* <MenuItems /> */}
       {/* <WelcomeScreen /> */}
-      {/* <Welcome /> */}
+      <Welcome />
       {/* <Footer /> */}
       <StatusBar style="auto" />
     </View>

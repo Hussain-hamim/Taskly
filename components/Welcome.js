@@ -6,22 +6,27 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  useColorScheme,
   View,
 } from "react-native";
 
 const Welcome = () => {
+  const colorScheme = useColorScheme();
+
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={[
+        styles.container,
+        colorScheme === "light"
+          ? { backgroundColor: "#fff" }
+          : { backgroundColor: "#333333" },
+      ]}
+    >
       <Image style={styles.logo} source={require("../assets/hamim.png")} />
-      <ImageBackground
-        style={styles.bgImage}
-        source={require("../assets/hamim2.jpg")}
-      >
-        <Text style={styles.title}>Little Lemon, your local Watani bistro</Text>
-        <Image style={styles.image} source={require("../assets/hamim.png")} />
-        <Image style={styles.image} source={require("../assets/hamim.png")} />
-        <Image style={styles.image} source={require("../assets/hamim.png")} />
-      </ImageBackground>
+
+      <Text style={styles.title}>Little Lemon, your local Watani bistro</Text>
+
+      <Text style={styles.title}>color Scheme: {colorScheme}</Text>
     </ScrollView>
   );
 };
@@ -33,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     marginTop: 25,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
   },
   title: {
     marginTop: 16,
