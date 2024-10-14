@@ -7,11 +7,13 @@ import {
   StyleSheet,
   Text,
   useColorScheme,
+  useWindowDimensions,
   View,
 } from "react-native";
 
 const Welcome = () => {
   const colorScheme = useColorScheme();
+  const { height, width, fontScale } = useWindowDimensions();
 
   return (
     <ScrollView
@@ -27,6 +29,11 @@ const Welcome = () => {
       <Text style={styles.title}>Little Lemon, your local Watani bistro</Text>
 
       <Text style={styles.title}>color Scheme: {colorScheme}</Text>
+
+      <Text>windows dimension:</Text>
+      <Text>height: {height}</Text>
+      <Text>width: {width}</Text>
+      <Text>fontScale: {fontScale}</Text>
     </ScrollView>
   );
 };
