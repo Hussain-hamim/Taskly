@@ -1,4 +1,10 @@
 /* eslint-disable no-undef */
+import {
+  useAppState,
+  useDeviceOrientation,
+  useClipboard,
+  useKeyboard,
+} from "@react-native-community/hooks";
 import React from "react";
 import {
   Image,
@@ -6,14 +12,34 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  useState,
   useColorScheme,
   useWindowDimensions,
   View,
 } from "react-native";
 
+/** react native hooks:
+ * React Native APIs turned into React Hooks allowing you to access 
+ * asynchronous APIs directly in your functional components.
+ * 
+useAccessibilityInfo
+useAppState
+useBackHandler
+useImageDimensions
+useKeyboard
+useInteractionManager
+useDeviceOrientation
+useLayout
+useRefresh
+ */
+
 const Welcome = () => {
   const colorScheme = useColorScheme();
   const { height, width, fontScale } = useWindowDimensions();
+  const orientation = useDeviceOrientation();
+  const appState = useAppState();
+  //   const [data, setData] = useClipboard(); // i guess deprecated
+  const keyboard = useKeyboard();
 
   return (
     <ScrollView
@@ -34,6 +60,12 @@ const Welcome = () => {
       <Text style={styles.regular}>height: {height}</Text>
       <Text style={styles.regular}>width: {width}</Text>
       <Text style={styles.regular}>fontScale: {fontScale}</Text>
+
+      <Text>orientation: {orientation}</Text>
+      <Text>app state: {appState}</Text>
+      {/* <Text>app clipboard data: {data}</Text> */}
+      <Text>keyboard height: {keyboard.keyboardHeight}</Text>
+      <Text>keyboard shown: {keyboard.keyboardShown}</Text>
     </ScrollView>
   );
 };
