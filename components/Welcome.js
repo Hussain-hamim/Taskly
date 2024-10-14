@@ -31,9 +31,9 @@ const Welcome = () => {
       <Text style={styles.title}>color Scheme: {colorScheme}</Text>
 
       <Text>windows dimension:</Text>
-      <Text>height: {height}</Text>
-      <Text>width: {width}</Text>
-      <Text>fontScale: {fontScale}</Text>
+      <Text style={styles.regular}>height: {height}</Text>
+      <Text style={styles.regular}>width: {width}</Text>
+      <Text style={styles.regular}>fontScale: {fontScale}</Text>
     </ScrollView>
   );
 };
