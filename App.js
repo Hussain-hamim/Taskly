@@ -23,11 +23,11 @@ export default function App() {
         initialRouteName="Menu"
         screenOptions={{ headerStyle: { backgroundColor: "#FBDABB" } }} // for all screens in the this navigator
       >
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Welcome"
           component={WelcomeScreen}
           options={{ title: "Home" }} // for specific options for a screen
-        /> */}
+        />
         <Stack.Screen name="Menu" component={MenuItems} />
       </Stack.Navigator>
     </NavigationContainer>
