@@ -8,9 +8,10 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  Button,
 } from "react-native";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   return (
     <View style={welcomeStyles.container}>
       <ScrollView
@@ -26,6 +27,11 @@ export default function WelcomeScreen() {
           and classic food in a lively but casual environment. we would love to
           hear more about your experience with us!
         </Text>
+        <Button
+          title="Go To Menu"
+          onPress={() => navigation.navigate("Menu")}
+          // style={welcomeStyles.button}
+        />
       </ScrollView>
     </View>
   );
@@ -56,5 +62,10 @@ const welcomeStyles = StyleSheet.create({
     fontSize: 16,
     borderColor: "#EDEFEE",
     backgroundColor: "#F4CE14",
+  },
+  button: {
+    backgroundColor: "gray",
+    marginHorizontal: 50,
+    padding: 30,
   },
 });
