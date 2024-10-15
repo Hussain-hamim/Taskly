@@ -180,7 +180,7 @@ const MenuItems = ({ navigation }) => {
           style={menuStyles.innerContainer}
         />
       )}
-      <Button title="Go Back" onPress={() => navigation.navigate("Welcome")} />
+      <Button title="Go Back" onPress={() => navigation.goBack()} />
     </View>
   );
 };
