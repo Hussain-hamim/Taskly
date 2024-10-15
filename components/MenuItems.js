@@ -7,6 +7,7 @@ import {
   FlatList,
   SectionList,
   Pressable,
+  Button,
 } from "react-native";
 
 const green = "#495E57";
@@ -127,7 +128,7 @@ function Footer() {
   );
 }
 
-const MenuItems = () => {
+const MenuItems = ({ navigation }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   function renderItem({ item, index, separator }) {
@@ -179,6 +180,7 @@ const MenuItems = () => {
           style={menuStyles.innerContainer}
         />
       )}
+      <Button title="Go Back" onPress={() => navigation.navigate("Welcome")} />
     </View>
   );
 };
