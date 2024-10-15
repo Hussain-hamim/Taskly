@@ -11,8 +11,6 @@ import {
 } from "react-native";
 
 export default function WelcomeScreen() {
-  const [user, setUser] = useState("");
-
   return (
     <View style={welcomeStyles.container}>
       <ScrollView
@@ -28,13 +26,6 @@ export default function WelcomeScreen() {
           and classic food in a lively but casual environment. we would love to
           hear more about your experience with us!
         </Text>
-
-        <TextInput
-          style={welcomeStyles.userInput}
-          value={user}
-          onChangeText={setUser}
-          placeholder="user"
-        />
       </ScrollView>
     </View>
   );
@@ -47,12 +38,12 @@ const welcomeStyles = StyleSheet.create({
   headerText: {
     padding: 40,
     fontSize: 30,
-    color: "#EDEFEE",
+    color: "black",
     textAlign: "center",
   },
   text: {
     fontSize: 24,
-    color: "white",
+    color: "black",
     padding: 20,
     marginVertical: 8,
     textAlign: "center",

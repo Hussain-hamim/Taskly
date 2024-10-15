@@ -13,21 +13,21 @@ import Welcome from "./components/Welcome";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-// instatiate stack
+// instantiate stack
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-      // initialRouteName="Menu"
-      // screenOptions={{ headerStyle: { backgroundColor: "#FBDABB" } }} // for all screens in the this navigator
+        initialRouteName="Menu"
+        screenOptions={{ headerStyle: { backgroundColor: "#FBDABB" } }} // for all screens in the this navigator
       >
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Welcome"
           component={WelcomeScreen}
-          // options={{ title: "Home" }} // for specific options for a screen
-        />
+          options={{ title: "Home" }} // for specific options for a screen
+        /> */}
         <Stack.Screen name="Menu" component={MenuItems} />
       </Stack.Navigator>
     </NavigationContainer>

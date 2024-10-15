@@ -176,6 +176,7 @@ const MenuItems = () => {
           // ItemSeparatorComponent={Separator}
           // ListHeaderComponent={Header}
           // ListFooterComponent={Footer}
+          style={menuStyles.innerContainer}
         />
       )}
     </View>
@@ -192,6 +193,7 @@ const menuStyles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 40,
     paddding: 40,
+    backgroundColor: "gray",
   },
   headerText: {
     fontSize: 40,
@@ -220,7 +222,8 @@ const menuStyles = StyleSheet.create({
   },
   infoSection: {
     textAlign: "center",
-    color: "#EDEFEE",
+    // color: "#EDEFEE",
+    color: "black",
     marginVertical: 8,
     padding: 20,
     fontSize: 20,
@@ -230,7 +233,7 @@ const menuStyles = StyleSheet.create({
     padding: 10,
     marginVertical: 8,
     margin: 40,
-    backgroundColor: "#EDEFEE",
+    backgroundColor: "gray",
     borderColor: "#EDEFEE",
     borderWidth: 2,
     borderRadius: 12,
