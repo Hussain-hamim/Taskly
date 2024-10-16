@@ -15,6 +15,8 @@ export default function WelcomeScreen({ route, navigation }) {
   /* 2. get the params */
   const { email, otherParams } = route.params;
 
+  // navigation.setParams({ data: "some data" });
+
   return (
     <View style={welcomeStyles.container}>
       <ScrollView

@@ -20,7 +20,7 @@ export default function LoginScreen({ route, navigation }) {
       <Text style={loginStyles.headerText}>Welcome to Little Lemon</Text>
 
       <View>
-        <Text style={loginStyles.regularText}>login to continoue</Text>
+        <Text style={loginStyles.regularText}>login to continue</Text>
         <TextInput
           value={email}
           onChangeText={onChangeEmail}
