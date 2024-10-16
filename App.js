@@ -12,10 +12,12 @@ import ClearableTextInput from "./components/ClearableTextInput";
 import Welcome from "./components/Welcome";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen, { CreatePostScreen } from "./One";
 
 // instantiate stack
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function LogoTitle() {
   return (
@@ -30,7 +32,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Login"
           screenOptions={{
@@ -79,7 +81,14 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-      <Footer />
+       */}
+
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="CreatePost" component={CreatePostScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </>
   );
 }
