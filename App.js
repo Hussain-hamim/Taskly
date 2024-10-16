@@ -52,6 +52,7 @@ export default function App() {
           <Stack.Screen
             name="Login"
             component={LoginScreen}
+            initialParams={{ name: "Hussein" }} //  They are also shallow merged with any params that you pass
             options={{
               title: "Login",
             }} // for specific options for a screen
