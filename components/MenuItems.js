@@ -180,7 +180,11 @@ const MenuItems = ({ navigation }) => {
           style={menuStyles.innerContainer}
         />
       )}
-      <Button title="Go Back" onPress={() => navigation.goBack()} />
+      <Button
+        title="go to menu... again"
+        // add another route regardless of the existing navigation history.
+        onPress={() => navigation.push("Menu")}
+      />
     </View>
   );
 };
