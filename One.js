@@ -42,6 +42,17 @@ function CreatePostScreen({ navigation, route }) {
           });
         }}
       />
+
+      <Button
+        title="Done"
+        onPress={() => {
+          // Passing params to nested navigators
+          navigation.navigate("Account", {
+            screen: "Settings",
+            params: { user: "jane" },
+          });
+        }}
+      />
     </>
   );
 }
