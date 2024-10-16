@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { StatusBar } from "expo-status-bar";
 import { Image, StyleSheet, Text, View } from "react-native";
 
@@ -14,6 +15,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen, { CreatePostScreen } from "./One";
+import { Ionicons } from "@expo/vector-icons";
 
 // instantiate stack
 const Stack = createNativeStackNavigator();
@@ -83,7 +85,22 @@ export default function App() {
       </NavigationContainer> */}
 
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+
+              if (route.name === "HomeScreen") {
+                iconName = focused ? "time" : "radio";
+              } else if (route.name === "CreatePostScreen") {
+                iconName = "list";
+              }
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: "tomato",
+            tabBarInactiveTintColor: "gray",
+          })}
+        >
           <Tab.Screen name="HomeScreen" component={HomeScreen} />
           <Tab.Screen name="CreatePostScreen" component={CreatePostScreen} />
         </Tab.Navigator>
