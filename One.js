@@ -1,5 +1,8 @@
 import React from "react";
 import { Button, Text, TextInput, View } from "react-native";
+
+//  repetition is key to learning!
+
 function HomeScreen({ navigation, route }) {
   React.useEffect(() => {
     if (route.params?.post) {
