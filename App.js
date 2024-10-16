@@ -63,6 +63,13 @@ export default function App() {
             initialParams={{ name: "Hussain" }} //  They are also shallow merged with any params that you pass
             options={{
               title: "Login",
+              headerStyle: {
+                backgroundColor: "#f4511e",
+              }, // use for full header style
+              headerTintColor: "black", // use for the back button and the title color
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
             }} // for specific options for a screen
           />
           <Stack.Screen
