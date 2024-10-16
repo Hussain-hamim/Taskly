@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 import Header from "./components/Header";
 import React from "react";
@@ -19,18 +19,10 @@ const Stack = createNativeStackNavigator();
 
 function LogoTitle() {
   return (
-    <Text
-      style={{
-        alignSelf: "center",
-        color: "black",
-        fontWeight: "bold",
-        backgroundColor: "pink",
-        padding: 5,
-        borderRadius: 4,
-      }}
-    >
-      Logo title goes here
-    </Text>
+    <Image
+      style={{ width: 150, height: 50, borderRadius: 8 }}
+      source={require("./assets/react_navigation_header.png")}
+    />
   ); // this can a logo or an image
 }
 
