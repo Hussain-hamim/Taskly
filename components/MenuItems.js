@@ -194,7 +194,7 @@ const menuStyles = StyleSheet.create({
   innerContainer: {
     paddingHorizontal: 40,
     paddingVertical: 40,
-    paddding: 40,
+    padding: 40,
     backgroundColor: "gray",
   },
   headerText: {
