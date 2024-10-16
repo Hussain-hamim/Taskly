@@ -35,39 +35,43 @@ function LogoTitle() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{
-          headerStyle: { backgroundColor: "#333333" },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }} // for all screens in the this navigator
-      >
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{
-            title: "Login",
-          }} // for specific options for a screen
-        />
-        <Stack.Screen
-          name="Welcome"
-          component={WelcomeScreen}
-          options={{
-            title: "Welcome",
-            headerTitle: (props) => <LogoTitle {...props} />, // you can pass to this call back a comp
-          }} // for specific options for a screen
-        />
-        <Stack.Screen
-          name="Menu"
-          component={MenuItems}
-          options={{ title: "Menu", headerTitle: "Menu" }} // for specific options for a screen
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <Header />
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{
+            headerStyle: { backgroundColor: "#333333" },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }} // for all screens in the this navigator
+        >
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{
+              title: "Login",
+            }} // for specific options for a screen
+          />
+          <Stack.Screen
+            name="Welcome"
+            component={WelcomeScreen}
+            options={{
+              title: "Welcome",
+              headerTitle: (props) => <LogoTitle {...props} />, // you can pass to this call back a comp
+            }} // for specific options for a screen
+          />
+          <Stack.Screen
+            name="Menu"
+            component={MenuItems}
+            options={{ title: "Menu", headerTitle: "Menu" }} // for specific options for a screen
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <Footer />
+    </>
   );
 }
 
