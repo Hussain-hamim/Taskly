@@ -80,13 +80,12 @@ export default function App() {
             options={{ title: "Menu", headerTitle: "Menu" }} // for specific options for a screen
           />
         </Stack.Navigator>
-      </NavigationContainer>
-       */}
+      </NavigationContainer> */}
 
       <NavigationContainer>
         <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="CreatePost" component={CreatePostScreen} />
+          <Tab.Screen name="HomeScreen" component={HomeScreen} />
+          <Tab.Screen name="CreatePostScreen" component={CreatePostScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </>

@@ -17,9 +17,7 @@ export default function HomeScreen({ navigation, route }) {
         title="Create post"
         onPress={() => navigation.navigate("CreatePostScreen")}
       />
-      <Text style={{ margin: 10 }}>
-        Post: {route.params.name} : {route.params?.post}
-      </Text>
+      <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
     </View>
   );
 }
