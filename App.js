@@ -16,6 +16,23 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // instantiate stack
 const Stack = createNativeStackNavigator();
 
+function LogoTitle() {
+  return (
+    <Text
+      style={{
+        alignSelf: "center",
+        color: "black",
+        fontWeight: "bold",
+        backgroundColor: "pink",
+        padding: 5,
+        borderRadius: 4,
+      }}
+    >
+      Logo title goes here
+    </Text>
+  ); // this can a logo or an image
+}
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -32,9 +49,16 @@ export default function App() {
         <Stack.Screen
           name="Welcome"
           component={WelcomeScreen}
-          options={{ title: "Home" }} // for specific options for a screen
+          options={{
+            title: "Home",
+            headerTitle: (props) => <LogoTitle {...props} />,
+          }} // for specific options for a screen
         />
-        <Stack.Screen name="Menu" component={MenuItems} />
+        <Stack.Screen
+          name="Menu"
+          component={MenuItems}
+          options={{ title: "Menu", headerTitle: "Menu" }} // for specific options for a screen
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
