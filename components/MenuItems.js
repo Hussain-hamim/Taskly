@@ -185,6 +185,13 @@ const MenuItems = ({ navigation }) => {
         // add another route regardless of the existing navigation history.
         onPress={() => navigation.push("Menu")}
       />
+      <Text>space hehehe</Text>
+      <Button
+        style={{ margin: 30 }}
+        title="go home"
+        // which goes back to the first screen in the stack.
+        onPress={() => navigation.popToTop()}
+      />
     </View>
   );
 };
