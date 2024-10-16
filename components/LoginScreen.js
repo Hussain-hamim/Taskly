@@ -38,7 +38,13 @@ export default function LoginScreen({ navigation }) {
             // disabled={email.length >= 3}
             // onPress={() => (email.length >= 3 ? onLogin(!loggedIn) : null)}
             onPress={() =>
-              email.length >= 3 ? navigation.navigate("Welcome") : null
+              email.length >= 3
+                ? navigation.navigate("Welcome", {
+                    /* 1. Navigate to the Details route with params */
+                    email: email,
+                    otherParams: "any else goes here...",
+                  })
+                : null
             }
             style={loginStyles.buttonText}
           >

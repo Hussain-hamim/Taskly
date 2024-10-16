@@ -12,6 +12,7 @@ import ClearableTextInput from "./components/ClearableTextInput";
 import Welcome from "./components/Welcome";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "./One";
 
 // instantiate stack
 const Stack = createNativeStackNavigator();

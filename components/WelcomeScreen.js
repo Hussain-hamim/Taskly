@@ -11,7 +11,10 @@ import {
   Button,
 } from "react-native";
 
-export default function WelcomeScreen({ navigation }) {
+export default function WelcomeScreen({ route, navigation }) {
+  /* 2. get the params */
+  const { email, otherParams } = route.params;
+
   return (
     <View style={welcomeStyles.container}>
       <ScrollView
@@ -32,6 +35,8 @@ export default function WelcomeScreen({ navigation }) {
           onPress={() => navigation.navigate("Menu")}
           // style={welcomeStyles.button}
         />
+
+        <Text style={welcomeStyles.text}>your email: {email}</Text>
       </ScrollView>
     </View>
   );
