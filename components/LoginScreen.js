@@ -8,10 +8,12 @@ import {
   View,
 } from "react-native";
 
-export default function LoginScreen({ navigation }) {
-  const [email, onChangeEmail] = useState("");
+export default function LoginScreen({ route, navigation }) {
+  const [email, onChangeEmail] = useState(route.params.name); // this name come from initial params which is defined in app for login screen
   const [password, onChangePassword] = useState("");
   // const [loggedIn, onLogin] = useState(false);
+
+  // const { name } = route.params;
 
   return (
     <ScrollView style={loginStyles.container}>
