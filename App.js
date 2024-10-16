@@ -37,7 +37,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Login"
         screenOptions={{
           headerStyle: { backgroundColor: "#333333" },
           headerTintColor: "#fff",
@@ -47,11 +47,18 @@ export default function App() {
         }} // for all screens in the this navigator
       >
         <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{
+            title: "Login",
+          }} // for specific options for a screen
+        />
+        <Stack.Screen
           name="Welcome"
           component={WelcomeScreen}
           options={{
-            title: "Home",
-            headerTitle: (props) => <LogoTitle {...props} />,
+            title: "Welcome",
+            headerTitle: (props) => <LogoTitle {...props} />, // you can pass to this call back a comp
           }} // for specific options for a screen
         />
         <Stack.Screen

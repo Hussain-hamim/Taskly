@@ -8,57 +8,44 @@ import {
   View,
 } from "react-native";
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
-  const [loggedIn, onLogin] = useState(false);
+  // const [loggedIn, onLogin] = useState(false);
 
   return (
     <ScrollView style={loginStyles.container}>
       <Text style={loginStyles.headerText}>Welcome to Little Lemon</Text>
 
-      {loggedIn && (
-        <Text style={loginStyles.headerText}>
-          You are logged in{" "}
-          <Pressable style={loginStyles.button}>
-            <Text
-              style={loginStyles.buttonText}
-              onPress={() => onLogin(!loggedIn)}
-            >
-              Go back
-            </Text>
-          </Pressable>
-        </Text>
-      )}
-
-      {!loggedIn && (
-        <View>
-          <Text style={loginStyles.regularText}>login to continoue</Text>
-          <TextInput
-            value={email}
-            onChangeText={onChangeEmail}
-            style={loginStyles.input}
-            placeholder="email"
-            keyboardType="email-address"
-          />
-          <TextInput
-            value={password}
-            onChangeText={onChangePassword}
-            style={loginStyles.input}
-            placeholder="password"
-            secureTextEntry={true}
-          />
-          <Pressable style={loginStyles.button}>
-            <Text
-              // disabled={email.length >= 3}
-              onPress={() => (email.length >= 3 ? onLogin(!loggedIn) : null)}
-              style={loginStyles.buttonText}
-            >
-              Log in
-            </Text>
-          </Pressable>
-        </View>
-      )}
+      <View>
+        <Text style={loginStyles.regularText}>login to continoue</Text>
+        <TextInput
+          value={email}
+          onChangeText={onChangeEmail}
+          style={loginStyles.input}
+          placeholder="email"
+          keyboardType="email-address"
+        />
+        <TextInput
+          value={password}
+          onChangeText={onChangePassword}
+          style={loginStyles.input}
+          placeholder="password"
+          secureTextEntry={true}
+        />
+        <Pressable style={loginStyles.button}>
+          <Text
+            // disabled={email.length >= 3}
+            // onPress={() => (email.length >= 3 ? onLogin(!loggedIn) : null)}
+            onPress={() =>
+              email.length >= 3 ? navigation.navigate("Welcome") : null
+            }
+            style={loginStyles.buttonText}
+          >
+            Log in
+          </Text>
+        </Pressable>
+      </View>
     </ScrollView>
   );
 }
@@ -66,6 +53,7 @@ export default function LoginScreen() {
 const loginStyles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "gray",
   },
   headerText: {
     padding: 40,
@@ -87,7 +75,8 @@ const loginStyles = StyleSheet.create({
     padding: 10,
     fontSize: 16,
     borderColor: "#EDEFEE",
-    backgroundColor: "#F4CE14",
+    backgroundColor: "white",
+    borderRadius: 6,
   },
   button: {
     fontSize: 20,
