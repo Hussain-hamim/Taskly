@@ -12,7 +12,7 @@ import ClearableTextInput from "./components/ClearableTextInput";
 import Welcome from "./components/Welcome";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./One";
+import HomeScreen, { CreatePostScreen } from "./One";
 
 // instantiate stack
 const Stack = createNativeStackNavigator();
@@ -49,6 +49,14 @@ export default function App() {
             },
           }} // for all screens in the this navigator
         >
+          <Stack.Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={({ route }) => ({ title: route.params.name })}
+          />
+
+          <Stack.Screen name="CreatePostScreen" component={CreatePostScreen} />
+
           <Stack.Screen
             name="Login"
             component={LoginScreen}

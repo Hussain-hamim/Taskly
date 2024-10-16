@@ -3,7 +3,7 @@ import { Button, Text, TextInput, View } from "react-native";
 
 //  repetition is key to learning!
 
-function HomeScreen({ navigation, route }) {
+export default function HomeScreen({ navigation, route }) {
   React.useEffect(() => {
     if (route.params?.post) {
       // Post updated, do something with `route.params.post`
@@ -15,14 +15,16 @@ function HomeScreen({ navigation, route }) {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
         title="Create post"
-        onPress={() => navigation.navigate("CreatePost")}
+        onPress={() => navigation.navigate("CreatePostScreen")}
       />
-      <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
+      <Text style={{ margin: 10 }}>
+        Post: {route.params.name} : {route.params?.post}
+      </Text>
     </View>
   );
 }
 
-function CreatePostScreen({ navigation, route }) {
+export function CreatePostScreen({ navigation, route }) {
   const [postText, setPostText] = React.useState("");
 
   return (
@@ -39,20 +41,9 @@ function CreatePostScreen({ navigation, route }) {
         onPress={() => {
           // Pass and merge params back to home screen
           navigation.navigate({
-            name: "Home",
+            name: "HomeScreen",
             params: { post: postText },
             merge: true,
-          });
-        }}
-      />
-
-      <Button
-        title="Done"
-        onPress={() => {
-          // Passing params to nested navigators
-          navigation.navigate("Account", {
-            screen: "Settings",
-            params: { user: "jane" },
           });
         }}
       />

@@ -35,7 +35,13 @@ export default function WelcomeScreen({ route, navigation }) {
         <Button
           title="Go To Menu"
           onPress={() => navigation.navigate("Menu")}
-          // style={welcomeStyles.button}
+        />
+
+        <Text>meh</Text>
+
+        <Button
+          title="Go to HomeScreen2"
+          onPress={() => navigation.navigate("HomeScreen", { name: "mangal" })}
         />
 
         <Text style={welcomeStyles.text}>your email: {email}</Text>
