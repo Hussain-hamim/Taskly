@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 
 import Header from "./components/Header";
 import React from "react";
@@ -47,12 +47,31 @@ export default function App() {
         <Top.Navigator
           id="two"
           initialRouteName="HomeStack"
-          screenOptions={{ swipeEnabled: true }}
+          screenOptions={{
+            swipeEnabled: true,
+            tabBarLabelStyle: { fontSize: 12 },
+            tabBarItemStyle: {
+              // borderWidth: 2,
+              // borderColor: "orchid",
+            },
+            tabBarStyle: { backgroundColor: "powderblue" },
+            // title: "Home",
+            // tabBarLabel: () => {}, // return a react.node
+            // tabBarIcon: () => <Ionicons name="home" />,
+          }}
           backBehavior="history"
           tabBarPosition="top"
-          keyboardDismissMode="auto"
+          keyboardDismissMode="on-drag"
+          initialLayout={{ width: Dimensions.get("window").width }}
+          sceneContainerStyle={{}}
+          style={{}}
+          // tabBar={() => {}} //callback fn that return a react element to display as the tab bar.
         >
-          <Top.Screen name="SettingsStack" component={SettingsStackScreen} />
+          <Top.Screen
+            name="SettingsStack"
+            component={SettingsStackScreen}
+            options={{}}
+          />
           <Top.Screen name="HomeStack" component={SettingsStackScreen} />
         </Top.Navigator>
       </NavigationContainer>
