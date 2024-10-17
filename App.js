@@ -22,11 +22,13 @@ import HomeScreen, {
 import { Ionicons } from "@expo/vector-icons";
 import App2 from "./One";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 // instantiate stack
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const BTab = createMaterialBottomTabNavigator();
+const Top = createMaterialTopTabNavigator();
 
 function LogoTitle() {
   return (
@@ -40,8 +42,14 @@ function LogoTitle() {
 export default function App() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <NavigationContainer>
+        <Top.Navigator>
+          <Top.Screen name="SettingsStack" component={SettingsStackScreen} />
+          <Top.Screen name="HomeStack" component={SettingsStackScreen} />
+        </Top.Navigator>
+      </NavigationContainer>
+      {/* <NavigationContainer>
         <BTab.Navigator
           screenOptions={{ headerShown: false }}
           id="one"
@@ -65,7 +73,7 @@ export default function App() {
           />
           <BTab.Screen name="SettingsStack" component={SettingsStackScreen} />
         </BTab.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> */}
 
       {/* <NavigationContainer>
         <Stack.Navigator
