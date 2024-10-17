@@ -53,7 +53,16 @@ export default function App() {
           inactiveColor="#3e2465"
           barStyle={{ backgroundColor: "#694fad" }}
         >
-          <BTab.Screen name="HomeStack" component={HomeStackScreen} />
+          <BTab.Screen
+            name="HomeStack"
+            component={HomeStackScreen}
+            options={{
+              title: "Home",
+              tabBarIcon: ({ focused, color }) => <Ionicons name="home" />,
+              tabBarBadge: 3,
+              // tabBarColor: "gray", // only work if shifting is true
+            }}
+          />
           <BTab.Screen name="SettingsStack" component={SettingsStackScreen} />
         </BTab.Navigator>
       </NavigationContainer>
