@@ -27,7 +27,10 @@ const Drawer = createDrawerNavigator();
 export default function App2() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator
+        initialRouteName="Home"
+        screenOptions={{ drawerPosition: "left" }}
+      >
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
       </Drawer.Navigator>
