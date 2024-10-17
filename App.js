@@ -44,7 +44,14 @@ export default function App() {
     <>
       <Header />
       <NavigationContainer>
-        <Top.Navigator>
+        <Top.Navigator
+          id="two"
+          initialRouteName="HomeStack"
+          screenOptions={{ swipeEnabled: true }}
+          backBehavior="history"
+          tabBarPosition="top"
+          keyboardDismissMode="auto"
+        >
           <Top.Screen name="SettingsStack" component={SettingsStackScreen} />
           <Top.Screen name="HomeStack" component={SettingsStackScreen} />
         </Top.Navigator>
