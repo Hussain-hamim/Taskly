@@ -95,13 +95,19 @@ export default function App() {
               } else if (route.name === "CreatePostScreen") {
                 iconName = "list";
               }
-              return <Ionicons name={iconName} size={size} color={color} />;
+              return <Ionicons name={iconName} color={color} size={size} />;
             },
             tabBarActiveTintColor: "tomato",
-            tabBarInactiveTintColor: "gray",
+            tabBarInActiveTintColor: "gray",
           })}
         >
-          <Tab.Screen name="HomeScreen" component={HomeScreen} />
+          <Tab.Screen
+            options={{
+              tabBarIcon: () => <Ionicons name="book" />,
+            }}
+            name="HomeScreen"
+            component={HomeScreen}
+          />
           <Tab.Screen name="CreatePostScreen" component={CreatePostScreen} />
         </Tab.Navigator>
       </NavigationContainer>
