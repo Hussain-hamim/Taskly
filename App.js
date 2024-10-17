@@ -42,7 +42,17 @@ export default function App() {
     <>
       {/* <Header /> */}
       <NavigationContainer>
-        <BTab.Navigator screenOptions={{ headerShown: false }}>
+        <BTab.Navigator
+          screenOptions={{ headerShown: false }}
+          id="one"
+          initialRouteName="HomeStack"
+          backBehavior="firstRoute" // initialRoute, history, order
+          shifting={false}
+          labeled={true}
+          activeColor="#f0edf6"
+          inactiveColor="#3e2465"
+          barStyle={{ backgroundColor: "#694fad" }}
+        >
           <BTab.Screen name="HomeStack" component={HomeStackScreen} />
           <BTab.Screen name="SettingsStack" component={SettingsStackScreen} />
         </BTab.Navigator>
