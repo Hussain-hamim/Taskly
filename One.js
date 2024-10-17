@@ -14,7 +14,7 @@ function HomeScreen({ navigation }) {
     </View>
   );
 }
-
+//  style of navigation
 function NotificationsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
