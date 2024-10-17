@@ -2,6 +2,7 @@ import * as React from "react";
 import { Button, View } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 function HomeScreen({ navigation }) {
   return (
@@ -28,10 +29,30 @@ export default function App2() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
+        id="three"
         initialRouteName="Home"
-        screenOptions={{ drawerPosition: "left" }}
+        screenOptions={{
+          drawerPosition: "left",
+          drawerActiveBackgroundColor: "orchid",
+          drawerType: "slide", // front, back, slide, permanent
+        }}
+        backBehavior="history"
+        defaultStatus="closed"
+        // drawerContent={() => {}} // fn that return react element to render as the content of the drawer
       >
-        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen
+          options={{
+            title: "Home",
+            drawerLabel: "Go Home",
+            drawerIcon: () => <Ionicons name="home" />,
+            drawerInactiveBackgroundColor: "powderblue",
+            // drawerItemStyle:{},
+            // drawerLabelStyle: {}
+            // drawerContentContainerStyle: {}
+          }}
+          name="Home"
+          component={HomeScreen}
+        />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
