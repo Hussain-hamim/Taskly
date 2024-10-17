@@ -14,13 +14,19 @@ import Welcome from "./components/Welcome";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen, { CreatePostScreen } from "./One";
+import HomeScreen, {
+  CreatePostScreen,
+  HomeStackScreen,
+  SettingsStackScreen,
+} from "./One";
 import { Ionicons } from "@expo/vector-icons";
 import App2 from "./One";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
 // instantiate stack
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const BTab = createMaterialBottomTabNavigator();
 
 function LogoTitle() {
   return (
@@ -34,7 +40,14 @@ function LogoTitle() {
 export default function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <NavigationContainer>
+        <BTab.Navigator screenOptions={{ headerShown: false }}>
+          <BTab.Screen name="HomeStack" component={HomeStackScreen} />
+          <BTab.Screen name="SettingsStack" component={SettingsStackScreen} />
+        </BTab.Navigator>
+      </NavigationContainer>
+
       {/* <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Login"
@@ -113,7 +126,6 @@ export default function App() {
           <Tab.Screen name="CreatePostScreen" component={CreatePostScreen} />
         </Tab.Navigator>
       </NavigationContainer> */}
-      <App2 />
     </>
   );
 }

@@ -38,7 +38,7 @@ function SettingsScreen({ navigation }) {
 
 const HomeStack = createNativeStackNavigator();
 
-function HomeStackScreen() {
+export function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
@@ -49,24 +49,11 @@ function HomeStackScreen() {
 
 const SettingsStack = createNativeStackNavigator();
 
-function SettingsStackScreen() {
+export function SettingsStackScreen() {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={SettingsScreen} />
       <SettingsStack.Screen name="Details" component={DetailsScreen} />
     </SettingsStack.Navigator>
-  );
-}
-
-const Tab = createBottomTabNavigator();
-
-export default function App2() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-        <Tab.Screen name="SettingsStack" component={SettingsStackScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
   );
 }
