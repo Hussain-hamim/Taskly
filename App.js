@@ -91,7 +91,7 @@ export default function App() {
               let iconName;
 
               if (route.name === "HomeScreen") {
-                iconName = focused ? "time" : "radio";
+                iconName = focused ? "time" : "time-outline";
               } else if (route.name === "CreatePostScreen") {
                 iconName = "list";
               }
