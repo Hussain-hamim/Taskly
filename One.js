@@ -35,6 +35,9 @@ export default function App2() {
           drawerPosition: "left",
           drawerActiveBackgroundColor: "orchid",
           drawerType: "slide", // front, back, slide, permanent
+          // overlayColor: "red",
+          swipeEnabled: true,
+          swipeEdgeWidth: 10,
         }}
         backBehavior="history"
         defaultStatus="closed"
