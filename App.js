@@ -16,6 +16,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen, { CreatePostScreen } from "./One";
 import { Ionicons } from "@expo/vector-icons";
+import App2 from "./One";
 
 // instantiate stack
 const Stack = createNativeStackNavigator();
@@ -84,7 +85,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer> */}
 
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
@@ -104,13 +105,15 @@ export default function App() {
           <Tab.Screen
             options={{
               tabBarIcon: () => <Ionicons name="book" />,
+              tabBarBadge: 3,
             }}
             name="HomeScreen"
             component={HomeScreen}
           />
           <Tab.Screen name="CreatePostScreen" component={CreatePostScreen} />
         </Tab.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> */}
+      <App2 />
     </>
   );
 }
