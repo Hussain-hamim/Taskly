@@ -44,7 +44,7 @@ function LogoTitle() {
 export default function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <App2 />
       {/* <NavigationContainer>
         <Drawer.Navigator useLegacyImplementation>
