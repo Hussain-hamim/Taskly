@@ -15,6 +15,7 @@ function HomeScreen({ navigation }) {
   );
 }
 //  style of navigation
+// skipping the day for test preparation
 function NotificationsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
