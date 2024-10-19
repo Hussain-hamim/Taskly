@@ -8,7 +8,7 @@ const logo = {
 };
 
 const App = () => (
-  <ScrollView>
+  <ScrollView pagingEnabled={true}>
     <Text style={{ fontSize: 96 }}>Scroll me plz</Text>
     <Image source={logo} />
     <Image source={logo} />
