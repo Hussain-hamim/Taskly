@@ -27,30 +27,26 @@ const SectionListBasics = () => {
     <View style={styles.container}>
       <SectionList
         sections={[
-          { title: "D", data: ["Devin", "Dan", "Dominic"] },
-          { title: "D", data: ["Devin", "Dan", "Dominic"] },
-          { title: "D", data: ["Devin", "Dan", "Dominic"] },
-          { title: "D", data: ["Devin", "Dan", "Dominic"] },
-          { title: "D", data: ["Devin", "Dan", "Dominic"] },
-          { title: "D", data: ["Devin", "Dan", "Dominic"] },
-          {
-            title: "J",
-            data: [
-              "Jackson",
-              "James",
-              "Jillian",
-              "Jimmy",
-              "Joel",
-              "John",
-              "Julie",
-            ],
-          },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
+          { title: "A", data: ["a", "b", "c"] },
         ]}
-        renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+        renderItem={({ item }) => <Text style={styles.item}> {item}</Text>}
         renderSectionHeader={({ section }) => (
           <Text style={styles.sectionHeader}>{section.title}</Text>
         )}
-        keyExtractor={(item) => `basicListEntry-${item}`}
+        keyExtractor={(item) => item}
       />
     </View>
   );
