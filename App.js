@@ -1,31 +1,46 @@
-import React, { useState } from "react";
-import { Text, TextInput, View } from "react-native";
+import React from "react";
+import { Image, ScrollView, Text } from "react-native";
 
-const PizzaTranslator = () => {
-  const [text, setText] = useState("");
-  return (
-    <View
-      style={{
-        padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
-        flex: 1,
-      }}
-    >
-      <TextInput
-        style={{ height: 40, borderColor: "red", borderWidth: 3 }}
-        placeholder="Type here to translate!"
-        onChangeText={(newText) => setText(newText)}
-        defaultValue={text}
-      />
-      <Text style={{ padding: 10, fontSize: 42 }}>
-        {text
-          .split(" ")
-          .map((word) => word && "🍕")
-          .join(" ")}
-      </Text>
-    </View>
-  );
+const logo = {
+  uri: "https://reactnative.dev/img/tiny_logo.png",
+  width: 64,
+  height: 64,
 };
 
-export default PizzaTranslator;
+const App = () => (
+  <ScrollView>
+    <Text style={{ fontSize: 96 }}>Scroll me plz</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 96 }}>If you like</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 96 }}>Scrolling down</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 96 }}>What's the best</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 96 }}>Framework around?</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 80 }}>React Native</Text>
+  </ScrollView>
+);
+
+export default App;
