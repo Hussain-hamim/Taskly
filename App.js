@@ -1,8 +1,5 @@
 import { Platform } from "react-native";
 
-const Component = Platform.select({
-  ios: () => require("ComponentIOS"),
-  android: () => require("ComponentAndroid"),
-})();
-
-<Component />;
+if (Platform.Version === 25) {
+  console.log("Running on Nougat!");
+}
