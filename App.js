@@ -1,19 +1,8 @@
-import { Platform, StyleSheet } from "react-native";
+import { Platform } from "react-native";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    ...Platform.select({
-      ios: {
-        backgroundColor: "red",
-      },
-      android: {
-        backgroundColor: "green",
-      },
-      default: {
-        // other platforms, web for example
-        backgroundColor: "blue",
-      },
-    }),
-  },
-});
+const Component = Platform.select({
+  ios: () => require("ComponentIOS"),
+  android: () => require("ComponentAndroid"),
+})();
+
+<Component />;
