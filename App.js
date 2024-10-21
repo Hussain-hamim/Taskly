@@ -11,7 +11,7 @@ const YourApp = () => {
       }}
     >
       <Text>Hello world 🎉</Text>
-      <Text>break day for uni test 🎉</Text>
+      <Text>another day for uni test</Text>
       <Button title="login" onPress={() => Alert.alert("hello world")} />
     </View>
   );
