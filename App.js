@@ -1,31 +1,29 @@
 import React from "react";
-import { Alert, Button, Text, View } from "react-native";
-import Hello from "./components/Hello";
-import Styles from "./components/Styles";
-import FixedDimensionsBasics from "./components/UI";
-import PercentageDimensionsBasics from "./components/UI";
+import { StyleSheet, View } from "react-native";
 
-const YourApp = () => {
-  let x = 1;
-
-  console.log("hello world");
-
+const Flex = () => {
   return (
     <View
-      style={{
-        backgroundColor: "#2c2c2e",
-        flex: 1,
-
-        //   justifyContent: "center",
-        //   alignItems: "center",
-      }}
+      style={[
+        styles.container,
+        {
+          // Try setting `flexDirection` to `"row"`.
+          flexDirection: "column",
+        },
+      ]}
     >
-      {/* <Hello name="Hussain" age={22} /> */}
-      {/* <Styles /> */}
-      {/* <FixedDimensionsBasics /> */}
-      <PercentageDimensionsBasics />
+      <View style={{ flex: 1, backgroundColor: "red" }} />
+      <View style={{ flex: 2, backgroundColor: "darkorange" }} />
+      <View style={{ flex: 3, backgroundColor: "green" }} />
     </View>
   );
 };
 
-export default YourApp;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+});
+
+export default Flex;

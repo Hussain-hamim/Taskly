@@ -16,6 +16,7 @@ const PercentageDimensionsBasics = () => {
         style={{
           width: "66%",
           height: "35%",
+          borderRadius: "30%",
           backgroundColor: "skyblue",
         }}
       />
