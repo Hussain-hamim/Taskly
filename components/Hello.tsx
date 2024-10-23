@@ -6,6 +6,9 @@ export type Props = {
   baseEnthusiasmLevel?: number;
 };
 
+// FC: function component
+// Represents the type of a function component. Can optionally receive a
+//type argument that represents the props the component receives.
 const Hello: React.FC = ({ name, baseEnthusiasmLevel = 0 }: Props) => {
   const [enthusiasmLevel, setEnthusiasmLevel] =
     React.useState(baseEnthusiasmLevel);
