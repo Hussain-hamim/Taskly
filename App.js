@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const AlignItemsLayout = () => {
-  const [alignItems, setAlignItems] = useState("stretch");
+const AlignSelfLayout = () => {
+  const [alignSelf, setAlignSelf] = useState("stretch");
 
   return (
     <PreviewLayout
-      label="alignItems"
-      selectedValue={alignItems}
+      label="alignSelf"
+      selectedValue={alignSelf}
       values={["stretch", "flex-start", "flex-end", "center", "baseline"]}
-      setSelectedValue={setAlignItems}
+      setSelectedValue={setAlignSelf}
     >
-      <View style={[styles.box, { backgroundColor: "powderblue" }]} />
-      <View style={[styles.box, { backgroundColor: "skyblue" }]} />
       <View
         style={[
           styles.box,
           {
-            backgroundColor: "steelblue",
+            alignSelf: alignSelf,
             width: "auto",
             minWidth: 50,
+            backgroundColor: "powderblue",
           },
         ]}
       />
+      <View style={[styles.box, { backgroundColor: "skyblue" }]} />
+      <View style={[styles.box, { backgroundColor: "steelblue" }]} />
     </PreviewLayout>
   );
 };
@@ -54,9 +55,7 @@ const PreviewLayout = ({
         </TouchableOpacity>
       ))}
     </View>
-    <View style={[styles.container, { [label]: selectedValue }]}>
-      {children}
-    </View>
+    <View style={styles.container}>{children}</View>
   </View>
 );
 
@@ -105,4 +104,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AlignItemsLayout;
+export default AlignSelfLayout;
