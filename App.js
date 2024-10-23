@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert, Button, Text, View } from "react-native";
 import Hello from "./components/Hello";
+import Styles from "./components/Styles";
 
 const YourApp = () => {
   let x = 1;
@@ -10,13 +11,15 @@ const YourApp = () => {
   return (
     <View
       style={{
-        backgroundColor: "gray",
+        backgroundColor: "#2c2c2e",
         flex: 1,
+
         //   justifyContent: "center",
         //   alignItems: "center",
       }}
     >
-      <Hello name="Hussain" age={22} />
+      {/* <Hello name="Hussain" age={22} /> */}
+      <Styles />
     </View>
   );
 };
