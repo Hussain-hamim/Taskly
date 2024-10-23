@@ -3,6 +3,7 @@ import { Alert, Button, Text, View } from "react-native";
 import Hello from "./components/Hello";
 import Styles from "./components/Styles";
 import FixedDimensionsBasics from "./components/UI";
+import PercentageDimensionsBasics from "./components/UI";
 
 const YourApp = () => {
   let x = 1;
@@ -21,7 +22,8 @@ const YourApp = () => {
     >
       {/* <Hello name="Hussain" age={22} /> */}
       {/* <Styles /> */}
-      <FixedDimensionsBasics />
+      {/* <FixedDimensionsBasics /> */}
+      <PercentageDimensionsBasics />
     </View>
   );
 };
