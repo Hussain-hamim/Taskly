@@ -47,7 +47,13 @@ const PreviewLayout = ({
       ))}
     </View>
 
-    <View style={[styles.container, { [label]: selectedValue }]}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: selectedValue === "none" ? "coral" : "aliceblue" },
+        { [label]: selectedValue },
+      ]}
+    >
       {children}
     </View>
   </View>
