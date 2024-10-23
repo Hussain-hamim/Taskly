@@ -17,6 +17,7 @@ const YourApp = () => {
       <Text>Hello world 🎉</Text>
       <Text>another day for uni test</Text>
       <Button title="login" onPress={() => Alert.alert("hello world")} />
+      <Button title="login" onPress={() => Alert.alert("hello world")} />
     </View>
   );
 };
