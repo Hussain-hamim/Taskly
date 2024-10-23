@@ -9,16 +9,13 @@ const YourApp = () => {
   return (
     <View
       style={{
+        backgroundColor: "gray",
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       <Text>Hello world 🎉</Text>
-      <Text>another day for uni test</Text>
-      <Button title="login" onPress={() => Alert.alert("hello world")} />
-      <Button title="login" onPress={() => Alert.alert("hello world")} />
-      <Button title="login" onPress={() => Alert.alert("hello world")} />
     </View>
   );
 };
