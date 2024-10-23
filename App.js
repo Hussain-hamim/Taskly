@@ -7,7 +7,7 @@ const FlexDirectionBasics = () => {
   return (
     <PreviewLayout
       label="flexDirection"
-      values={["column", "row", "row-reverse", "column-reverse"]}
+      values={["column", "row", "row-reverse", "column-reverse", "none"]}
       selectedValue={flexDirection}
       setSelectedValue={setflexDirection}
     >
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   row: {
-    flexDirection: "row",
+    flexDirection: "column",
     flexWrap: "wrap",
   },
   button: {
