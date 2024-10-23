@@ -6,7 +6,7 @@ export type Props = {
   baseEnthusiasmLevel?: number;
 };
 
-const Hello: React.FC<Props> = ({ name, baseEnthusiasmLevel = 0 }) => {
+const Hello: React.FC = ({ name, baseEnthusiasmLevel = 0 }: Props) => {
   const [enthusiasmLevel, setEnthusiasmLevel] =
     React.useState(baseEnthusiasmLevel);
 
