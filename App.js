@@ -1,5 +1,6 @@
 import React from "react";
 import { Alert, Button, Text, View } from "react-native";
+import Hello from "./components/Hello";
 
 const YourApp = () => {
   let x = 1;
@@ -11,11 +12,11 @@ const YourApp = () => {
       style={{
         backgroundColor: "gray",
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        //   justifyContent: "center",
+        //   alignItems: "center",
       }}
     >
-      <Text>Hello world 🎉</Text>
+      <Hello name="Hussain" age={22} />
     </View>
   );
 };

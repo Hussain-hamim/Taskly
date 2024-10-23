@@ -3,13 +3,14 @@ import { Button, StyleSheet, Text, View } from "react-native";
 
 export type Props = {
   name: string;
+  age: number;
   baseEnthusiasmLevel?: number;
 };
 
 // FC: function component
 // Represents the type of a function component. Can optionally receive a
 //type argument that represents the props the component receives.
-const Hello: React.FC = ({ name, baseEnthusiasmLevel = 0 }: Props) => {
+const Hello: React.FC<Props> = ({ name, age, baseEnthusiasmLevel = 0 }) => {
   const [enthusiasmLevel, setEnthusiasmLevel] =
     React.useState(baseEnthusiasmLevel);
 
@@ -19,27 +20,28 @@ const Hello: React.FC = ({ name, baseEnthusiasmLevel = 0 }: Props) => {
 
   const getExclamationMarks = (numChars: number) =>
     numChars > 0 ? Array(numChars + 1).join("!") : "";
+  console.log(Array(3));
+  console.log(Array(3).join("!"));
 
   return (
     <View style={styles.container}>
       <Text style={styles.greeting}>
-        Hello {name}
+        Hello {name}, {age}
         {getExclamationMarks(enthusiasmLevel)}
       </Text>
-      <View>
-        <Button
-          title="Increase enthusiasm"
-          accessibilityLabel="increment"
-          onPress={onIncrement}
-          color="blue"
-        />
-        <Button
-          title="Decrease enthusiasm"
-          accessibilityLabel="decrement"
-          onPress={onDecrement}
-          color="red"
-        />
-      </View>
+
+      <Button
+        title="Increase enthusiasm"
+        accessibilityLabel="increment"
+        onPress={onIncrement}
+        color="blue"
+      />
+      <Button
+        title="Decrease enthusiasm"
+        accessibilityLabel="decrement"
+        onPress={onDecrement}
+        color="red"
+      />
     </View>
   );
 };
@@ -49,6 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    gap: 10,
   },
   greeting: {
     fontSize: 20,
