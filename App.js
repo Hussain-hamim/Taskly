@@ -1,52 +1,44 @@
-import React from "react";
-import { Text } from "react-native";
-import { Image, ImageBackground } from "react-native";
+import React, { Component } from "react";
+import { Alert, Button, StyleSheet, View } from "react-native";
 
-const App = () => {
-  return (
-    <>
-      <Image
-        source={{
-          uri: "https://reactjs.org/logo-og.png",
-          cache: "only-if-cached",
-          method: "POST",
-          headers: {
-            Pragma: "no-cache",
-          },
-          body: "you body goes here",
-        }}
-      />
+export default class ButtonBasics extends Component {
+  _onPressButton() {
+    Alert.alert("You tapped the button!");
+  }
 
-      {/* // include at least width and height! */}
-      <Image
-        style={{
-          width: 51,
-          height: 51,
-          resizeMode: "contain",
-        }}
-        source={{
-          uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
-        }}
-      />
-      <Image
-        style={{
-          width: 51,
-          height: 51,
-          resizeMode: "contain",
-        }}
-        source={{
-          uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
-        }}
-      />
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <Button onPress={this._onPressButton} title="Press Me" />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="Press Me"
+            color="#841584"
+          />
+        </View>
+        <View style={styles.alternativeLayoutButtonContainer}>
+          <Button onPress={this._onPressButton} title="This looks great!" />
+          <Button onPress={this._onPressButton} title="OK!" color="#841584" />
+        </View>
+      </View>
+    );
+  }
+}
 
-      <ImageBackground
-        source={require("./assets/react_navigation_header.png")}
-        style={{ width: "100%", height: "100%" }}
-      >
-        <Text>Inside</Text>
-      </ImageBackground>
-    </>
-  );
-};
-
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  buttonContainer: {
+    margin: 20,
+  },
+  alternativeLayoutButtonContainer: {
+    margin: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+});
