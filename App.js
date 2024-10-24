@@ -1,29 +1,32 @@
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const AlignSelfLayout = () => {
-  const [alignSelf, setAlignSelf] = useState("stretch");
+const AlignContentLayout = () => {
+  const [alignContent, setAlignContent] = useState("flex-start");
 
   return (
     <PreviewLayout
-      label="alignSelf"
-      selectedValue={alignSelf}
-      values={["stretch", "flex-start", "flex-end", "center", "baseline"]}
-      setSelectedValue={setAlignSelf}
+      label="alignContent"
+      selectedValue={alignContent}
+      values={[
+        "flex-start",
+        "flex-end",
+        "stretch",
+        "center",
+        "space-between",
+        "space-around",
+      ]}
+      setSelectedValue={setAlignContent}
     >
-      <View
-        style={[
-          styles.box,
-          {
-            alignSelf: alignSelf,
-            width: "auto",
-            minWidth: 50,
-            backgroundColor: "powderblue",
-          },
-        ]}
-      />
-      <View style={[styles.box, { backgroundColor: "skyblue" }]} />
-      <View style={[styles.box, { backgroundColor: "steelblue" }]} />
+      <View style={[styles.box, { backgroundColor: "orangered" }]} />
+      <View style={[styles.box, { backgroundColor: "orange" }]} />
+      <View style={[styles.box, { backgroundColor: "mediumseagreen" }]} />
+      <View style={[styles.box, { backgroundColor: "deepskyblue" }]} />
+
+      <View style={[styles.box, { backgroundColor: "purple" }]} />
+      <View style={[styles.box, { backgroundColor: "mediumturquoise" }]} />
+      <View style={[styles.box, { backgroundColor: "mediumslateblue" }]} />
+      <View style={[styles.box, { backgroundColor: "purple" }]} />
     </PreviewLayout>
   );
 };
@@ -55,20 +58,23 @@ const PreviewLayout = ({
         </TouchableOpacity>
       ))}
     </View>
-    <View style={styles.container}>{children}</View>
+    <View style={[styles.container, { [label]: selectedValue }]}>
+      {children}
+    </View>
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexWrap: "wrap",
     marginTop: 8,
     backgroundColor: "aliceblue",
-    minHeight: 200,
+    maxHeight: 400,
   },
   box: {
     width: 50,
-    height: 50,
+    height: 80,
   },
   row: {
     flexDirection: "row",
@@ -104,4 +110,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AlignSelfLayout;
+export default AlignContentLayout;
