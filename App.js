@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+import { TouchableOpacity } from "react-native";
+import {
+  Text,
+  TouchableHighlight,
+  TouchableNativeFeedback,
+} from "react-native";
 import { Alert, Button, StyleSheet, View } from "react-native";
 
 export default class ButtonBasics extends Component {
@@ -23,6 +29,34 @@ export default class ButtonBasics extends Component {
           <Button onPress={this._onPressButton} title="This looks great!" />
           <Button onPress={this._onPressButton} title="OK!" color="#841584" />
         </View>
+
+        {/* TouchableHighlight */}
+        <TouchableHighlight
+          activeOpacity={0.6}
+          underlayColor="#e2ef99"
+          onPress={() => alert("Pressed!")}
+          style={{ width: "35%" }}
+        >
+          <Text style={{ backgroundColor: "dimgray", padding: 10 }}>
+            TouchableHighlight
+          </Text>
+        </TouchableHighlight>
+
+        <View>
+          <TouchableNativeFeedback
+            onPress={() => {
+              //
+            }}
+          >
+            <View>
+              <Text>TouchableNativeFeedback</Text>
+            </View>
+          </TouchableNativeFeedback>
+        </View>
+
+        <TouchableOpacity onPress={{}}>
+          <Text>Press Here</Text>
+        </TouchableOpacity>
       </View>
     );
   }
