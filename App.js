@@ -1,5 +1,6 @@
 import React from "react";
-import { Image } from "react-native";
+import { Text } from "react-native";
+import { Image, ImageBackground } from "react-native";
 
 const App = () => {
   return (
@@ -7,6 +8,7 @@ const App = () => {
       <Image
         source={{
           uri: "https://reactjs.org/logo-og.png",
+          cache: "only-if-cached",
           method: "POST",
           headers: {
             Pragma: "no-cache",
@@ -36,6 +38,13 @@ const App = () => {
           uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
         }}
       />
+
+      <ImageBackground
+        source={require("./assets/react_navigation_header.png")}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <Text>Inside</Text>
+      </ImageBackground>
     </>
   );
 };
