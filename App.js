@@ -1,26 +1,51 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
-import Hello from "./components/Hello";
-import PercentageDimensionsBasics from "./components/UI";
+import React, { useRef, useEffect } from "react";
+import { Animated, Text, View } from "react-native";
 
-import HomeScreen from "./components/HomeScreen";
-import Profile from "./components/Profile";
+const FadeInView = (props) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
 
-const Stack = createNativeStackNavigator();
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 10000,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeAnim]);
 
+  return (
+    <Animated.View // Special animatable View
+      style={{
+        ...props.style,
+        opacity: fadeAnim, // Bind opacity to animated value
+      }}
+    >
+      {props.children}
+    </Animated.View>
+  );
+};
+
+// // You can then use your `FadeInView` in place of a `View` in your components:
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen">
-        <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{ title: "HomeScreen" }}
-        />
-        <Stack.Screen name="Profile" component={Profile} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <FadeInView
+        style={{
+          width: 250,
+          height: 50,
+          backgroundColor: "powderblue",
+        }}
+      >
+        <Text style={{ fontSize: 28, textAlign: "center", margin: 10 }}>
+          Fading in
+        </Text>
+      </FadeInView>
+    </View>
   );
 };
 
