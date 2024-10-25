@@ -26,6 +26,8 @@ const images2 = [
 const App = () => {
   const scrollX = useRef(new Animated.Value(0)).current;
 
+  //Animated.event
+
   const { width: windowWidth } = useWindowDimensions();
 
   return (
