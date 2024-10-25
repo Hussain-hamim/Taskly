@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useRef } from "react";
 import {
   SafeAreaView,
@@ -13,6 +14,14 @@ import {
 const images = new Array(6).fill(
   "https://images.unsplash.com/photo-1556740749-887f6717d7e4"
 );
+
+const images2 = [
+  require("./assets/hhamim.jpg"),
+  require("./assets/landai.jpg"),
+  require("./assets/react_purple.png"),
+  require("./assets/landai.jpg"),
+  require("./assets/landai.jpg"),
+];
 
 const App = () => {
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -37,16 +46,27 @@ const App = () => {
           ])}
           scrollEventThrottle={1}
         >
-          {images.map((image, imageIndex) => {
+          {images2.map((image, imageIndex) => {
             return (
               <View
                 style={{ width: windowWidth, height: 250 }}
                 key={imageIndex}
               >
-                <ImageBackground source={{ uri: image }} style={styles.card}>
+                <ImageBackground
+                  source={image}
+                  style={[
+                    styles.card,
+                    {
+                      borderRadius: 10,
+                      borderWidth: 2,
+                      borderColor: "dimgray",
+                    },
+                  ]}
+                  resizeMode="cover"
+                >
                   <View style={styles.textContainer}>
                     <Text style={styles.infoText}>
-                      {"Image - " + imageIndex}
+                      {"Image - " + (imageIndex + 1)}
                     </Text>
                   </View>
                 </ImageBackground>
@@ -93,7 +113,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginVertical: 4,
     marginHorizontal: 16,
-    borderRadius: 5,
+    borderRadius: 8,
     overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
