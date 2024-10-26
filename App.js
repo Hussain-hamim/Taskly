@@ -17,6 +17,12 @@ const App = () => {
     })
   ).current;
 
+  console.log(panResponder);
+  console.log(panResponder.panHandlers);
+  console.log(pan);
+  console.log(pan.x);
+  console.log(pan.y);
+
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Drag & Release this box!</Text>
