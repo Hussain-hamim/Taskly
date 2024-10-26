@@ -26,8 +26,6 @@ const images2 = [
 const App = () => {
   const scrollX = useRef(new Animated.Value(0)).current;
 
-  //Animated.event
-
   const { width: windowWidth } = useWindowDimensions();
 
   return (
@@ -35,17 +33,20 @@ const App = () => {
       <View style={styles.scrollContainer}>
         <ScrollView
           horizontal={true}
-          pagingEnabled
+          pagingEnabled // the scroll stop on multiple scroll view size better for horizontal scrolling
           showsHorizontalScrollIndicator={false}
-          onScroll={Animated.event([
-            {
-              nativeEvent: {
-                contentOffset: {
-                  x: scrollX,
+          onScroll={Animated.event(
+            [
+              {
+                nativeEvent: {
+                  contentOffset: {
+                    x: scrollX,
+                  },
                 },
               },
-            },
-          ])}
+            ]
+            // { useNativeDriver: true } // Optional async listener
+          )}
           scrollEventThrottle={1}
         >
           {images2.map((image, imageIndex) => {
@@ -76,6 +77,7 @@ const App = () => {
             );
           })}
         </ScrollView>
+
         <View style={styles.indicatorContainer}>
           {images.map((image, imageIndex) => {
             const width = scrollX.interpolate({
@@ -84,9 +86,10 @@ const App = () => {
                 windowWidth * imageIndex,
                 windowWidth * (imageIndex + 1),
               ],
-              outputRange: [8, 16, 8],
+              outputRange: [8, 25, 8],
               extrapolate: "clamp",
             });
+
             return (
               <Animated.View
                 key={imageIndex}
@@ -135,7 +138,7 @@ const styles = StyleSheet.create({
     height: 8,
     width: 8,
     borderRadius: 4,
-    backgroundColor: "silver",
+    backgroundColor: "gray",
     marginHorizontal: 4,
   },
   indicatorContainer: {
