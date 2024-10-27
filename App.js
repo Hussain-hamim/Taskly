@@ -1,10 +1,9 @@
-const getMoviesFromApi = () => {
-  return fetch("https://reactnative.dev/movies.json")
-    .then((response) => response.json())
-    .then((json) => {
-      return json.movies;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+const getMoviesFromApiAsync = async () => {
+  try {
+    const response = await fetch("https://reactnative.dev/movies.json");
+    const json = await response.json();
+    return json.movies;
+  } catch (error) {
+    console.error(error);
+  }
 };
