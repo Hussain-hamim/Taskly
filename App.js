@@ -1,12 +1,17 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 const App = () => {
   return (
-    <View accessible={true}>
-      <Text>text one</Text>
-      <Text>text two</Text>
-    </View>
+    <TouchableOpacity
+      accessible={true}
+      accessibilityLabel="Tap me!"
+      onPress={() => null}
+    >
+      <View>
+        <Text>Press me!</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
