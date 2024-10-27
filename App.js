@@ -1,5 +1,13 @@
-/** Async Storage is the React Native equivalent of Local Storage from the web */
+import React from "react";
+import { Text, View } from "react-native";
 
-// some libraries to consider for secure storage:
-// 1. expo-secure-store
-// 2. react-native-keychain
+const App = () => {
+  return (
+    <View accessible={true}>
+      <Text>text one</Text>
+      <Text>text two</Text>
+    </View>
+  );
+};
+
+export default App;
