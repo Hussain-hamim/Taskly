@@ -1,17 +1,26 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const App = () => {
   return (
-    <TouchableOpacity
-      accessible={true}
-      accessibilityLabel="Tap me!"
-      onPress={() => null}
-    >
+    <>
+      <TouchableOpacity
+        accessible={true}
+        accessibilityLabel="Tap me!"
+        onPress={() => null}
+      >
+        <View>
+          <Text>Press me!</Text>
+        </View>
+      </TouchableOpacity>
       <View>
-        <Text>Press me!</Text>
+        <Text nativeID="formLabel">Label for Input Field</Text>
+        <TextInput
+          accessibilityLabel="input"
+          accessibilityLabelledBy="formLabel"
+        />
       </View>
-    </TouchableOpacity>
+    </>
   );
 };
 
