@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const App = () => {
   return (
@@ -18,8 +18,31 @@ const App = () => {
         <TextInput
           accessibilityLabel="input"
           accessibilityLabelledBy="formLabel"
+          aria-valuemax={20}
         />
       </View>
+
+      <View
+        accessible={true}
+        accessibilityActions={[
+          { name: "cut", label: "cut" },
+          { name: "copy", label: "copy" },
+          { name: "paste", label: "paste" },
+        ]}
+        onAccessibilityAction={(event) => {
+          switch (event.nativeEvent.actionName) {
+            case "cut":
+              Alert.alert("Alert", "cut action success");
+              break;
+            case "copy":
+              Alert.alert("Alert", "copy action success");
+              break;
+            case "paste":
+              Alert.alert("Alert", "paste action success");
+              break;
+          }
+        }}
+      />
     </>
   );
 };
