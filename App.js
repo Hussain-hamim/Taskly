@@ -20,6 +20,9 @@ const App = () => (
       <Button
         title="Press me"
         onPress={() => Alert.alert("Simple Button pressed")}
+        nextFocusDown={Alert.alert("help me")}
+        nextFocusForward={Alert.alert("help me again")}
+        touchSoundDisabled={true}
       />
     </View>
     <Separator />
