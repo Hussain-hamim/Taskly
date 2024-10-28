@@ -172,6 +172,7 @@ const App = () => {
         data={DATA}
         renderItem={({ item }) => <Item title={item.title} />}
         keyExtractor={(item) => item.id}
+        numColumns={2}
       />
     </SafeAreaView>
   );
