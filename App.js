@@ -19,10 +19,17 @@ const App = () => {
         }}
         style={({ pressed }) => [
           {
-            backgroundColor: pressed ? "rgb(210, 230, 255)" : "white",
+            backgroundColor: pressed ? "rgb(128, 152, 182)" : "#d6a2a2",
           },
           styles.wrapperCustom,
         ]}
+        android_disableSound={false}
+        android_ripple={{
+          color: "#6cabb8",
+          borderless: false,
+          radius: "100%",
+          // foreground: true,
+        }}
       >
         {({ pressed }) => (
           <Text style={styles.text}>{pressed ? "Pressed!" : "Press Me"}</Text>
@@ -46,13 +53,14 @@ const styles = StyleSheet.create({
   wrapperCustom: {
     borderRadius: 8,
     padding: 6,
+    marginLeft: 150,
   },
   logBox: {
     padding: 20,
     margin: 10,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: "#f0f0f0",
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#8a7878",
   },
 });
 
