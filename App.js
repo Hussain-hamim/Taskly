@@ -1,80 +1,45 @@
-import React, { useState } from "react";
-import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import {
+  RefreshControl,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+} from "react-native";
 
 const App = () => {
-  const [timesPressed, setTimesPressed] = useState(0);
+  const [refreshing, setRefreshing] = React.useState(false);
 
-  let textLog = "";
-  if (timesPressed > 1) {
-    textLog = timesPressed + "x onPress";
-  } else if (timesPressed > 0) {
-    textLog = "onPress";
-  }
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   return (
-    <View style={styles.container}>
-      <Pressable
-        onPress={() => {
-          setTimesPressed((current) => current + 1);
-        }}
-        style={({ pressed }) => [
-          {
-            backgroundColor: pressed ? "rgb(128, 152, 182)" : "#d6a2a2",
-          },
-          styles.wrapperCustom,
-        ]}
-        android_disableSound={false}
-        android_ripple={{
-          color: "#6cabb8",
-          // borderless: true,
-          // radius: 30,
-          // foreground: true,
-        }}
-        // unstable_pressDelay={2}
-        disabled={false}
-        delayLongPress={4}
-        // hitSlop={{
-        //   // rectangular area
-        //   bottom: 20,
-        //   left: null,
-        //   right: undefined,
-        //   top: 50,
-        // }}
-        hitSlop={30}
-        onHoverIn={(mouseEvent) => Alert.alert("hovered in")}
-        onLongPress={() => Alert.alert("hellloo capper")}
+    <SafeAreaView style={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.scrollView}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       >
-        {({ pressed }) => (
-          <Text style={styles.text}>{pressed ? "Pressed!" : "Press Me"}</Text>
-        )}
-      </Pressable>
-      <View style={styles.logBox}>
-        <Text testID="pressable_press_console">{textLog}</Text>
-      </View>
-    </View>
+        <Text>Pull down to see RefreshControl indicator</Text>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+    backgroundColor: "pink",
+    alignItems: "center",
     justifyContent: "center",
-  },
-  text: {
-    fontSize: 16,
-  },
-  wrapperCustom: {
-    borderRadius: 8,
-    padding: 6,
-    // marginLeft: 150,
-    // width: 200,
-  },
-  logBox: {
-    padding: 20,
-    margin: 10,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "#f0f0f0",
-    backgroundColor: "#8a7878",
   },
 });
 
