@@ -3,7 +3,6 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
-
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -11,8 +10,8 @@ const App = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          setModalVisible(!modalVisible);
           Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
         }}
       >
         <View style={styles.centeredView}>
@@ -27,7 +26,6 @@ const App = () => {
           </View>
         </View>
       </Modal>
-
       <Pressable
         style={[styles.button, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}
@@ -52,10 +50,10 @@ const styles = StyleSheet.create({
     padding: 50,
     paddingHorizontal: 100,
     alignItems: "center",
-    shadowColor: "#0d080c",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
