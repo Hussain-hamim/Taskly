@@ -22,7 +22,14 @@ const App = () => {
       <ScrollView
         contentContainerStyle={styles.scrollView}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl
+            colors={["orchid", "green"]}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            progressBackgroundColor="lightgray"
+            size="default" // "large", "default" only on android
+            title="hello" // the title displaying under the indicator work only on ios
+          />
         }
       >
         <Text>Pull down to see RefreshControl indicator</Text>
