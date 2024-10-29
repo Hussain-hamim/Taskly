@@ -26,8 +26,8 @@ const App = () => {
         android_disableSound={false}
         android_ripple={{
           color: "#6cabb8",
-          borderless: false,
-          radius: "100%",
+          // borderless: true,
+          // radius: 30,
           // foreground: true,
         }}
       >
@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
   wrapperCustom: {
     borderRadius: 8,
     padding: 6,
-    marginLeft: 150,
+    // marginLeft: 150,
+    // width: 200,
   },
   logBox: {
     padding: 20,
