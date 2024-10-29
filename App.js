@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import {
   FlatList,
+  Platform,
   SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
+  View,
 } from "react-native";
 
 const DATA = [
@@ -56,7 +58,14 @@ const App = () => {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         extraData={selectedId}
-        /** A marker property for telling the list to re-render (since it implements PureComponent). If any of your renderItem, Header, Footer, etc. functions depend on anything outside of the data prop, stick it here and treat it immutably. */
+        ItemSeparatorComponent={
+          Platform.OS === "android" &&
+          (({ highlighted }) => (
+            <View
+              style={[styles.separator, highlighted && { marginLeft: 0 }]}
+            />
+          ))
+        }
       />
     </SafeAreaView>
   );
@@ -74,6 +83,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
+  },
+  separator: {
+    borderWidth: 1,
+    borderColor: "#252622",
   },
 });
 
