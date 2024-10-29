@@ -42,7 +42,7 @@ const App = () => {
         // }}
         hitSlop={30}
         onHoverIn={(mouseEvent) => Alert.alert("hovered in")}
-        onLongPress={}
+        onLongPress={() => Alert.alert("hellloo capper")}
       >
         {({ pressed }) => (
           <Text style={styles.text}>{pressed ? "Pressed!" : "Press Me"}</Text>
