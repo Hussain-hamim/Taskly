@@ -1,38 +1,62 @@
 import React from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  View,
+  KeyboardAvoidingView,
+  TextInput,
+  StyleSheet,
+  Text,
+  Platform,
+  TouchableWithoutFeedback,
+  Button,
+  Keyboard,
+} from "react-native";
 
-const image = require("./assets/hhamim.jpg");
-
-const App = () => (
-  <View style={styles.container}>
-    <ImageBackground
-      imageStyle={{ backgroundColor: "gray" }}
-      imageRef={null}
-      source={image}
-      resizeMode="cover"
-      style={styles.image}
+const KeyboardAvoidingComponent = () => {
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+      contentContainerStyle={null}
+      enabled={true}
+      keyboardVerticalOffset={null}
     >
-      <Text style={styles.text}>Inside</Text>
-    </ImageBackground>
-  </View>
-);
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.inner}>
+          <Text style={styles.header}>Header</Text>
+
+          <TextInput placeholder="Username" style={styles.textInput} />
+          <View style={styles.btnContainer}>
+            <Button title="Submit" onPress={() => null} />
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  image: {
+  inner: {
+    padding: 24,
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
-  text: {
-    color: "white",
-    fontSize: 42,
-    lineHeight: 84,
-    fontWeight: "bold",
-    textAlign: "center",
-    backgroundColor: "#000000c0",
+  header: {
+    fontSize: 36,
+    marginBottom: 48,
+  },
+  textInput: {
+    height: 40,
+    borderColor: "#000000",
+    borderBottomWidth: 1,
+    marginBottom: 36,
+  },
+  btnContainer: {
+    backgroundColor: "white",
+    marginTop: 12,
   },
 });
 
-export default App;
+export default KeyboardAvoidingComponent;
