@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
 
 const App = () => {
   const [timesPressed, setTimesPressed] = useState(0);
@@ -30,6 +30,19 @@ const App = () => {
           // radius: 30,
           // foreground: true,
         }}
+        // unstable_pressDelay={2}
+        disabled={false}
+        delayLongPress={4}
+        // hitSlop={{
+        //   // rectangular area
+        //   bottom: 20,
+        //   left: null,
+        //   right: undefined,
+        //   top: 50,
+        // }}
+        hitSlop={30}
+        onHoverIn={(mouseEvent) => Alert.alert("hovered in")}
+        onLongPress={}
       >
         {({ pressed }) => (
           <Text style={styles.text}>{pressed ? "Pressed!" : "Press Me"}</Text>
