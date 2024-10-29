@@ -23,6 +23,62 @@ const DATA = [
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
     title: "Third Item",
   },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+  },
 ];
 
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
@@ -66,6 +122,22 @@ const App = () => {
             />
           ))
         }
+        ListEmptyComponent={() => (
+          <Text
+            style={{
+              padding: 100,
+            }}
+          >
+            list is empty
+          </Text>
+        )}
+        ListFooterComponent={<Text>List footer comp</Text>}
+        ListFooterComponentStyle={{ backgroundColor: "gray" }}
+        ListHeaderComponent={<Text>List header comp</Text>}
+        ListHeaderComponentStyle={{ backgroundColor: "gray" }}
+        // columnWrapperStyle={{ color: "red" }} // not supported for single line column list
+        // getItemLayout={(data, index) => null}
+        initialNumToRender={2} // how many items to render in the initial batch
       />
     </SafeAreaView>
   );
