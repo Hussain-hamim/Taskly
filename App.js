@@ -1,86 +1,58 @@
 import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const App = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [timesPressed, setTimesPressed] = useState(0);
+
+  let textLog = "";
+  if (timesPressed > 1) {
+    textLog = timesPressed + "x onPress";
+  } else if (timesPressed > 0) {
+    textLog = "onPress";
+  }
+
   return (
-    <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
-        // onDismiss={Alert.alert("closed")}
-        onShow={Alert.alert("shown")}
-        statusBarTranslucent={true}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
+    <View style={styles.container}>
       <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
+        onPress={() => {
+          setTimesPressed((current) => current + 1);
+        }}
+        style={({ pressed }) => [
+          {
+            backgroundColor: pressed ? "rgb(210, 230, 255)" : "white",
+          },
+          styles.wrapperCustom,
+        ]}
       >
-        <Text style={styles.textStyle}>Show Modal</Text>
+        {({ pressed }) => (
+          <Text style={styles.text}>{pressed ? "Pressed!" : "Press Me"}</Text>
+        )}
       </Pressable>
+      <View style={styles.logBox}>
+        <Text testID="pressable_press_console">{textLog}</Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  centeredView: {
+  container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 50,
-    paddingHorizontal: 100,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+  text: {
+    fontSize: 16,
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
+  wrapperCustom: {
+    borderRadius: 8,
+    padding: 6,
   },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
+  logBox: {
+    padding: 20,
+    margin: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#f0f0f0",
+    backgroundColor: "#f9f9f9",
   },
 });
 
