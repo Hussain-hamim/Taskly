@@ -138,6 +138,16 @@ const App = () => {
         // columnWrapperStyle={{ color: "red" }} // not supported for single line column list
         // getItemLayout={(data, index) => null}
         initialNumToRender={2} // how many items to render in the initial batch
+        // initialScrollIndex={2}
+        // inverted={true}
+        horizontal={false}
+        key={({ item }) => item.id}
+        numColumns={2}
+        refreshing={true}
+        onRefresh={() => null}
+        // onViewableItemsChanged={() => null}
+        // progressViewOffset={}
+        // removeClippedSubviews={true}
       />
     </SafeAreaView>
   );
