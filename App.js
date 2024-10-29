@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   tinyLogo: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
   },
   logo: {
     width: 66,
@@ -25,6 +25,18 @@ const DisplayAnImage = () => {
         source={{
           uri: "https://reactnative.dev/img/tiny_logo.png",
         }}
+        alt="react native"
+        blurRadius={0.9}
+        crossOrigin="use-credentials"
+        defaultSource={null} // A static image to display while downloading the final image off the network.
+        fadeDuration={300}
+        height={150}
+        loadingIndicatorSource={null}
+        onError={null}
+        onLayout={null}
+        onLoad={null}
+        resizeMethod="auto"
+        resizeMode="cover"
       />
       <Image
         style={styles.logo}
