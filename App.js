@@ -5,7 +5,13 @@ const image = require("./assets/hhamim.jpg");
 
 const App = () => (
   <View style={styles.container}>
-    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+    <ImageBackground
+      imageStyle={{ backgroundColor: "gray" }}
+      imageRef={null}
+      source={image}
+      resizeMode="cover"
+      style={styles.image}
+    >
       <Text style={styles.text}>Inside</Text>
     </ImageBackground>
   </View>
