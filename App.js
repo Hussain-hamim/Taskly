@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import {
-  Animated,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,42 +8,36 @@ import {
 } from "react-native";
 
 function ScrollExample() {
-  const [showScrollToTop, setshowScrollToTop] = useState(false);
-  const [pos, setpos] = useState(0);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
   const scrollViewRef = useRef(null);
 
-  console.log(showScrollToTop);
-
-  const handleScroll = (event) => {
-    const { y } = event.nativeEvent.contentOffset;
-    setshowScrollToTop(y > 1000); // show button if scroll down 200 pixels
-    setpos(y);
+  const handleScroll = ({
+    nativeEvent: {
+      contentOffset: { x, y },
+      contentSize: { height, width },
+    },
+  }) => {
+    setShowScrollToTop(y > 1000); // show button if scroll down 1000 pixels
   };
 
-  const scrollToTop = (scrollViewRef) => {
-    scrollViewRef?.scrollTo({ y: 0, animated: true });
-    // scrollViewRef.current?.scrollTo({ y: 0, animated: true });
+  const scrollToTop = () => {
+    scrollViewRef.current?.scrollTo({ y: 0, animated: true }); // scrollTo({x: 0, y: 0, animated: true}) method is called to scroll to specific position with smooth animation
   };
 
   return (
     <View style={{ flex: 1 }}>
       <ScrollView
-        onScroll={({
-          nativeEvent: {
-            contentOffset: { y },
-          },
-        }) => setshowScrollToTop(y > 200)}
+        onScroll={handleScroll}
         scrollEventThrottle={16}
-        ref={(ref) => (this.scrollViewRef = ref)}
+        ref={scrollViewRef}
+        // scrollTo={{ y: 0, x: 0 }} // we'll change this method by the ref with on onPress
       >
-        {/* scrollable content */}
         <View style={{ backgroundColor: "lightblue", padding: 30 }}>
           <Text style={{ fontSize: 50 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatibus architecto ducimus possimus corporis eveniet quod id
             nulla quia. A laboriosam nostrum quaerat, consequuntur fuga magni
             dignissimos velit, hic sunt pariatur quis voluptates dicta iusto
-            <Text style={{ color: "red" }}>{Math.floor(pos)} pxs</Text>
             eaque porro qui veritatis autem rem explicabo non provident saepe
             repellendus. Ullam, maxime! Ea, perspiciatis nemo. Voluptatibus
             architecto ducimus possimus corporis eveniet quod id nulla quia. A
@@ -71,8 +64,7 @@ function ScrollExample() {
       {showScrollToTop && (
         <TouchableOpacity
           style={styles.scrollToTopButton}
-          onPress={() => scrollToTop(this.scrollViewRef)}
-          // onPress={scrollToTop}
+          onPress={scrollToTop}
         >
           <Text style={styles.scrollToTopText}> Top</Text>
         </TouchableOpacity>
