@@ -1,7 +1,9 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   Pressable,
+  RefreshControl,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -10,6 +12,7 @@ import {
 
 function ScrollExample() {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const scrollViewRef = useRef(null);
 
   const handleScroll = ({
@@ -25,16 +28,50 @@ function ScrollExample() {
     scrollViewRef.current?.scrollTo({ y: 0, animated: true }); // scrollTo({x: 0, y: 0, animated: true}) method is called to scroll to specific position with smooth animation
   };
 
+  const onRefreshing = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   return (
     <View style={{ flex: 1 }}>
+      <StatusBar />
       <ScrollView
         onScroll={handleScroll}
         scrollEventThrottle={16}
         ref={scrollViewRef}
         // scrollTo={{ y: 0, x: 0 }} // we'll change this method by the ref with on onPress
+
+        overScrollMode="auto" // "always", "never"
+        pagingEnabled={false}
+        persistentScrollbar={true}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefreshing} />
+        }
+        scrollEnabled={true}
+        flashScrollIndicator={null}
       >
-        <View style={{ backgroundColor: "lightblue", padding: 30 }}>
-          <Text style={{ fontSize: 50 }}>
+        <View
+          style={{
+            backgroundColor: "lightblue",
+            padding: 30,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{
+              color: "orchid",
+              fontSize: 40,
+              fontWeight: "bold",
+            }}
+          >
+            Hello world
+          </Text>
+
+          <Text style={{ fontSize: 30 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatibus architecto ducimus possimus corporis eveniet quod id
             nulla quia. A laboriosam nostrum quaerat, consequuntur fuga magni
@@ -55,6 +92,13 @@ function ScrollExample() {
             Ullam, maxime! Ea, perspiciatis nemo. Voluptatibus architecto
             ducimus possimus corporis eveniet quod id nulla quia. A laboriosam
             nostrum quaerat, consequuntur fuga magni dignissimos velit, hic sunt
+            architecto ducimus possimus corporis eveniet quod id nulla quia. A
+            laboriosam nostrum quaerat, consequuntur fuga magni dignissimos
+            velit, hic sunt pariatur quis voluptates dicta iusto eaque porro qui
+            veritatis autem rem explicabo non provident saepe repellendus.
+            Ullam, maxime! Ea, perspiciatis nemo. Voluptatibus architecto
+            ducimus possimus corporis eveniet quod id nulla quia. A laboriosam
+            nostrum quaerat, consequuntur fuga magni dignissimos velit, hic sunt
             pariatur quis voluptates dicta iusto eaque porro qui veritatis autem
             rem explicabo non provident saepe repellendus. Ullam, maxime! Ea,
             perspiciatis nemo.
@@ -68,7 +112,7 @@ function ScrollExample() {
           style={styles.scrollToTopButton}
           onPress={scrollToTop}
         >
-          <Text style={styles.scrollToTopText}>Top</Text>
+          <Text style={styles.scrollToTopText}>Go To Top</Text>
         </Pressable>
       )}
     </View>
