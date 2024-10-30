@@ -1,38 +1,54 @@
 import React from "react";
 import {
-  RefreshControl,
-  SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
 } from "react-native";
 
 const App = () => {
-  const [refreshing, setRefreshing] = React.useState(false);
-
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 2000);
-  }, []);
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
-        contentContainerStyle={styles.scrollView}
-        refreshControl={
-          <RefreshControl
-            colors={["orchid", "green"]}
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            progressBackgroundColor="lightgray"
-            size="default" // "large", "default" only on android
-            title="hello" // the title displaying under the indicator work only on ios
-          />
+        style={styles.scrollView}
+        StickyHeaderComponent={
+          <Text style={styles.text}>this is sticky header</Text>
         }
+        contentContainerStyle={{}}
+        contentOffset={{ x: 0, y: 0 }} // starting scroll offset
+        decelerationRate="normal"
+        disableIntervalMomentum={true} // stop at the next index, good for pagination
       >
-        <Text>Pull down to see RefreshControl indicator</Text>
+        <Text style={styles.text}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </Text>
       </ScrollView>
     </SafeAreaView>
   );
@@ -41,12 +57,14 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: StatusBar.currentHeight,
   },
   scrollView: {
-    flex: 1,
     backgroundColor: "pink",
-    alignItems: "center",
-    justifyContent: "center",
+    marginHorizontal: 20,
+  },
+  text: {
+    fontSize: 42,
   },
 });
 
