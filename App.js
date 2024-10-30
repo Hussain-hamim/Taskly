@@ -12,25 +12,32 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
+        onScroll={{
+          nativeEvent: {
+            contentInset: { button: 5, left: 5, right: 5, top: 5 },
+            contentOffset: { X: 0, y: 0 },
+            contentSize: { height: 10, width: 20 },
+            layoutMeasurement: { height: 20, width: 50 },
+            zoomScale: 0,
+          },
+        }}
+      >
         style={styles.scrollView}
-        StickyHeaderComponent={
-          <Text style={styles.text}>this is sticky header</Text>
-        }
+        StickyHeaderComponent=
+        {<Text style={styles.text}>this is sticky header</Text>}
         contentContainerStyle={{}}
         contentOffset={{ x: 0, y: 0 }} // starting scroll offset
-        decelerationRate="normal"
-        disableIntervalMomentum={true} // stop at the next index, good for pagination
-        endFillColor={"yellow"}
+        decelerationRate="normal" disableIntervalMomentum={true} // stop at the
+        next index, good for pagination endFillColor={"yellow"}
         fadingEdgeLength={10}
         horizontal={false}
-        keyboardDismissMode="on-drag"
-        keyboardShouldPersistTaps="always"
-        maintainVisibleContentPosition={{
+        keyboardDismissMode="on-drag" keyboardShouldPersistTaps="always"
+        maintainVisibleContentPosition=
+        {{
           minIndexForVisible: 3,
           autoscrollToTopThreshold: 10,
         }}
-        indicatorStyle="orchid"
-      >
+        indicatorStyle="orchid" >
         <TextInput placeholder="hello there" />
         <Text style={styles.text}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
