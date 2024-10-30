@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import {
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -62,12 +63,13 @@ function ScrollExample() {
       </ScrollView>
 
       {showScrollToTop && (
-        <TouchableOpacity
+        <Pressable
+          android_ripple={{ color: "lightyellow" }}
           style={styles.scrollToTopButton}
           onPress={scrollToTop}
         >
-          <Text style={styles.scrollToTopText}> Top</Text>
-        </TouchableOpacity>
+          <Text style={styles.scrollToTopText}>Top</Text>
+        </Pressable>
       )}
     </View>
   );
