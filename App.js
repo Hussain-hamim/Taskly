@@ -5,7 +5,12 @@ const BoldAndBeautiful = () => {
   return (
     <>
       <Text>
-        <Text>First part and </Text>
+        <Text
+          accessibilityHint="a text"
+          accessibilityLanguage="english" // ios
+        >
+          First part and{" "}
+        </Text>
         <Text>second part</Text>
       </Text>
       {/* // Text container: the text will be inline if the space allowed it //
@@ -15,15 +20,22 @@ const BoldAndBeautiful = () => {
         <Text>First part and </Text>
         <Text>second part</Text>
       </View>
-    </>
-    // View container: each text is its own block
+      {/* // View container: each text is its own block
     // |First part and|
     // |second part   |
 
     // otherwise, the text will flow in its own block
     // |First part |
     // |and        |
-    // |second part|
+    // |second part| */}
+
+      {/* <View>
+  <MyAppText>
+    Text styled with the default font for the entire application
+  </MyAppText>
+  <MyAppHeaderText>Text styled as a header</MyAppHeaderText>
+</View> */}
+    </>
   );
 };
 
