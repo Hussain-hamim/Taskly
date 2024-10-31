@@ -10,19 +10,16 @@ import {
 } from "react-native";
 
 const STYLES = ["default", "dark-content", "light-content"];
-const TRANSITIONS = ["fade", "slide", "none"];
 
 const App = () => {
   const [hidden, setHidden] = useState(false);
   const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
-  const [statusBarTransition, setStatusBarTransition] = useState(
-    TRANSITIONS[0]
-  );
 
   const changeStatusBarVisibility = () => setHidden(!hidden);
 
   const changeStatusBarStyle = () => {
     const styleId = STYLES.indexOf(statusBarStyle) + 1;
+
     if (styleId === STYLES.length) {
       setStatusBarStyle(STYLES[0]);
     } else {
@@ -30,14 +27,9 @@ const App = () => {
     }
   };
 
-  const changeStatusBarTransition = () => {
-    const transition = TRANSITIONS.indexOf(statusBarTransition) + 1;
-    if (transition === TRANSITIONS.length) {
-      setStatusBarTransition(TRANSITIONS[0]);
-    } else {
-      setStatusBarTransition(TRANSITIONS[transition]);
-    }
-  };
+  console.log(STYLES[0]);
+  console.log(statusBarStyle);
+  console.log(STYLES.indexOf(statusBarStyle));
 
   return (
     <SafeAreaView style={styles.container}>
@@ -45,7 +37,6 @@ const App = () => {
         animated={true}
         backgroundColor="#61dafb"
         barStyle={statusBarStyle}
-        showHideTransition={statusBarTransition}
         hidden={hidden}
       />
       <Text style={styles.textStyle}>
@@ -56,21 +47,10 @@ const App = () => {
         StatusBar Style:{"\n"}
         {statusBarStyle}
       </Text>
-      {Platform.OS === "ios" ? (
-        <Text style={styles.textStyle}>
-          StatusBar Transition:{"\n"}
-          {statusBarTransition}
-        </Text>
-      ) : null}
+
       <View style={styles.buttonsContainer}>
         <Button title="Toggle StatusBar" onPress={changeStatusBarVisibility} />
         <Button title="Change StatusBar Style" onPress={changeStatusBarStyle} />
-        {Platform.OS === "ios" ? (
-          <Button
-            title="Change StatusBar Transition"
-            onPress={changeStatusBarTransition}
-          />
-        ) : null}
       </View>
     </SafeAreaView>
   );
