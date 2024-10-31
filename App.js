@@ -32,9 +32,12 @@ const App = () => (
     <SectionList
       sections={DATA}
       keyExtractor={(item, index) => item + index}
-      renderItem={({ item }) => (
+      renderItem={({ item, index, section, separators }) => (
         <View style={styles.item}>
           <Text style={styles.title}>{item}</Text>
+          <Text style={styles.title}>{index}</Text>
+          <Text style={styles.title}>{section.title}</Text>
+          <Text style={styles.title}>{section.data}</Text>
         </View>
       )}
       renderSectionHeader={({ section: { title } }) => (
