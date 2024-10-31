@@ -1,29 +1,34 @@
 import React, { useState } from "react";
-import { StyleSheet, Switch, View } from "react-native";
+import { Text, StyleSheet } from "react-native";
 
-const App = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
+const TextInANest = () => {
+  const [titleText, setTitleText] = useState("Bird's Nest");
+  const bodyText = "This is not really a bird nest.";
+
+  const onPressTitle = () => {
+    setTitleText("Bird's Nest [pressed]");
+  };
 
   return (
-    <View style={styles.container}>
-      <Switch
-        value={isEnabled}
-        onValueChange={() => setIsEnabled((prev) => !prev)}
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-        disabled={false}
-        // onChange={}
-      />
-    </View>
+    <Text style={styles.baseText}>
+      <Text style={styles.titleText} onPress={onPressTitle}>
+        {titleText}
+        {"\n"}
+        {"\n"}
+      </Text>
+      <Text numberOfLines={5}>{bodyText}</Text>
+    </Text>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+  baseText: {
+    fontFamily: "Cochin",
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
 
-export default App;
+export default TextInANest;
