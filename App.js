@@ -1,165 +1,93 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
+  Button,
+  Platform,
+  SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
-  SectionList,
-  StatusBar,
-  RefreshControl,
-  Pressable,
-  ScrollView,
-  ScrollViewBase,
-  TouchableOpacity,
 } from "react-native";
 
-const DATA = [
-  {
-    title: "Main dishes",
-    data: ["Pizza", "Burger", "Risotto"],
-  },
-  {
-    title: "Sides",
-    data: ["French Fries", "Onion Rings", "Fried Shrimps"],
-  },
-  {
-    title: "Drinks",
-    data: ["Water", "Coke", "Beer"],
-  },
-  {
-    title: "Dessertsa",
-    data: ["Cheese Cake", "Ice Cream"],
-  },
-  {
-    title: "Drinksa",
-    data: ["Water", "Coke", "Beer"],
-  },
-  {
-    title: "Dessertsd",
-    data: ["Cheese Cake", "Ice Cream"],
-  },
-  {
-    title: "Drinksfg",
-    data: ["Water", "Coke", "Beer"],
-  },
-  {
-    title: "Dessertsfggf",
-    data: ["Cheese Cake", "Ice Cream"],
-  },
-];
+const STYLES = ["default", "dark-content", "light-content"];
+const TRANSITIONS = ["fade", "slide", "none"];
 
 const App = () => {
-  const [refreshing, setRefreshing] = React.useState(false);
-  const topRef = useRef(null);
-  let one = 1; // one should be included in the extraData prop
+  const [hidden, setHidden] = useState(false);
+  const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
+  const [statusBarTransition, setStatusBarTransition] = useState(
+    TRANSITIONS[0]
+  );
 
-  const goToTop = () => {
-    topRef.current.scrollTo({ y: 0, animated: true });
+  const changeStatusBarVisibility = () => setHidden(!hidden);
+
+  const changeStatusBarStyle = () => {
+    const styleId = STYLES.indexOf(statusBarStyle) + 1;
+    if (styleId === STYLES.length) {
+      setStatusBarStyle(STYLES[0]);
+    } else {
+      setStatusBarStyle(STYLES[styleId]);
+    }
   };
 
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 2000);
-  }, []);
+  const changeStatusBarTransition = () => {
+    const transition = TRANSITIONS.indexOf(statusBarTransition) + 1;
+    if (transition === TRANSITIONS.length) {
+      setStatusBarTransition(TRANSITIONS[0]);
+    } else {
+      setStatusBarTransition(TRANSITIONS[transition]);
+    }
+  };
 
   return (
-    <ScrollView ref={topRef}>
-      <SafeAreaView style={styles.container}>
-        <SectionList
-          sections={DATA}
-          keyExtractor={(item, index) => item + index}
-          renderItem={({ item, index, section, separators }) => (
-            <View style={styles.item}>
-              <Text style={styles.title}>{item}</Text>
-            </View>
-          )}
-          renderSectionHeader={({ section: { title } }) => (
-            <Text style={styles.header}>{title}</Text>
-          )}
-          extraData={one} //If any of your data depend on anything outside of the data prop, stick it here and treat it immutably.
-          initialNumToRender={3}
-          inverted={false}
-          ItemSeparatorComponent={() => (
-            <View style={{ borderWidth: 2, borderColor: "green" }} />
-          )}
-          ListEmptyComponent={() => (
-            <Text style={styles.header}>the list is empty</Text>
-          )}
-          ListFooterComponent={() => (
-            <Text
-              style={[
-                styles.title,
-                { backgroundColor: "gray", padding: 5, marginVertical: 15 },
-              ]}
-            >
-              this is list footer component
-            </Text>
-          )}
-          ListHeaderComponent={() => (
-            <Text
-              style={[
-                styles.title,
-                { backgroundColor: "gray", padding: 3, marginVertical: 15 },
-              ]}
-            >
-              this is list header component
-            </Text>
-          )}
-          // refreshControl={
-          //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          // } // this below two line of code is alternate to above
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-          onViewableItemsChanged={({ callback }) => null}
-          renderSectionFooter={() => (
-            <View style={{ borderWidth: 2, borderColor: "red" }}></View>
-          )}
-          SectionSeparatorComponent={() => (
-            <View style={{ borderWidth: 2, borderColor: "blue" }} />
-          )}
-          stickySectionHeadersEnabled={true}
-        />
-
-        <TouchableOpacity style={styles.scrollToTopButton} onPress={goToTop}>
-          <Text style={styles.scrollToTopText}> Top</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <StatusBar
+        animated={true}
+        backgroundColor="#61dafb"
+        barStyle={statusBarStyle}
+        showHideTransition={statusBarTransition}
+        hidden={hidden}
+      />
+      <Text style={styles.textStyle}>
+        StatusBar Visibility:{"\n"}
+        {hidden ? "Hidden" : "Visible"}
+      </Text>
+      <Text style={styles.textStyle}>
+        StatusBar Style:{"\n"}
+        {statusBarStyle}
+      </Text>
+      {Platform.OS === "ios" ? (
+        <Text style={styles.textStyle}>
+          StatusBar Transition:{"\n"}
+          {statusBarTransition}
+        </Text>
+      ) : null}
+      <View style={styles.buttonsContainer}>
+        <Button title="Toggle StatusBar" onPress={changeStatusBarVisibility} />
+        <Button title="Change StatusBar Style" onPress={changeStatusBarStyle} />
+        {Platform.OS === "ios" ? (
+          <Button
+            title="Change StatusBar Transition"
+            onPress={changeStatusBarTransition}
+          />
+        ) : null}
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 16,
+    justifyContent: "center",
+    backgroundColor: "#ECF0F1",
   },
-  item: {
-    backgroundColor: "#f9c2ff",
-    padding: 20,
-    marginVertical: 8,
-  },
-  header: {
-    fontSize: 32,
-    backgroundColor: "#fff",
-  },
-  title: {
-    fontSize: 24,
-  },
-
-  scrollToTopButton: {
-    position: "absolute",
-    bottom: 20,
-    right: 20,
-    backgroundColor: "yellow",
+  buttonsContainer: {
     padding: 10,
-    borderRadius: 5,
   },
-  scrollToTopText: {
-    color: "black",
-    fontWeight: "bold",
+  textStyle: {
+    textAlign: "center",
+    marginBottom: 8,
   },
 });
 
