@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   SectionList,
   StatusBar,
+  RefreshControl,
 } from "react-native";
 
 const DATA = [
@@ -28,7 +29,15 @@ const DATA = [
 ];
 
 const App = () => {
+  const [refreshing, setRefreshing] = React.useState(false);
   let one = 1; // one should be included in the extraData prop
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,6 +57,25 @@ const App = () => {
           <Text style={styles.header}>{title}</Text>
         )}
         extraData={one} //If any of your data depend on anything outside of the data prop, stick it here and treat it immutably.
+        initialNumToRender={3}
+        inverted={false}
+        ItemSeparatorComponent={() => (
+          <View style={{ borderWidth: 2, borderColor: "green" }} />
+        )}
+        ListEmptyComponent={() => (
+          <Text style={styles.header}>the list is empty</Text>
+        )}
+        ListFooterComponent={() => (
+          <Text style={styles.title}>this is list footer component</Text>
+        )}
+        ListHeaderComponent={() => (
+          <Text style={styles.title}>this is list header component</Text>
+        )}
+        // refreshControl={
+        //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        // } // this below two line of code is alternate to above
+        refreshing={refreshing}
+        onRefresh={onRefresh}
       />
     </SafeAreaView>
   );
