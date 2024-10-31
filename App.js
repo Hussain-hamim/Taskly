@@ -38,6 +38,8 @@ const App = () => {
         backgroundColor="#61dafb"
         barStyle={statusBarStyle}
         hidden={hidden}
+        networkActivityIndicatorVisible={true} // ios
+        translucent={true} // android
       />
       <Text style={styles.textStyle}>
         StatusBar Visibility:{"\n"}
