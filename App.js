@@ -14,11 +14,22 @@ const BoldAndBeautiful = () => {
         aria-checked={true}
         style={styles.text}
         dataDetectorType="all" // "phoneNumber", "link", "email", "none"
+        disabled={false}
+        ellipsizeMode="tail" // enum('head', 'middle', 'tail', 'clip') // On Android, when numberOfLines is set to a value higher than 1, only tail value will work correctly.
+        // numberOfLines={2}
+        id="one"
+        nativeID="two"
+        onPress={() => null}
+        onLongPress={() => null}
+        onResponderMove={() => null}
+        onResponderGrant={() => null}
+        selectable={true}
+        selectionColor="orchid"
       >
-        First part and First part and First part and First part and First part
-        and First part and First part and First part and First part and First
-        part and First part and First part and First part and First part and
-        First part and{" "}
+        this is some text this is some text this is someeeeee text this is some
+        text this is some text this is some text this is some text this is some
+        text this is some text this is some text this is some text this is some
+        text
       </Text>
     </View>
   );
