@@ -28,6 +28,7 @@ const BoldAndBeautiful = () => {
         this is some text this is some text this is someeeeee text this is some
         text this is some text this is some text this is some text this is some
         text this is some text this is some text this is some text this is some
+        text this is some text this is some text this is some text this is some
         text
       </Text>
     </View>
