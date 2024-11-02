@@ -29,7 +29,8 @@ const BoldAndBeautiful = () => {
         text this is some text this is some text this is some text this is some
         text this is some text this is some text this is some text this is some
         text this is some text this is some text this is some text this is some
-        text, study for exam so skipped the day
+        text, study for exam so skipped the day, study for exam so skipped the
+        day
       </Text>
     </View>
   );
