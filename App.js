@@ -1,5 +1,19 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
+
+function MyComponent(props) {
+  return (
+    <View {...props} style={{ flex: 1, backgroundColor: "#fff" }}>
+      <Text>My Component</Text>
+    </View>
+  );
+}
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -17,6 +31,10 @@ const App = () => {
       >
         <Text>Press Here</Text>
       </TouchableOpacity>
+      <TouchableWithoutFeedback onPress={() => alert("Pressed!")}>
+        <MyComponent />
+      </TouchableWithoutFeedback>
+      ;
     </View>
   );
 };
