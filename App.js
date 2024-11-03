@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput } from "react-native";
+import { View, TextInput, Button, Pressable } from "react-native";
 
 const MultilineTextInputExample = () => {
   const [value, onChangeText] = React.useState("Useless Multiline Placeholder");
@@ -12,11 +12,13 @@ const MultilineTextInputExample = () => {
         backgroundColor: value,
         borderBottomColor: "#000000",
         borderBottomWidth: 1,
+        margin: 50,
+        // backgroundColor: "pink",
       }}
     >
       <TextInput
         editable
-        multiline
+        // multiline
         numberOfLines={4}
         maxLength={50}
         onChangeText={(text) => onChangeText(text)}
@@ -25,11 +27,14 @@ const MultilineTextInputExample = () => {
         keyboardType="email-address"
         underlineColorAndroid="transparent"
         allowFontScaling={true}
-        autoCapitalize="characters" // words, sentences, none
+        // autoCapitalize="characters" // words, sentences, none
         autoComplete="additional-name"
         autoCorrect={true}
         autoFocus={true}
+        blurOnSubmit={true}
       />
+
+      <Button title="submit" onPress={() => null} />
     </View>
   );
 };
