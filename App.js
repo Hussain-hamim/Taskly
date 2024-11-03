@@ -1,40 +1,23 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { StyleSheet, TouchableWithoutFeedback, Text, View } from "react-native";
 
-function MyComponent(props) {
-  return (
-    <View {...props} style={{ flex: 1, backgroundColor: "#fff" }}>
-      <Text>My Component</Text>
-    </View>
-  );
-}
-
-const App = () => {
+const TouchableWithoutFeedbackExample = () => {
   const [count, setCount] = useState(0);
-  const onPress = () => setCount((prevCount) => prevCount + 1);
+
+  const onPress = () => {
+    setCount(count + 1);
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.countContainer}>
-        <Text>Count: {count}</Text>
+        <Text style={styles.countText}>Count: {count}</Text>
       </View>
-      <TouchableOpacity
-        activeOpacity={0.5}
-        style={styles.button}
-        onPress={onPress}
-      >
-        <Text>Press Here</Text>
-      </TouchableOpacity>
-      <TouchableWithoutFeedback onPress={() => alert("Pressed!")}>
-        <MyComponent />
+      <TouchableWithoutFeedback onPress={onPress}>
+        <View style={styles.button}>
+          <Text>Touch Here</Text>
+        </View>
       </TouchableWithoutFeedback>
-      ;
     </View>
   );
 };
@@ -47,13 +30,16 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: "#DDD",
+    backgroundColor: "#DDDDDD",
     padding: 10,
   },
   countContainer: {
     alignItems: "center",
     padding: 10,
   },
+  countText: {
+    color: "#FF00FF",
+  },
 });
 
-export default App;
+export default TouchableWithoutFeedbackExample;
