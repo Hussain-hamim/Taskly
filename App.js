@@ -22,6 +22,7 @@ const TextInputExample = () => {
         ref={focus}
       />
       <Button title="Focus" onPress={() => focus.current.focus()} />
+      <Button title="Blur" onPress={() => focus.current.blur()} />
       <TextInput
         style={styles.input}
         onChangeText={onChangeNumber}
