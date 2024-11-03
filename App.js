@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import { View, TextInput, Button, Pressable, Text } from "react-native";
 
 const MultilineTextInputExample = () => {
   const [value, onChangeText] = React.useState("Useless Multiline Placeholder");
   const [text, setText] = React.useState("");
   const [color, setColor] = React.useState("");
+  const [clear, setClear] = React.useState("");
+  const clearRef = useRef(null);
 
   // If you type something in the text box that is a color, the background will change to that
   // color.
@@ -61,6 +63,9 @@ const MultilineTextInputExample = () => {
           selectionColor="lightgray"
           selection={true}
           // textAlign="center"
+          underlineColorAndroid={"green"}
+          autoFocus
+          ref={clearRef}
         />
         <TextInput
           value={text}
@@ -75,6 +80,7 @@ const MultilineTextInputExample = () => {
       </View>
 
       <Button title="submit" onPress={() => null} />
+      <Button title="clear" onPress={() => clearRef.current.clear()} />
       <Text>{text}</Text>
     </View>
   );
