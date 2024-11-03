@@ -10,7 +10,11 @@ const App = () => {
       <View style={styles.countContainer}>
         <Text>Count: {count}</Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={onPress}>
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={styles.button}
+        onPress={onPress}
+      >
         <Text>Press Here</Text>
       </TouchableOpacity>
     </View>
