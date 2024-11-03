@@ -1,26 +1,18 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const TouchableHighlightExample = () => {
+const App = () => {
   const [count, setCount] = useState(0);
-  const onPress = () => setCount(count + 1);
+  const onPress = () => setCount((prevCount) => prevCount + 1);
 
   return (
     <View style={styles.container}>
-      <TouchableHighlight
-        onPress={onPress}
-        activeOpacity={0.7}
-        underlayColor={"yellow"}
-        onHideUnderlay={() => null} // called after the underlay is hidden
-        onShowUnderlay={() => null} // called after the underlay is shown
-      >
-        <View style={styles.button}>
-          <Text>Touch Here</Text>
-        </View>
-      </TouchableHighlight>
       <View style={styles.countContainer}>
-        <Text style={styles.countText}>{count || null}</Text>
+        <Text>Count: {count}</Text>
       </View>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
+        <Text>Press Here</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -33,16 +25,13 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
+    backgroundColor: "#DDD",
     padding: 10,
   },
   countContainer: {
     alignItems: "center",
     padding: 10,
   },
-  countText: {
-    color: "#FF00FF",
-  },
 });
 
-export default TouchableHighlightExample;
+export default App;
