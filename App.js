@@ -4,6 +4,7 @@ import { View, TextInput, Button, Pressable, Text } from "react-native";
 const MultilineTextInputExample = () => {
   const [value, onChangeText] = React.useState("Useless Multiline Placeholder");
   const [text, setText] = React.useState("");
+  const [color, setColor] = React.useState("");
 
   // If you type something in the text box that is a color, the background will change to that
   // color.
@@ -46,7 +47,32 @@ const MultilineTextInputExample = () => {
           console.log(eventCount);
         }}
       />
-      <TextInput value="hello" onChangeText={() => null} />
+      <View>
+        <TextInput
+          style={{ padding: 20 }}
+          value={text}
+          onChangeText={(text) => setText(text)}
+          onFocus={() => setColor("orchid")}
+          onScroll={() => console.log("scrolling...")}
+          onSelectionChange={() => console.log("selection changed")}
+          placeholder="this is placeholder text"
+          placeholderTextColor="red"
+          // selection={{ start: 1, end: 5 }}
+          selectionColor="lightgray"
+          selection={true}
+          // textAlign="center"
+        />
+        <TextInput
+          value={text}
+          onChangeText={(text) => setText(text)}
+          // readOnly
+          backgroundColor="white"
+          returnKeyLabel="name"
+          returnKeyType="google"
+          selection={{ start: 1, end: 5 }}
+          selectionColor="lightgray"
+        />
+      </View>
 
       <Button title="submit" onPress={() => null} />
       <Text>{text}</Text>
