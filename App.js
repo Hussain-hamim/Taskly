@@ -1,9 +1,17 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, TextInput } from "react-native";
+import React, { useRef, useState } from "react";
+import {
+  Button,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+} from "react-native";
 
 const TextInputExample = () => {
   const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState("");
+
+  const focus = useRef(null);
 
   return (
     <SafeAreaView>
@@ -11,7 +19,9 @@ const TextInputExample = () => {
         style={styles.input}
         onChangeText={onChangeText}
         value={text}
+        ref={focus}
       />
+      <Button title="Focus" onPress={() => focus.current.focus()} />
       <TextInput
         style={styles.input}
         onChangeText={onChangeNumber}
