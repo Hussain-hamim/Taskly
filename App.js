@@ -1,46 +1,37 @@
-import React, { useRef, useState } from "react";
-import {
-  Button,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-} from "react-native";
+import React from "react";
+import { View, TextInput } from "react-native";
 
-const TextInputExample = () => {
-  const [text, onChangeText] = React.useState("Useless Text");
-  const [number, onChangeNumber] = React.useState("");
+const MultilineTextInputExample = () => {
+  const [value, onChangeText] = React.useState("Useless Multiline Placeholder");
 
-  const focus = useRef(null);
-
+  // If you type something in the text box that is a color, the background will change to that
+  // color.
   return (
-    <SafeAreaView>
+    <View
+      style={{
+        backgroundColor: value,
+        borderBottomColor: "#000000",
+        borderBottomWidth: 1,
+      }}
+    >
       <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-        ref={focus}
+        editable
+        multiline
+        numberOfLines={4}
+        maxLength={50}
+        onChangeText={(text) => onChangeText(text)}
+        value={value}
+        style={{ padding: 10 }}
+        keyboardType="email-address"
+        underlineColorAndroid="transparent"
+        allowFontScaling={true}
+        autoCapitalize="characters" // words, sentences, none
+        autoComplete="additional-name"
+        autoCorrect={true}
+        autoFocus={true}
       />
-      <Button title="Focus" onPress={() => focus.current.focus()} />
-      <Button title="Blur" onPress={() => focus.current.blur()} />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-      />
-    </SafeAreaView>
+    </View>
   );
 };
 
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});
-
-export default TextInputExample;
+export default MultilineTextInputExample;
