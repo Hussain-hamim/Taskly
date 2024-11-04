@@ -1,78 +1,57 @@
-import React from "react";
-import {
-  SafeAreaView,
-  View,
-  VirtualizedList,
-  StyleSheet,
-  Text,
-  StatusBar,
-} from "react-native";
-
-const getItem = (_data, index) => ({
-  id: Math.random().toString(12).substring(0),
-  title: `Item ${index + 1}`,
-});
-
-const Item = ({ title }) => {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-};
+import React, { useState, useEffect } from "react";
+import { AccessibilityInfo, View, Text, StyleSheet } from "react-native";
 
 const App = () => {
+  const [reduceMotionEnabled, setReduceMotionEnabled] = useState(false);
+  const [screenReaderEnabled, setScreenReaderEnabled] = useState(false);
+
+  useEffect(() => {
+    const reduceMotionChangedSubscription = AccessibilityInfo.addEventListener(
+      "reduceMotionChanged",
+      (isReduceMotionEnabled) => {
+        setReduceMotionEnabled(isReduceMotionEnabled);
+      }
+    );
+    const screenReaderChangedSubscription = AccessibilityInfo.addEventListener(
+      "screenReaderChanged",
+      (isScreenReaderEnabled) => {
+        setScreenReaderEnabled(isScreenReaderEnabled);
+      }
+    );
+
+    AccessibilityInfo.isReduceMotionEnabled().then((isReduceMotionEnabled) => {
+      setReduceMotionEnabled(isReduceMotionEnabled);
+    });
+    AccessibilityInfo.isScreenReaderEnabled().then((isScreenReaderEnabled) => {
+      setScreenReaderEnabled(isScreenReaderEnabled);
+    });
+
+    return () => {
+      reduceMotionChangedSubscription.remove();
+      screenReaderChangedSubscription.remove();
+    };
+  }, []);
+
   return (
-    <>
-      <SafeAreaView style={styles.container}>
-        <VirtualizedList
-          // data={} // but you can override getItem
-          getItem={getItem}
-          renderItem={({ item }) => <Item title={item.title} />}
-          getItemCount={(_data) => 10}
-          initialNumToRender={4}
-          keyExtractor={(item) => item.id}
-          // CellRendererComponent={{id, title}}
-          ItemSeparatorComponent={() => (
-            <View style={{ borderWidth: 2, borderColor: "red" }} />
-          )}
-          ListEmptyComponent={() => (
-            <View>
-              <Text>this is empty list</Text>
-            </View>
-          )}
-          ListHeaderComponent={() => (
-            <View>
-              <Text>this is header component</Text>
-            </View>
-          )}
-          // ListFooterComponent={}
-          // ListFooterComponentStyle={{}}
-          ListHeaderComponentStyle={{ backgroundColor: "green" }}
-          // extraData={}
-          // horizontal
-          // onRefresh={() => null}
-        />
-      </SafeAreaView>
-    </>
+    <View style={styles.container}>
+      <Text style={styles.status}>
+        The reduce motion is {reduceMotionEnabled ? "enabled" : "disabled"}.
+      </Text>
+      <Text style={styles.status}>
+        The screen reader is {screenReaderEnabled ? "enabled" : "disabled"}.
+      </Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight,
-  },
-  item: {
-    backgroundColor: "#f9c2ff",
-    height: 150,
+    alignItems: "center",
     justifyContent: "center",
-    marginVertical: 8,
-    marginHorizontal: 16,
-    padding: 20,
   },
-  title: {
-    fontSize: 32,
+  status: {
+    margin: 30,
   },
 });
 
