@@ -26,11 +26,32 @@ const App = () => {
     <>
       <SafeAreaView style={styles.container}>
         <VirtualizedList
+          // data={} // but you can override getItem
           getItem={getItem}
           renderItem={({ item }) => <Item title={item.title} />}
           getItemCount={(_data) => 10}
           initialNumToRender={4}
           keyExtractor={(item) => item.id}
+          // CellRendererComponent={{id, title}}
+          ItemSeparatorComponent={() => (
+            <View style={{ borderWidth: 2, borderColor: "red" }} />
+          )}
+          ListEmptyComponent={() => (
+            <View>
+              <Text>this is empty list</Text>
+            </View>
+          )}
+          ListHeaderComponent={() => (
+            <View>
+              <Text>this is header component</Text>
+            </View>
+          )}
+          // ListFooterComponent={}
+          // ListFooterComponentStyle={{}}
+          ListHeaderComponentStyle={{ backgroundColor: "green" }}
+          // extraData={}
+          // horizontal
+          // onRefresh={() => null}
         />
       </SafeAreaView>
     </>
