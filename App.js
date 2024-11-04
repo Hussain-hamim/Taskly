@@ -22,6 +22,21 @@ const App = () => {
       },
     ]);
 
+  const alertMe2 = () =>
+    Alert.alert(
+      "title of alert",
+      "message of alert",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("canceled..."),
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => console.log("done...") },
+      ],
+      { cancelable: true, onDismiss: () => console.log("dismissed...") }
+    );
+
   const createThreeButtonAlert = () =>
     Alert.alert("Alert Title", "My Alert Msg", [
       {
@@ -36,11 +51,31 @@ const App = () => {
       { text: "OK", onPress: () => console.log("OK Pressed") },
     ]);
 
+  const alertMe3 = () =>
+    Alert.alert(
+      "Title",
+      "Message",
+      [
+        {
+          text: "Cancel",
+          onPress: () => Alert.alert("Processed", "operation canceled"),
+          style: "cancel",
+        },
+        {
+          text: "Proceed",
+          onPress: () => Alert.alert("Processed", "operation completed"),
+        },
+      ],
+      { cancelable: true, onDismiss: () => console.log("dismissed") }
+    );
+
   return (
     <View style={styles.container}>
       <Button title={"2-Button Alert"} onPress={createTwoButtonAlert} />
       <Button title={"3-Button Alert"} onPress={createThreeButtonAlert} />
       <Button title={"4-Button Alert"} onPress={alertMe} />
+      <Button title={"4-Button Alert"} onPress={alertMe2} />
+      <Button title={"Final-Button Alert"} onPress={alertMe3} />
     </View>
   );
 };
