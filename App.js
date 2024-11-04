@@ -1,28 +1,56 @@
 import React from "react";
-import { View, Text, StatusBar } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  VirtualizedList,
+  StyleSheet,
+  Text,
+  StatusBar,
+} from "react-native";
 
-const ViewBoxesWithColorAndText = () => {
+const getItem = (_data, index) => ({
+  id: Math.random().toString(12).substring(0),
+  title: `Item ${index + 1}`,
+});
+
+const getItemCount = (_data) => 50;
+
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
+
+const App = () => {
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        height: 100,
-        padding: 20,
-      }}
-      collapsable
-      focusable
-      hitSlop={{ bottom: 10, right: 0, top: 10, left: 0 }}
-      needsOffscreenAlphaCompositing
-      // onMoveShouldSetResponder={{ nativeEvent: { pressEvent: true } }}
-      // onResponderGrant={}
-      // onResponderMove={}
-    >
-      <StatusBar barStyle="default" backgroundColor={"orchid"} />
-      <View style={{ backgroundColor: "blue", flex: 0.3 }} />
-      <View style={{ backgroundColor: "red", flex: 0.5 }} />
-      <Text>Hello World!</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <VirtualizedList
+        initialNumToRender={4}
+        renderItem={({ item }) => <Item title={item.title} />}
+        keyExtractor={(item) => item.id}
+        getItemCount={getItemCount}
+        getItem={getItem}
+      />
+    </SafeAreaView>
   );
 };
 
-export default ViewBoxesWithColorAndText;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight,
+  },
+  item: {
+    backgroundColor: "#f9c2ff",
+    height: 150,
+    justifyContent: "center",
+    marginVertical: 8,
+    marginHorizontal: 16,
+    padding: 20,
+  },
+  title: {
+    fontSize: 32,
+  },
+});
+
+export default App;
