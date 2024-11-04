@@ -13,25 +13,27 @@ const getItem = (_data, index) => ({
   title: `Item ${index + 1}`,
 });
 
-const getItemCount = (_data) => 50;
-
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+const Item = ({ title }) => {
+  return (
+    <View style={styles.item}>
+      <Text style={styles.title}>{title}</Text>
+    </View>
+  );
+};
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <VirtualizedList
-        initialNumToRender={4}
-        renderItem={({ item }) => <Item title={item.title} />}
-        keyExtractor={(item) => item.id}
-        getItemCount={getItemCount}
-        getItem={getItem}
-      />
-    </SafeAreaView>
+    <>
+      <SafeAreaView style={styles.container}>
+        <VirtualizedList
+          getItem={getItem}
+          renderItem={({ item }) => <Item title={item.title} />}
+          getItemCount={(_data) => 10}
+          initialNumToRender={4}
+          keyExtractor={(item) => item.id}
+        />
+      </SafeAreaView>
+    </>
   );
 };
 
