@@ -1,45 +1,46 @@
-import React, { useState, useEffect } from "react";
-import { AccessibilityInfo, View, Text, StyleSheet } from "react-native";
+import React from "react";
+import { View, StyleSheet, Button, Alert } from "react-native";
 
 const App = () => {
-  const [reduceMotionEnabled, setReduceMotionEnabled] = useState(false);
-  const [screenReaderEnabled, setScreenReaderEnabled] = useState(false);
+  const createTwoButtonAlert = () =>
+    Alert.alert("Alert Title", "My Alert Msg", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") },
+    ]);
 
-  useEffect(() => {
-    const reduceMotionChangedSubscription = AccessibilityInfo.addEventListener(
-      "reduceMotionChanged",
-      (isReduceMotionEnabled) => {
-        setReduceMotionEnabled(isReduceMotionEnabled);
-      }
-    );
-    const screenReaderChangedSubscription = AccessibilityInfo.addEventListener(
-      "screenReaderChanged",
-      (isScreenReaderEnabled) => {
-        setScreenReaderEnabled(isScreenReaderEnabled);
-      }
-    );
+  const alertMe = () =>
+    Alert.alert("Hey bro", "this the message", [
+      { text: "Ok", onPress: () => Alert.alert("Done bro") },
+      {
+        text: "Cancel",
+        onPress: () => Alert.alert("Canceled bro"),
+        style: "cancel",
+      },
+    ]);
 
-    AccessibilityInfo.isReduceMotionEnabled().then((isReduceMotionEnabled) => {
-      setReduceMotionEnabled(isReduceMotionEnabled);
-    });
-    AccessibilityInfo.isScreenReaderEnabled().then((isScreenReaderEnabled) => {
-      setScreenReaderEnabled(isScreenReaderEnabled);
-    });
-
-    return () => {
-      reduceMotionChangedSubscription.remove();
-      screenReaderChangedSubscription.remove();
-    };
-  }, []);
+  const createThreeButtonAlert = () =>
+    Alert.alert("Alert Title", "My Alert Msg", [
+      {
+        text: "Ask me later",
+        onPress: () => console.log("Ask me later pressed"),
+      },
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => console.log("OK Pressed") },
+    ]);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.status}>
-        The reduce motion is {reduceMotionEnabled ? "enabled" : "disabled"}.
-      </Text>
-      <Text style={styles.status}>
-        The screen reader is {screenReaderEnabled ? "enabled" : "disabled"}.
-      </Text>
+      <Button title={"2-Button Alert"} onPress={createTwoButtonAlert} />
+      <Button title={"3-Button Alert"} onPress={createThreeButtonAlert} />
+      <Button title={"4-Button Alert"} onPress={alertMe} />
     </View>
   );
 };
@@ -47,11 +48,8 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "space-around",
     alignItems: "center",
-    justifyContent: "center",
-  },
-  status: {
-    margin: 30,
   },
 });
 
