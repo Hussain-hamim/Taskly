@@ -11,6 +11,7 @@ import {
 const App = () => {
   // fadeAnim will be used as the value for opacity. Initial Value: 0
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const fadeAnim2 = useRef(new Animated.Value(0)).current;
 
   const fadeIn = () => {
     // Will change fadeAnim value to 1 in 5 seconds
@@ -21,6 +22,14 @@ const App = () => {
     }).start();
   };
 
+  const fadeIn2 = () => {
+    Animated.timing(fadeAnim2, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+    });
+  };
+
   const fadeOut = () => {
     // Will change fadeAnim value to 0 in 3 seconds
     Animated.timing(fadeAnim, {
@@ -29,6 +38,10 @@ const App = () => {
       useNativeDriver: true,
     }).start();
   };
+
+  // Animated.value(0)
+  // Animated.timing(value, {toValue: 1})
+  // <Animated.View></Animated.View>
 
   return (
     <SafeAreaView style={styles.container}>
@@ -43,8 +56,14 @@ const App = () => {
       >
         <Text style={styles.fadingText}>Fading View!</Text>
       </Animated.View>
+
+      <Animated.View style={[styles.fadingContainer, { opacity: fadeAnim2 }]}>
+        <Text style={styles.fadingText}>this is my fading text...</Text>
+      </Animated.View>
+
       <View style={styles.buttonRow}>
         <Button title="Fade In View" onPress={fadeIn} />
+        <Button title="Fade In 2 View" onPress={fadeIn} />
         <Button title="Fade Out View" onPress={fadeOut} />
       </View>
     </SafeAreaView>
