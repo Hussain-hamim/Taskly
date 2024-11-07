@@ -14,6 +14,7 @@ const AppStateExample = () => {
       ) {
         console.log("App has come to the foreground!");
         console.log("skipped for exam!");
+        console.log("skipped for exam!");
       }
 
       appState.current = nextAppState;
