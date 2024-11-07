@@ -4,6 +4,7 @@ import { AppState, StyleSheet, Text, View } from "react-native";
 const AppStateExample = () => {
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
+  console.log(appState.current);
 
   useEffect(() => {
     const subscription = AppState.addEventListener("change", (nextAppState) => {
@@ -12,6 +13,7 @@ const AppStateExample = () => {
         nextAppState === "active"
       ) {
         console.log("App has come to the foreground!");
+        console.log("skipped for exam!");
       }
 
       appState.current = nextAppState;
