@@ -7,8 +7,8 @@ const AppStateExample = () => {
   console.log(appState.current);
 
   useEffect(() => {
-    // Received when the app gains focus (the user is interacting with the app).
-    const subscription = AppState.addEventListener("focus", (nextAppState) => {
+    // Received when the user is not actively interacting with the app
+    const subscription = AppState.addEventListener("blur", (nextAppState) => {
       if (
         appState.current.match(/inactive|background/) &&
         nextAppState === "active"
