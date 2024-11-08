@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { AppState, StyleSheet, Text, View } from "react-native";
 
 const AppStateExample = () => {
+  // currentState is a properties
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
   console.log(appState.current);
