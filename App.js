@@ -7,14 +7,13 @@ const AppStateExample = () => {
   console.log(appState.current);
 
   useEffect(() => {
-    const subscription = AppState.addEventListener("change", (nextAppState) => {
+    // Received when the app gains focus (the user is interacting with the app).
+    const subscription = AppState.addEventListener("focus", (nextAppState) => {
       if (
         appState.current.match(/inactive|background/) &&
         nextAppState === "active"
       ) {
         console.log("App has come to the foreground!");
-        console.log("skipped for exam!");
-        console.log("skipped for exam!");
       }
 
       appState.current = nextAppState;
