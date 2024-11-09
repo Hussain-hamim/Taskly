@@ -17,6 +17,7 @@ const App = () => {
       ({ window, screen }) => {
         setDimensions({ window, screen });
         console.log("taking holiday");
+        console.log("taking holiday");
       }
     );
     return () => subscription?.remove();
