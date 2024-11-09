@@ -1,35 +1,43 @@
-import React, { useRef, useState, useEffect } from "react";
-import { AppState, StyleSheet, Text, View } from "react-native";
+/* eslint-disable react/jsx-key */
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Text, Dimensions } from "react-native";
 
-const AppStateExample = () => {
-  // currentState is a properties
-  const appState = useRef(AppState.currentState);
-  const [appStateVisible, setAppStateVisible] = useState(appState.current);
-  console.log(appState.current);
+const windowDimensions = Dimensions.get("window");
+const screenDimensions = Dimensions.get("screen");
+
+const App = () => {
+  const [dimensions, setDimensions] = useState({
+    window: windowDimensions,
+    screen: screenDimensions,
+  });
 
   useEffect(() => {
-    // Received when the user is not actively interacting with the app
-    const subscription = AppState.addEventListener("blur", (nextAppState) => {
-      if (
-        appState.current.match(/inactive|background/) &&
-        nextAppState === "active"
-      ) {
-        console.log("App has come to the foreground!");
+    const subscription = Dimensions.addEventListener(
+      "change",
+      ({ window, screen }) => {
+        setDimensions({ window, screen });
+        console.log("taking holiday");
       }
-
-      appState.current = nextAppState;
-      setAppStateVisible(appState.current);
-      console.log("AppState", appState.current);
-    });
-
-    return () => {
-      subscription.remove();
-    };
-  }, []);
+    );
+    return () => subscription?.remove();
+  });
 
   return (
     <View style={styles.container}>
-      <Text>Current state is: {appStateVisible}</Text>
+      <Text style={styles.header}>Window Dimensions</Text>
+
+      {Object.entries(dimensions.window).map(([key, value]) => (
+        <Text>
+          {key} - {value}
+        </Text>
+      ))}
+
+      <Text style={styles.header}>Screen Dimensions</Text>
+      {Object.entries(dimensions.screen).map(([key, value]) => (
+        <Text>
+          {key} - {value}
+        </Text>
+      ))}
     </View>
   );
 };
@@ -40,6 +48,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  header: {
+    fontSize: 16,
+    marginVertical: 10,
+  },
 });
 
-export default AppStateExample;
+export default App;
