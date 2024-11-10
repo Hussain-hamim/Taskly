@@ -5,10 +5,18 @@ import { View, StyleSheet, Text, Dimensions } from "react-native";
 const windowDimensions = Dimensions.get("window");
 const screenDimensions = Dimensions.get("screen");
 
+const windowDimension2 = Dimensions.get("window");
+const screenDimension2 = Dimensions.get("screen");
+
 const App = () => {
   const [dimensions, setDimensions] = useState({
     window: windowDimensions,
     screen: screenDimensions,
+  });
+
+  const [dime, setdime] = useState({
+    window: windowDimension2,
+    screen: screenDimension2,
   });
 
   useEffect(() => {
@@ -16,11 +24,19 @@ const App = () => {
       "change",
       ({ window, screen }) => {
         setDimensions({ window, screen });
-        console.log("taking holiday");
-        console.log("taking holiday");
       }
     );
     return () => subscription?.remove();
+  });
+
+  useEffect(() => {
+    const sub = Dimensions.addEventListener("change", ({ window, screen }) => {
+      setdime({ window, screen });
+    });
+
+    return () => {
+      sub?.remove();
+    };
   });
 
   return (
