@@ -6,9 +6,6 @@ export default function CounterScreen() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => router.navigate("/idea")}>
-        <Text style={styles.text}>go to idea</Text>
-      </TouchableOpacity>
       <Text style={styles.text}>Counter</Text>
     </View>
   );

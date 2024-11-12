@@ -16,9 +16,6 @@ import { Link } from "expo-router";
 const App = () => {
   return (
     <View style={styles.container}>
-      <Link href="/counter" style={{ fontSize: 24, textAlign: "center" }}>
-        go to counter
-      </Link>
       <ShoppingListItem name="Coffee" />
       <ShoppingListItem name="Tea" isCompleted />
       <ShoppingListItem name="Sugar" isCompleted />
