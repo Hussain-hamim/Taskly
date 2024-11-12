@@ -9,9 +9,10 @@ export default [
   pluginReact.configs.flat.recommended,
   {
     rules: {
-      "no-unused-vars": "off",
+      // "no-unused-vars": "off",
       "react/prop-types": "off",
       "react/react-in-jsx-scope": "off",
+      "react-native/no-unused-styles": "error",
     },
   },
 ];
