@@ -1,6 +1,8 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { theme } from "../theme";
 
+import { AntDesign } from "@expo/vector-icons";
+
 // the prop passed in as object so we have to destructure it
 function ShoppingListItem({ name, isCompleted }) {
   const handleDelete = () => {
@@ -37,7 +39,11 @@ function ShoppingListItem({ name, isCompleted }) {
           isCompleted ? styles.completedButton : undefined,
         ]}
       >
-        <Text style={[styles.buttonText]}>Delete</Text>
+        <AntDesign
+          name="closecircle"
+          color={isCompleted ? theme.colorGray : theme.colorRed}
+          size={24}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     borderBottomColor: theme.colorCerulean,
     borderBottomWidth: 1,
-    paddingHorizontal: 8,
+    paddingHorizontal: 18,
     paddingVertical: 16,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -60,7 +66,7 @@ const styles = StyleSheet.create({
     borderBottomColor: theme.colorLightGray,
   },
   completedButton: {
-    backgroundColor: theme.colorGray,
+    // backgroundColor: theme.colorGray,
   },
   completedText: {
     textDecorationLine: "line-through",
@@ -69,7 +75,7 @@ const styles = StyleSheet.create({
   },
   itemText: { fontSize: 18, fontWeight: "200" },
   button: {
-    backgroundColor: theme.colorBlack,
+    // backgroundColor: theme.colorBlack,
     padding: 8,
     borderRadius: 6,
   },

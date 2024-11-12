@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "react-native.dev pro",
-    "slug": "react-native.dev pro",
+    "name": "taskly",
+    "slug": "taskly",
+    "scheme": "taskly", // this has been added
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,6 +23,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": ["expo-router"]
   }
 }
