@@ -38,7 +38,11 @@ const App = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+      stickyHeaderIndices={[0]}
+    >
       <TextInput
         value={value}
         onChangeText={setValue}
@@ -48,17 +52,16 @@ const App = () => {
         onSubmitEditing={handleSubmit}
         clearButtonMode="always"
       />
-      <ScrollView>
-        {shoppingList.map((item) => (
-          <ShoppingListItem
-            name={item.name}
-            key={item.id}
-            shoppingList={shoppingList}
-            setShoppingList={setShoppingList}
-          />
-        ))}
-      </ScrollView>
-    </View>
+
+      {shoppingList.map((item) => (
+        <ShoppingListItem
+          name={item.name}
+          key={item.id}
+          shoppingList={shoppingList}
+          setShoppingList={setShoppingList}
+        />
+      ))}
+    </ScrollView>
   );
 };
 export default App;
@@ -67,16 +70,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 12,
+    padding: 12,
   },
   textInput: {
-    backgroundColor: theme.colorLightGray,
+    borderColor: theme.colorLightGray,
     borderWidth: 2,
     padding: 12,
     marginHorizontal: 12,
     marginBottom: 12,
     fontSize: 18,
     borderRadius: 50,
-    borderColor: theme.colorCerulean,
+    backgroundColor: theme.colorWhite,
+  },
+  contentContainer: {
+    paddingBottom: 24,
   },
 });
