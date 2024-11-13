@@ -46,10 +46,16 @@ const App = () => {
         style={styles.textInput}
         keyboardType="default"
         onSubmitEditing={handleSubmit}
+        clearButtonMode="always"
       />
       <ScrollView>
         {shoppingList.map((item) => (
-          <ShoppingListItem name={item.name} key={item.id} />
+          <ShoppingListItem
+            name={item.name}
+            key={item.id}
+            shoppingList={shoppingList}
+            setShoppingList={setShoppingList}
+          />
         ))}
       </ScrollView>
     </View>

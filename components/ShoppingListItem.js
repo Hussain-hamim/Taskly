@@ -4,14 +4,31 @@ import { theme } from "../theme";
 import { AntDesign } from "@expo/vector-icons";
 
 // the prop passed in as object so we have to destructure it
-function ShoppingListItem({ name, isCompleted }) {
-  const handleDelete = () => {
+function ShoppingListItem({
+  name,
+  isCompleted,
+  shoppingList,
+  setShoppingList,
+}) {
+  const handleDelete = (id) => {
     Alert.alert(
       `Are you sure you want to delete ${name}?`,
       "it will be gone for good",
       [
-        { text: "Cancel", onPress: () => null, style: "cancel" },
-        { text: "Yes", onPress: () => null, style: "destructive" },
+        {
+          text: "Cancel",
+          onPress: () => null(),
+          style: "cancel",
+        },
+        {
+          text: "Yes",
+          onPress: () =>
+            setShoppingList([
+              ...shoppingList,
+              shoppingList.filter((item) => id !== item.id),
+            ]),
+          style: "destructive",
+        },
       ]
     );
   };
