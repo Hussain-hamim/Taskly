@@ -10,6 +10,7 @@ import {
   Alert,
   TextInput,
   ScrollView,
+  FlatList,
 } from "react-native";
 
 import ShoppingListItem from "../components/ShoppingListItem";
@@ -21,6 +22,13 @@ const initialList = [
   { id: 2, name: "Tea" },
   { id: 3, name: "Sugar" },
 ];
+
+const testData = new Array(100).fill(null).map((item, index) => ({
+  id: String(index),
+  name: String("item " + (index + 1)),
+}));
+
+console.log(testData);
 
 const App = () => {
   const [value, setValue] = useState("");
@@ -38,30 +46,33 @@ const App = () => {
   };
 
   return (
-    <ScrollView
+    <FlatList
+      data={shoppingList}
+      renderItem={({ item }) => {
+        // console.log(item);
+        return <ShoppingListItem name={item.name} />;
+      }}
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
       stickyHeaderIndices={[0]}
-    >
-      <TextInput
-        value={value}
-        onChangeText={setValue}
-        placeholder="E.g. Coffee"
-        style={styles.textInput}
-        keyboardType="default"
-        onSubmitEditing={handleSubmit}
-        clearButtonMode="always"
-      />
-
-      {shoppingList.map((item) => (
-        <ShoppingListItem
-          name={item.name}
-          key={item.id}
-          shoppingList={shoppingList}
-          setShoppingList={setShoppingList}
+      ListEmptyComponent={
+        <View style={styles.listEmptyContainer}>
+          <Text>Your shopping list is empty</Text>
+        </View>
+      }
+      ListHeaderComponent={
+        <TextInput
+          value={value}
+          onChangeText={setValue}
+          placeholder="E.g. Coffee"
+          style={styles.textInput}
+          keyboardType="default"
+          onSubmitEditing={handleSubmit}
+          clearButtonMode="always"
+          returnKeyType="done"
         />
-      ))}
-    </ScrollView>
+      }
+    />
   );
 };
 export default App;
@@ -84,5 +95,10 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingBottom: 24,
+  },
+  listEmptyContainer: {
+    padding: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
