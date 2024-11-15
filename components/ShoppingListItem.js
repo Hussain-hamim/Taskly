@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { theme } from "../theme";
 
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 
 // the prop passed in as object so we have to destructure it
 function ShoppingListItem({ name, isCompleted, onDelete, onToggleComplete }) {
@@ -39,14 +39,21 @@ function ShoppingListItem({ name, isCompleted, onDelete, onToggleComplete }) {
         isCompleted ? styles.completedContainer : undefined,
       ]}
     >
-      <Text
-        style={[
-          styles.itemText,
-          isCompleted ? styles.completedText : undefined,
-        ]}
-      >
-        {name}
-      </Text>
+      <View style={styles.row}>
+        <Entypo
+          name={isCompleted ? "check" : "circle"}
+          size={24}
+          color={isCompleted ? theme.colorGray : theme.colorCerulean}
+        />
+        <Text
+          style={[
+            styles.itemText,
+            isCompleted ? styles.completedText : undefined,
+          ]}
+        >
+          {name}
+        </Text>
+      </View>
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={handleDelete}
@@ -80,6 +87,7 @@ const styles = StyleSheet.create({
   completedContainer: {
     backgroundColor: theme.colorLightGray,
     borderBottomColor: theme.colorLightGray,
+    borderRadius: 12,
   },
   completedButton: {
     // backgroundColor: theme.colorGray,
@@ -89,7 +97,7 @@ const styles = StyleSheet.create({
     textDecorationColor: theme.colorGray,
     color: theme.colorGray,
   },
-  itemText: { fontSize: 18, fontWeight: "200" },
+  itemText: { fontSize: 18, fontWeight: "200", flex: 1 },
   button: {
     // backgroundColor: theme.colorBlack,
     padding: 8,
@@ -100,5 +108,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "uppercase",
     letterSpacing: 1,
+  },
+  row: {
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "center",
+    flex: 1,
   },
 });

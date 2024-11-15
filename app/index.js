@@ -32,12 +32,16 @@ console.log(testData);
 
 const App = () => {
   const [value, setValue] = useState("");
-  const [shoppingList, setShoppingList] = useState(initialList);
+  const [shoppingList, setShoppingList] = useState([]);
 
   const handleSubmit = () => {
     if (value) {
       const newShoppingList = [
-        { id: new Date().toTimeString(), name: value },
+        {
+          id: new Date().toTimeString(),
+          name: value,
+          lastUpdatedTimeStamp: Date.now(),
+        },
         ...shoppingList,
       ];
       setShoppingList(newShoppingList);
@@ -55,6 +59,7 @@ const App = () => {
       if (item.id === id) {
         return {
           ...item,
+          lastUpdatedTimeStamp: Date.now(),
           completedAtTimeStamp: item.completedAtTimeStamp
             ? undefined
             : Date.now(),
@@ -67,7 +72,7 @@ const App = () => {
 
   return (
     <FlatList
-      data={shoppingList}
+      data={orderShoppingList(shoppingList)}
       renderItem={({ item }) => (
         <ShoppingListItem
           name={item.name}
@@ -101,11 +106,32 @@ const App = () => {
 };
 export default App;
 
+function orderShoppingList(shoppingList) {
+  return shoppingList.sort((item1, item2) => {
+    if (item1.completedAtTimeStamp && item2.completedAtTimeStamp) {
+      return item2.completedAtTimeStamp - item1.completedAtTimeStamp;
+    }
+
+    if (item1.completedAtTimeStamp && !item2.completedAtTimeStamp) {
+      return 1;
+    }
+
+    if (!item1.completedAtTimeStamp && item2.completedAtTimeStamp) {
+      return -1;
+    }
+
+    if (!item1.completedAtTimeStamp && !item2.completedAtTimeStamp) {
+      return item2.completedAtTimeStamp - item1.completedAtTimeStamp;
+    }
+    return 0;
+  });
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    padding: 12,
+    paddingVertical: 12,
   },
   textInput: {
     borderColor: theme.colorLightGray,
