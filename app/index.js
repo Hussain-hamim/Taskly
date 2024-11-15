@@ -16,6 +16,7 @@ import {
 import ShoppingListItem from "../components/ShoppingListItem";
 import { Link } from "expo-router";
 import { theme } from "../theme";
+import { getFormStorage, saveToStorage } from "../utils/storage";
 
 const initialList = [
   { id: 1, name: "Coffee" },
@@ -30,9 +31,21 @@ const testData = new Array(100).fill(null).map((item, index) => ({
 
 console.log(testData);
 
+const storageKey = "shopping-list";
+
 const App = () => {
   const [value, setValue] = useState("");
   const [shoppingList, setShoppingList] = useState([]);
+
+  useState(() => {
+    const fetchInitial = async () => {
+      const data = await getFormStorage(storageKey);
+      if (data) {
+        setShoppingList(data);
+      }
+    };
+    fetchInitial();
+  }, []);
 
   const handleSubmit = () => {
     if (value) {
@@ -45,6 +58,7 @@ const App = () => {
         ...shoppingList,
       ];
       setShoppingList(newShoppingList);
+      saveToStorage(storageKey, shoppingList);
       setValue("");
     }
   };
@@ -52,6 +66,7 @@ const App = () => {
   const handleDelete = (id) => {
     const newShoppingList = shoppingList.filter((item) => item.id !== id);
     setShoppingList(newShoppingList);
+    saveToStorage(storageKey, newShoppingList);
   };
 
   const handleToggleComplete = (id) => {
@@ -68,6 +83,7 @@ const App = () => {
       return item;
     });
     setShoppingList(newShoppingList);
+    saveToStorage(storageKey, newShoppingList);
   };
 
   return (
