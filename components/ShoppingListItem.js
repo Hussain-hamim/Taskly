@@ -1,16 +1,18 @@
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { theme } from "../theme";
 
 import { AntDesign } from "@expo/vector-icons";
 
 // the prop passed in as object so we have to destructure it
-function ShoppingListItem({
-  name,
-  isCompleted,
-  shoppingList,
-  setShoppingList,
-}) {
-  const handleDelete = (id) => {
+function ShoppingListItem({ name, isCompleted, onDelete, onToggleComplete }) {
+  const handleDelete = () => {
     Alert.alert(
       `Are you sure you want to delete ${name}?`,
       "it will be gone for good",
@@ -22,11 +24,7 @@ function ShoppingListItem({
         },
         {
           text: "Yes",
-          onPress: () =>
-            setShoppingList([
-              ...shoppingList,
-              shoppingList.filter((item) => id !== item.id),
-            ]),
+          onPress: () => onDelete(),
           style: "destructive",
         },
       ]
@@ -34,7 +32,8 @@ function ShoppingListItem({
   };
 
   return (
-    <View
+    <Pressable
+      onPress={onToggleComplete}
       style={[
         styles.itemContainer,
         isCompleted ? styles.completedContainer : undefined,
@@ -62,7 +61,7 @@ function ShoppingListItem({
           size={24}
         />
       </TouchableOpacity>
-    </View>
+    </Pressable>
   );
 }
 
