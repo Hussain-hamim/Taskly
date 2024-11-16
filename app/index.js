@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -36,6 +36,7 @@ const storageKey = "shopping-list";
 const App = () => {
   const [value, setValue] = useState("");
   const [shoppingList, setShoppingList] = useState([]);
+  const focusRef = useRef(null);
 
   console.log(shoppingList);
 
@@ -88,6 +89,14 @@ const App = () => {
     saveToStorage(storageKey, newShoppingList);
   };
 
+  const handleEdit = (id, name) => {
+    const newShoppingList = shoppingList.filter((item) => item.id !== id);
+    setShoppingList(newShoppingList);
+    setValue(name);
+    focusRef.current.focus();
+    saveToStorage(storageKey, newShoppingList);
+  };
+
   return (
     <FlatList
       data={orderShoppingList(shoppingList)}
@@ -97,6 +106,7 @@ const App = () => {
           onDelete={() => handleDelete(item.id)}
           onToggleComplete={() => handleToggleComplete(item.id)}
           isCompleted={Boolean(item.completedAtTimeStamp)}
+          handleEdit={() => handleEdit(item.id, item.name)}
         />
       )}
       style={styles.container}
@@ -117,6 +127,7 @@ const App = () => {
           onSubmitEditing={handleSubmit}
           clearButtonMode="always"
           returnKeyType="done"
+          ref={focusRef}
         />
       }
     />

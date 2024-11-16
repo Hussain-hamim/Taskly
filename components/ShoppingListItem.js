@@ -11,7 +11,13 @@ import { theme } from "../theme";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 
 // the prop passed in as object so we have to destructure it
-function ShoppingListItem({ name, isCompleted, onDelete, onToggleComplete }) {
+function ShoppingListItem({
+  name,
+  isCompleted,
+  onDelete,
+  onToggleComplete,
+  handleEdit,
+}) {
   const handleDelete = () => {
     Alert.alert(
       `Are you sure you want to delete ${name}?`,
@@ -54,6 +60,14 @@ function ShoppingListItem({ name, isCompleted, onDelete, onToggleComplete }) {
           {name}
         </Text>
       </View>
+      <TouchableOpacity onPress={handleEdit}>
+        <AntDesign
+          style={{ marginRight: 10 }}
+          name="edit"
+          color={isCompleted ? theme.colorGray : theme.colorCerulean}
+          size={24}
+        />
+      </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={handleDelete}
