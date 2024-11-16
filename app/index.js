@@ -11,6 +11,7 @@ import {
   TextInput,
   ScrollView,
   FlatList,
+  LayoutAnimation,
 } from "react-native";
 
 import ShoppingListItem from "../components/ShoppingListItem";
@@ -29,8 +30,6 @@ const testData = new Array(100).fill(null).map((item, index) => ({
   name: String("item " + (index + 1)),
 }));
 
-console.log(testData);
-
 const storageKey = "shopping-list";
 
 const App = () => {
@@ -44,6 +43,7 @@ const App = () => {
     const fetchInitial = async () => {
       const data = await getFormStorage(storageKey);
       if (data) {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setShoppingList(data);
       }
     };
@@ -60,14 +60,17 @@ const App = () => {
         },
         ...shoppingList,
       ];
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       setShoppingList(newShoppingList);
       saveToStorage(storageKey, shoppingList);
       setValue("");
+      // focusRef.current.focus();
     }
   };
 
   const handleDelete = (id) => {
     const newShoppingList = shoppingList.filter((item) => item.id !== id);
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setShoppingList(newShoppingList);
     saveToStorage(storageKey, newShoppingList);
   };
@@ -85,12 +88,14 @@ const App = () => {
       }
       return item;
     });
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setShoppingList(newShoppingList);
     saveToStorage(storageKey, newShoppingList);
   };
 
   const handleEdit = (id, name) => {
     const newShoppingList = shoppingList.filter((item) => item.id !== id);
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setShoppingList(newShoppingList);
     setValue(name);
     focusRef.current.focus();
