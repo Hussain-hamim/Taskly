@@ -19,6 +19,8 @@ import { Link } from "expo-router";
 import { theme } from "../theme";
 import { getFormStorage, saveToStorage } from "../utils/storage";
 
+import * as Haptics from "expo-haptics";
+
 const initialList = [
   { id: 1, name: "Coffee" },
   { id: 2, name: "Tea" },
@@ -71,6 +73,7 @@ const App = () => {
   const handleDelete = (id) => {
     const newShoppingList = shoppingList.filter((item) => item.id !== id);
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setShoppingList(newShoppingList);
     saveToStorage(storageKey, newShoppingList);
   };
@@ -78,6 +81,12 @@ const App = () => {
   const handleToggleComplete = (id) => {
     const newShoppingList = shoppingList.map((item) => {
       if (item.id === id) {
+        if (item.completedAtTimeStamp) {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+        } else {
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        }
+
         return {
           ...item,
           lastUpdatedTimeStamp: Date.now(),
@@ -142,21 +151,22 @@ export default App;
 
 function orderShoppingList(shoppingList) {
   return shoppingList.sort((item1, item2) => {
-    if (item1.completedAtTimeStamp && item2.completedAtTimeStamp) {
-      return item2.completedAtTimeStamp - item1.completedAtTimeStamp;
+    if (item1.completedAtTimestamp && item2.completedAtTimestamp) {
+      return item2.completedAtTimestamp - item1.completedAtTimestamp;
     }
 
-    if (item1.completedAtTimeStamp && !item2.completedAtTimeStamp) {
+    if (item1.completedAtTimestamp && !item2.completedAtTimestamp) {
       return 1;
     }
 
-    if (!item1.completedAtTimeStamp && item2.completedAtTimeStamp) {
+    if (!item1.completedAtTimestamp && item2.completedAtTimestamp) {
       return -1;
     }
 
-    if (!item1.completedAtTimeStamp && !item2.completedAtTimeStamp) {
-      return item2.completedAtTimeStamp - item1.completedAtTimeStamp;
+    if (!item1.completedAtTimestamp && !item2.completedAtTimestamp) {
+      return item2.lastUpdatedTimestamp - item1.lastUpdatedTimestamp;
     }
+
     return 0;
   });
 }
