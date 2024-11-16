@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -37,7 +37,9 @@ const App = () => {
   const [value, setValue] = useState("");
   const [shoppingList, setShoppingList] = useState([]);
 
-  useState(() => {
+  console.log(shoppingList);
+
+  useEffect(() => {
     const fetchInitial = async () => {
       const data = await getFormStorage(storageKey);
       if (data) {

@@ -19,7 +19,7 @@ function ShoppingListItem({ name, isCompleted, onDelete, onToggleComplete }) {
       [
         {
           text: "Cancel",
-          onPress: () => null(),
+          onPress: () => null,
           style: "cancel",
         },
         {
