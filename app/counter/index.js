@@ -1,5 +1,13 @@
 import { useRouter } from "expo-router";
-import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  ActivityIndicatorComponent,
+  ActivityIndicator,
+} from "react-native";
 import { theme } from "../../theme";
 import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
 import * as Device from "expo-device";
@@ -19,6 +27,7 @@ export default function CounterScreen() {
     distance: {},
   });
   const [countdownState, setcountdownState] = useState();
+  const [isLoading, setIslLoading] = useState(true);
 
   const lastCompletedTimestamp = countdownState?.completedTimestamp[0];
 
@@ -26,6 +35,7 @@ export default function CounterScreen() {
     const init = async () => {
       const value = await getFormStorage(countdownStorageKey);
       setcountdownState(value);
+      // setIslLoading(false);
     };
     init();
   });
@@ -35,6 +45,11 @@ export default function CounterScreen() {
       const timestamp = lastCompletedTimestamp
         ? lastCompletedTimestamp + frequency
         : Date.now();
+
+      if (lastCompletedTimestamp) {
+        setIslLoading(false);
+      }
+
       const isOverdue = isBefore(timestamp, Date.now());
       const distance = intervalToDuration(
         isOverdue
@@ -87,6 +102,14 @@ export default function CounterScreen() {
     setcountdownState(newCountdownState);
     await saveToStorage(countdownStorageKey, newCountdownState);
   };
+
+  if (isLoading) {
+    return (
+      <View style={styles.activityIndicatorContainer}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
   return (
     <View
@@ -168,5 +191,11 @@ const styles = StyleSheet.create({
   },
   whiteText: {
     color: theme.colorWhite,
+  },
+  activityIndicatorContainer: {
+    flex: 1,
+    backfaceVisibility: theme.colorWhite,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
