@@ -19,7 +19,7 @@ import { getFormStorage, saveToStorage } from "../../utils/storage";
 
 const frequency = 10 * 1000;
 
-const countdownStorageKey = "taskly-countdown";
+export const countdownStorageKey = "taskly-countdown";
 
 export default function CounterScreen() {
   const [status, setstatus] = useState({
