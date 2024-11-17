@@ -7,20 +7,34 @@ import * as Notification from "expo-notifications";
 import { useEffect, useState } from "react";
 import { isBefore, intervalToDuration } from "date-fns";
 import { TimeSegment } from "../../components/TimeSegment";
+import { getFormStorage, saveToStorage } from "../../utils/storage";
 
-// 10 seconds from now
-const timestamp = Date.now() + 10 * 1000;
+const frequency = 10 * 1000;
+
+const countdownStorageKey = "taskly-countdown";
 
 export default function CounterScreen() {
   const [status, setstatus] = useState({
     isOverdue: false,
     distance: {},
   });
+  const [countdownState, setcountdownState] = useState();
 
-  console.log(status);
+  const lastCompletedTimestamp = countdownState?.completedTimestamp[0];
+
+  useEffect(() => {
+    const init = async () => {
+      const value = await getFormStorage(countdownStorageKey);
+      setcountdownState(value);
+    };
+    init();
+  });
 
   useEffect(() => {
     const intervalId = setInterval(() => {
+      const timestamp = lastCompletedTimestamp
+        ? lastCompletedTimestamp + frequency
+        : Date.now();
       const isOverdue = isBefore(timestamp, Date.now());
       const distance = intervalToDuration(
         isOverdue
@@ -36,17 +50,18 @@ export default function CounterScreen() {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [lastCompletedTimestamp]);
 
   const scheduleNotification = async () => {
+    let pushNotificationId;
     const result = await registerForPushNotificationsAsync();
     if (result === "granted") {
-      await Notification.scheduleNotificationAsync({
+      pushNotificationId = await Notification.scheduleNotificationAsync({
         content: {
-          title: "I'm notification from Hussain's app",
+          title: "The thing is due!",
         },
         trigger: {
-          seconds: 5,
+          seconds: frequency / 1000,
         },
       });
       console.log(result);
@@ -58,6 +73,19 @@ export default function CounterScreen() {
         );
       }
     }
+    if (countdownState?.currentNotificationId) {
+      await Notification.cancelAllScheduledNotificationsAsync(
+        countdownState?.currentNotificationId
+      );
+    }
+    const newCountdownState = {
+      currentNotificationId: pushNotificationId,
+      completedTimestamp: countdownState
+        ? [Date.now(), ...countdownState.completedTimestamp]
+        : [Date.now()],
+    };
+    setcountdownState(newCountdownState);
+    await saveToStorage(countdownStorageKey, newCountdownState);
   };
 
   return (
