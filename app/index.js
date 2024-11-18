@@ -40,6 +40,7 @@ const App = () => {
         },
         ...shoppingList,
       ];
+
       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       setShoppingList(newShoppingList);
       saveToStorage(storageKey, shoppingList);
@@ -147,33 +148,9 @@ function orderShoppingList(shoppingList) {
       return item2.completedAtTimeStamp - item1.completedAtTimeStamp;
     }
 
-    // Neither item has completedAtTimeStamp, sort by lastUpdatedTimeStamp
-    // return item1.lastUpdatedTimeStamp - item2.lastUpdatedTimeStamp;
     return 0;
   });
 }
-
-// function orderShoppingList(shoppingList) {
-//   return shoppingList.sort((item1, item2) => {
-//     if (item1.completedAtTimestamp && item2.completedAtTimestamp) {
-//       return item2.completedAtTimestamp - item1.completedAtTimestamp;
-//     }
-
-//     if (item1.completedAtTimestamp && !item2.completedAtTimestamp) {
-//       return 1;
-//     }
-
-//     if (!item1.completedAtTimestamp && item2.completedAtTimestamp) {
-//       return -1;
-//     }
-
-//     if (!item1.completedAtTimestamp && !item2.completedAtTimestamp) {
-//       return item2.lastUpdatedTimestamp - item1.lastUpdatedTimestamp;
-//     }
-
-//     return 0;
-//   });
-// }
 
 const styles = StyleSheet.create({
   container: {

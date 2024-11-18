@@ -17,7 +17,7 @@ import { TimeSegment } from "../../components/TimeSegment";
 import { getFormStorage, saveToStorage } from "../../utils/storage";
 import ConfettiCannon from "react-native-confetti-cannon";
 import * as Haptics from "expo-haptics";
-
+// 2 weeks
 const frequency = 14 * 24 * 60 * 60 * 1000;
 
 export const countdownStorageKey = "taskly-countdown";
@@ -32,6 +32,8 @@ export default function CounterScreen() {
   const confettiRef = useRef();
   const { width } = useWindowDimensions();
 
+  console.log(countdownState);
+
   const lastCompletedTimestamp = countdownState?.completedTimestamp[0];
 
   useEffect(() => {
@@ -40,27 +42,31 @@ export default function CounterScreen() {
       setcountdownState(value);
     };
     init();
-  });
+  }, []);
 
   useEffect(() => {
-    // const intervalId = setInterval(() => {
-    const timestamp = lastCompletedTimestamp
-      ? lastCompletedTimestamp + frequency
-      : Date.now();
-    if (lastCompletedTimestamp) {
-      setIslLoading(false);
-    }
-    const isOverdue = isBefore(timestamp, Date.now()); // @summary — Is the first date before the second one?
-    const distance = intervalToDuration(
-      isOverdue
-        ? { start: timestamp, end: Date.now() }
-        : {
-            start: Date.now(),
-            end: timestamp,
-          }
-    );
-    setstatus({ isOverdue, distance });
-    // }, 1000);
+    const intervalId = setInterval(() => {
+      const timestamp = lastCompletedTimestamp
+        ? lastCompletedTimestamp + frequency
+        : Date.now();
+
+      if (lastCompletedTimestamp) {
+        setIslLoading(false);
+      }
+
+      const isOverdue = isBefore(timestamp, Date.now()); // @summary — Is the first date before the second one?
+      const distance = intervalToDuration(
+        isOverdue
+          ? { start: timestamp, end: Date.now() }
+          : {
+              start: Date.now(),
+              end: timestamp,
+            }
+      );
+      setstatus({ isOverdue, distance });
+    }, 1000);
+
+    // 0711020323
 
     return () => {
       clearInterval(intervalId);
@@ -81,7 +87,6 @@ export default function CounterScreen() {
           seconds: frequency / 1000,
         },
       });
-      console.log(result);
     } else {
       if (Device.isDevice) {
         Alert.alert(
