@@ -103,9 +103,7 @@ const styles = StyleSheet.create({
     borderBottomColor: theme.colorLightGray,
     borderRadius: 12,
   },
-  completedButton: {
-    // backgroundColor: theme.colorGray,
-  },
+  completedButton: {},
   completedText: {
     textDecorationLine: "line-through",
     textDecorationColor: theme.colorGray,
@@ -113,7 +111,6 @@ const styles = StyleSheet.create({
   },
   itemText: { fontSize: 18, fontWeight: "200", flex: 1 },
   button: {
-    // backgroundColor: theme.colorBlack,
     padding: 8,
     borderRadius: 6,
   },

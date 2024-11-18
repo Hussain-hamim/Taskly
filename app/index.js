@@ -3,34 +3,14 @@ import {
   View,
   StyleSheet,
   Text,
-  Dimensions,
-  PixelRatio,
-  Pressable,
-  TouchableOpacity,
-  Alert,
   TextInput,
-  ScrollView,
   FlatList,
   LayoutAnimation,
 } from "react-native";
-
 import ShoppingListItem from "../components/ShoppingListItem";
-import { Link } from "expo-router";
 import { theme } from "../theme";
 import { getFormStorage, saveToStorage } from "../utils/storage";
-
 import * as Haptics from "expo-haptics";
-
-const initialList = [
-  { id: 1, name: "Coffee" },
-  { id: 2, name: "Tea" },
-  { id: 3, name: "Sugar" },
-];
-
-const testData = new Array(100).fill(null).map((item, index) => ({
-  id: String(index),
-  name: String("item " + (index + 1)),
-}));
 
 const storageKey = "shopping-list";
 
@@ -38,8 +18,6 @@ const App = () => {
   const [value, setValue] = useState("");
   const [shoppingList, setShoppingList] = useState([]);
   const focusRef = useRef(null);
-
-  console.log(shoppingList);
 
   useEffect(() => {
     const fetchInitial = async () => {
@@ -66,7 +44,6 @@ const App = () => {
       setShoppingList(newShoppingList);
       saveToStorage(storageKey, shoppingList);
       setValue("");
-      // focusRef.current.focus();
     }
   };
 
@@ -151,25 +128,52 @@ export default App;
 
 function orderShoppingList(shoppingList) {
   return shoppingList.sort((item1, item2) => {
-    if (item1.completedAtTimestamp && item2.completedAtTimestamp) {
-      return item2.completedAtTimestamp - item1.completedAtTimestamp;
+    // Both items have completedAtTimeStamp
+    if (item1.completedAtTimeStamp && item2.completedAtTimeStamp) {
+      return item2.completedAtTimeStamp - item1.completedAtTimeStamp;
     }
 
-    if (item1.completedAtTimestamp && !item2.completedAtTimestamp) {
+    // Only item1 has completedAtTimeStamp
+    if (item1.completedAtTimeStamp && !item2.completedAtTimeStamp) {
       return 1;
     }
 
-    if (!item1.completedAtTimestamp && item2.completedAtTimestamp) {
+    // Only item2 has completedAtTimeStamp
+    if (!item1.completedAtTimeStamp && item2.completedAtTimeStamp) {
       return -1;
     }
 
-    if (!item1.completedAtTimestamp && !item2.completedAtTimestamp) {
-      return item2.lastUpdatedTimestamp - item1.lastUpdatedTimestamp;
+    if (!item1.completedAtTimeStamp && !item2.completedAtTimeStamp) {
+      return item2.completedAtTimeStamp - item1.completedAtTimeStamp;
     }
 
+    // Neither item has completedAtTimeStamp, sort by lastUpdatedTimeStamp
+    // return item1.lastUpdatedTimeStamp - item2.lastUpdatedTimeStamp;
     return 0;
   });
 }
+
+// function orderShoppingList(shoppingList) {
+//   return shoppingList.sort((item1, item2) => {
+//     if (item1.completedAtTimestamp && item2.completedAtTimestamp) {
+//       return item2.completedAtTimestamp - item1.completedAtTimestamp;
+//     }
+
+//     if (item1.completedAtTimestamp && !item2.completedAtTimestamp) {
+//       return 1;
+//     }
+
+//     if (!item1.completedAtTimestamp && item2.completedAtTimestamp) {
+//       return -1;
+//     }
+
+//     if (!item1.completedAtTimestamp && !item2.completedAtTimestamp) {
+//       return item2.lastUpdatedTimestamp - item1.lastUpdatedTimestamp;
+//     }
+
+//     return 0;
+//   });
+// }
 
 const styles = StyleSheet.create({
   container: {

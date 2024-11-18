@@ -1,7 +1,7 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { Link, Stack } from "expo-router";
 import React from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable } from "react-native";
 import { theme } from "../../theme";
 
 function Layout() {

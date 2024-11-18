@@ -1,12 +1,6 @@
-import { Text, View, StyleSheet, TextStyle } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
-type Props = {
-  number: number;
-  unit: string;
-  textStyle?: TextStyle;
-};
-
-export function TimeSegment({ number, unit, textStyle }: Props) {
+export function TimeSegment({ number, unit, textStyle }) {
   return (
     <View style={styles.segmentContainer}>
       <Text style={[styles.number, textStyle]}>{number}</Text>

@@ -1,11 +1,9 @@
-import { useRouter } from "expo-router";
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   Alert,
-  ActivityIndicatorComponent,
   ActivityIndicator,
   useWindowDimensions,
 } from "react-native";
@@ -40,37 +38,34 @@ export default function CounterScreen() {
     const init = async () => {
       const value = await getFormStorage(countdownStorageKey);
       setcountdownState(value);
-      // setIslLoading(false);
     };
     init();
   });
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const timestamp = lastCompletedTimestamp
-        ? lastCompletedTimestamp + frequency
-        : Date.now();
-
-      if (lastCompletedTimestamp) {
-        setIslLoading(false);
-      }
-
-      const isOverdue = isBefore(timestamp, Date.now());
-      const distance = intervalToDuration(
-        isOverdue
-          ? { start: timestamp, end: Date.now() }
-          : {
-              start: Date.now(),
-              end: timestamp,
-            }
-      );
-      setstatus({ isOverdue, distance });
-    }, 1000);
+    // const intervalId = setInterval(() => {
+    const timestamp = lastCompletedTimestamp
+      ? lastCompletedTimestamp + frequency
+      : Date.now();
+    if (lastCompletedTimestamp) {
+      setIslLoading(false);
+    }
+    const isOverdue = isBefore(timestamp, Date.now()); // @summary — Is the first date before the second one?
+    const distance = intervalToDuration(
+      isOverdue
+        ? { start: timestamp, end: Date.now() }
+        : {
+            start: Date.now(),
+            end: timestamp,
+          }
+    );
+    setstatus({ isOverdue, distance });
+    // }, 1000);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [lastCompletedTimestamp]);
+  }, [lastCompletedTimestamp, frequency]);
 
   const scheduleNotification = async () => {
     confettiRef.current.start();
@@ -132,6 +127,7 @@ export default function CounterScreen() {
       ) : (
         <Text style={styles.heading}>car wash due in...</Text>
       )}
+
       <View style={styles.row}>
         <TimeSegment
           unit="Days"
@@ -154,6 +150,7 @@ export default function CounterScreen() {
           textStyle={status.isOverdue ? styles.whiteText : undefined}
         />
       </View>
+
       <TouchableOpacity
         style={styles.button}
         activeOpacity={0.8}
